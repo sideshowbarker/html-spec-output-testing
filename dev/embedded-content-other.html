@@ -1,0 +1,200 @@
+<!DOCTYPE html><html class=split lang=en-US-x-hixie><script src=/link-fixup.js defer=""></script><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard, Developer's Edition</title><meta content=#3c790a name=theme-color><link href=https://resources.whatwg.org/logo.svg rel=icon><script>
+   function toggleStatus(div) {
+     div.parentNode.classList.toggle('wrapped');
+   }
+  </script><style>
+   .status { min-height: 0.6em; font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; margin: -2em 0 0 0; border-collapse: initial; border-spacing: initial; }
+   .status:hover { z-index: 9; }
+   .status:focus-within { z-index: 9; }
+   .status.wrapped > :not(input) { display: none; }
+   .status > input { position: absolute; left: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+   .status > p { font-size: 0.6em; margin: 0; padding: 0; }
+   .status > p + p { padding-top: 0.5em; }
+   .status > p > strong { margin-left: 1.5em; }
+   .status > .support { display: block; }
+   .status > .support > span { padding: 0.2em 0; display: block; display: table; }
+   .status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+   .status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+   .status > .support > span.no::before { opacity: 0.5; }
+   .status > .support > span:first-of-type { padding-top: 0.5em; }
+   .status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+   .status > .support > span > span:first-child { width: 100%; }
+   .status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+   .status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+   .status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+   .status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+   .status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+   .status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+   .status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+   .status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+   .status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+   .status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+   .status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+   .status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+   .status > .caniuse { text-align: right; font-style: italic; width: 100%; }
+   .status > .caniuse + p { margin-top: 0.5em; border-top: 1px solid silver; }
+
+   @media (max-width: 767px) {
+     .status { right: -9em; }
+   }
+  </style><link rel=stylesheet href=styles.css><style>.mdn {  display: block;  font: 12px sans-serif;  position: absolute;   z-index: 9;  right: 0.3em;  background-color: #eee;  margin: -26px 0 0 0;  padding: 7px 5px 5px 6px;  min-width: 140px;  box-shadow: 0 0 3px #999;} .mdn input {   cursor: pointer;   position: absolute;   left: 0;   top: -2px;   height: 1em;   border: none;   color: #000;   background: transparent;   margin-left: -8px;   font-size: 10px;   line-height: 1em;} .mdn b {  color: #fff;  background-color: #000;  font-weight: normal;   font-family: zillaslab,Palatino,"Palatino Linotype",serif;  padding: 2px 3px 0px 3px;  line-height: 1.3em;  vertical-align: top;} .mdn details {  display: inline;  margin-top: 1px;} .mdn summary a {  margin-left: -4px;} .nosupportdata {  font-style: italic;  margin-top: 4px;  margin-left: 8px;  padding-bottom: 8px;} .mdnsupport {  display: table;  margin-top: 4px;} .mdnsupport > span {  display: table-row;  padding: 0.2em 0;  padding-top: 0.2em;  font-size: 9.6px;} .mdnsupport > span > span {  display: table-cell;  padding: 0 0.5em;  vertical-align: top;  line-height: 1.5em;} .mdnsupport > span > span:last-child {  text-align: right;  padding: 0;} .mdnsupport > span.no {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.unknown {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.no::before {  opacity:  0.5;} .mdnsupport > span.unknown::before {  opacity:  0.5;}.mdnsupport > span::before {    content: "";    display: table-cell;    min-width: 1.5em;    height: 1.5em;    background: no-repeat center center;        background-image: none;        background-size: auto auto;    background-size: contain;    text-align: right;    font-size: 0.75em;    font-weight: bold;} .mdnsupport > .chrome::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .chrome_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .edge::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .edge_mobile::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .firefox::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .firefox_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .ie::before {  background-image: url(https://resources.whatwg.org/browser-logos/ie.png);} .mdnsupport > .opera::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .opera_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .safari::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari.png);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .samsunginternet_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/samsung.png);} .mdnsupport > .webview_android::before {  background-image: url(https://cdnjs.loli.net/ajax/libs/browser-logos/41.0.0/android-webview-beta/android-webview-beta_32x32.png);} .mdn div:nth-child(n+3) > b {  color: #eee;  background-color: #eee;} p + .mdn { margin-top: -45px } .mdn.before { margin-top: 2px } h2 + .mdn { margin: -48px 0 0 0; } h3 + .mdn { margin: -46px 0 0 0; } h4 + .mdn { margin: -42px 0 0 0; } h5 + .mdn { margin: -40px 0 0 0; } h6 + .mdn { margin: -40px 0 0 0; } .mdn div { margin: 0; } .mdn :link { color: #0000EE; } .mdn :visited { color: #551A8B; } .mdn :link:active, :visited:active { color: #FF0000; } .mdn :link, :visited {   text-decoration: underline;   cursor: pointer;} .mdn.wrapped { min-width: 0px; } .mdn.wrapped details { display: none; } .mdn:hover { z-index: 11; } .mdn:focus-within { z-index: 11; }</style><body>
+  <script async="" src=search.js></script>
+  
+  
+  <header id=head class="head with-buttons">
+   <a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a>
+   
+   <hgroup><h1><a rel=home href=/dev/>HTML: The Living Standard</a></h1><h2 id=dev-edition-h2 class="no-num no-toc">Developer's Edition — Last Updated <span class=pubdate>21 October 2018</span></h2></hgroup>
+   
+
+   <div id=search>
+    <input placeholder="Search. Press '/'" autocomplete=off name=query id=query type=search>
+    <ol id=results></ol>
+   </div>
+  </header>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <nav><a href=image-maps.html>← 4.8.13 The map element</a> — <a href=./>Table of Contents</a> — <a href=tables.html>4.9 Tabular data →</a></nav><ol class=toc><li><ol><li><ol><li><a href=embedded-content-other.html#mathml><span class=secno>4.8.16</span> MathML</a><li><a href=embedded-content-other.html#svg-0><span class=secno>4.8.17</span> SVG</a><li><a href=embedded-content-other.html#dimension-attributes><span class=secno>4.8.18</span> Dimension attributes</a></ol></ol></ol><h4 id=mathml><span class=secno>4.8.16</span> MathML<a href=#mathml class=self-link></a></h4>
+
+  <p>The <a id=mathml:mathml-math href=https://www.w3.org/Math/draft-spec/chapter2.html#interf.toplevel data-x-internal=mathml-math>MathML <code>math</code></a> element falls into the <a id=mathml:embedded-content-category href=dom.html#embedded-content-category>embedded content</a>,
+  <a id=mathml:phrasing-content-2 href=dom.html#phrasing-content-2>phrasing content</a>, <a id=mathml:flow-content-2 href=dom.html#flow-content-2>flow content</a>, and <a id=mathml:palpable-content-2 href=dom.html#palpable-content-2>palpable content</a>
+  categories for the purposes of the content models in this specification.</p>
+
+  <p>When the <a id=mathml:mathml-annotation-xml href=https://www.w3.org/Math/draft-spec/chapter5.html#mixing.elements.annotation.xml data-x-internal=mathml-annotation-xml>MathML <code>annotation-xml</code></a> element contains elements from the
+  <a id=mathml:html-namespace-2 href=https://infra.spec.whatwg.org/#html-namespace data-x-internal=html-namespace-2>HTML namespace</a>, such elements must all be <a id=mathml:flow-content-2-2 href=dom.html#flow-content-2>flow content</a>.</p>
+
+  <p>When the MathML token elements (<code id=mathml:mathml-mi><a data-x-internal=mathml-mi href=https://www.w3.org/Math/draft-spec/chapter3.html#presm.mi>mi</a></code>, <code id=mathml:mathml-mo><a data-x-internal=mathml-mo href=https://www.w3.org/Math/draft-spec/chapter3.html#presm.mo>mo</a></code>, <code id=mathml:mathml-mn><a data-x-internal=mathml-mn href=https://www.w3.org/Math/draft-spec/chapter3.html#presm.mn>mn</a></code>, <code id=mathml:mathml-ms><a data-x-internal=mathml-ms href=https://www.w3.org/Math/draft-spec/chapter3.html#presm.ms>ms</a></code>, and <code id=mathml:mathml-mtext><a data-x-internal=mathml-mtext href=https://www.w3.org/Math/draft-spec/chapter3.html#presm.mtext>mtext</a></code>) are descendants of HTML elements, they may contain
+  <a id=mathml:phrasing-content-2-2 href=dom.html#phrasing-content-2>phrasing content</a> elements from the <a id=mathml:html-namespace-2-2 href=https://infra.spec.whatwg.org/#html-namespace data-x-internal=html-namespace-2>HTML namespace</a>.</p>
+  
+
+  
+
+  <p>The semantics of MathML elements are defined by the MathML specification and <a id=mathml:other-applicable-specifications href=infrastructure.html#other-applicable-specifications>other
+  applicable specifications</a>. <a href=references.html#refsMATHML>[MATHML]</a></p>
+
+  <div class=example>
+
+   <p>Here is an example of the use of MathML in an HTML document:</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE html&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->The quadratic formula<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>h1</c-><c- p>&gt;</c->The quadratic formula<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>math</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>mi</c-><c- p>&gt;</c->x<c- p>&lt;/</c-><c- f>mi</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>mo</c-><c- p>&gt;</c->=<c- p>&lt;/</c-><c- f>mo</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>mfrac</c-><c- p>&gt;</c->
+     <c- p>&lt;</c-><c- f>mrow</c-><c- p>&gt;</c->
+      <c- p>&lt;</c-><c- f>mo</c-> <c- e>form</c-><c- o>=</c-><c- s>&quot;prefix&quot;</c-><c- p>&gt;</c->−<c- p>&lt;/</c-><c- f>mo</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mi</c-><c- p>&gt;</c->b<c- p>&lt;/</c-><c- f>mi</c-><c- p>&gt;</c->
+      <c- p>&lt;</c-><c- f>mo</c-><c- p>&gt;</c->±<c- p>&lt;/</c-><c- f>mo</c-><c- p>&gt;</c->
+      <c- p>&lt;</c-><c- f>msqrt</c-><c- p>&gt;</c->
+       <c- p>&lt;</c-><c- f>msup</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mi</c-><c- p>&gt;</c->b<c- p>&lt;/</c-><c- f>mi</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mn</c-><c- p>&gt;</c->2<c- p>&lt;/</c-><c- f>mn</c-><c- p>&gt;</c-> <c- p>&lt;/</c-><c- f>msup</c-><c- p>&gt;</c->
+       <c- p>&lt;</c-><c- f>mo</c-><c- p>&gt;</c->−<c- p>&lt;/</c-><c- f>mo</c-><c- p>&gt;</c->
+       <c- p>&lt;</c-><c- f>mn</c-><c- p>&gt;</c->4<c- p>&lt;/</c-><c- f>mn</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mo</c-><c- p>&gt;</c->⁢<c- p>&lt;/</c-><c- f>mo</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mi</c-><c- p>&gt;</c->a<c- p>&lt;/</c-><c- f>mi</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mo</c-><c- p>&gt;</c->⁢<c- p>&lt;/</c-><c- f>mo</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mi</c-><c- p>&gt;</c->c<c- p>&lt;/</c-><c- f>mi</c-><c- p>&gt;</c->
+      <c- p>&lt;/</c-><c- f>msqrt</c-><c- p>&gt;</c->
+     <c- p>&lt;/</c-><c- f>mrow</c-><c- p>&gt;</c->
+     <c- p>&lt;</c-><c- f>mrow</c-><c- p>&gt;</c->
+      <c- p>&lt;</c-><c- f>mn</c-><c- p>&gt;</c->2<c- p>&lt;/</c-><c- f>mn</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mo</c-><c- p>&gt;</c->⁢<c- p>&lt;/</c-><c- f>mo</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>mi</c-><c- p>&gt;</c->a<c- p>&lt;/</c-><c- f>mi</c-><c- p>&gt;</c->
+     <c- p>&lt;/</c-><c- f>mrow</c-><c- p>&gt;</c->
+    <c- p>&lt;/</c-><c- f>mfrac</c-><c- p>&gt;</c->
+   <c- p>&lt;/</c-><c- f>math</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+
+
+  <h4 id=svg-0><span class=secno>4.8.17</span> SVG<a href=#svg-0 class=self-link></a></h4><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> svg-html5<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>7+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>5.0+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>4+</span></span><span class="ie yes"><span>IE</span> <span>9+</span></span><span class="op_mini yes"><span>Opera Mini</span> <span>all+</span></span><span class="safari yes"><span>Safari</span> <span>5.1+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>11.6+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>3+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=svg-html5">caniuse.com</a></div>
+
+  <p>The <a id=svg-0:svg-svg href=https://svgwg.org/svg2-draft/struct.html#SVGElement data-x-internal=svg-svg>SVG <code>svg</code></a> element falls into the <a id=svg-0:embedded-content-category href=dom.html#embedded-content-category>embedded content</a>,
+  <a id=svg-0:phrasing-content-2 href=dom.html#phrasing-content-2>phrasing content</a>, <a id=svg-0:flow-content-2 href=dom.html#flow-content-2>flow content</a>, and <a id=svg-0:palpable-content-2 href=dom.html#palpable-content-2>palpable content</a>
+  categories for the purposes of the content models in this specification.</p>
+
+  
+
+  <p>When the <a id=svg-0:svg-foreignobject href=https://svgwg.org/svg2-draft/embedded.html#ForeignObjectElement data-x-internal=svg-foreignobject>SVG <code>foreignObject</code></a> element contains elements from the
+  <a id=svg-0:html-namespace-2 href=https://infra.spec.whatwg.org/#html-namespace data-x-internal=html-namespace-2>HTML namespace</a>, such elements must all be <a id=svg-0:flow-content-2-2 href=dom.html#flow-content-2>flow content</a>.</p>
+
+  <p>The content model for the <a id=svg-0:svg-title href=https://svgwg.org/svg2-draft/struct.html#TitleElement data-x-internal=svg-title>SVG <code>title</code></a> element inside <a id=svg-0:html-documents href=https://dom.spec.whatwg.org/#html-document data-x-internal=html-documents>HTML
+  documents</a> is <a id=svg-0:phrasing-content-2-2 href=dom.html#phrasing-content-2>phrasing content</a>. (This further constrains the requirements given
+  in the SVG specification.)</p>
+
+  <p>The semantics of SVG elements are defined by the SVG specification and <a id=svg-0:other-applicable-specifications href=infrastructure.html#other-applicable-specifications>other applicable
+  specifications</a>. <a href=references.html#refsSVG>[SVG]</a></p>
+
+  <hr>
+
+
+  <dl class=domintro><dt><var>doc</var> = <var>iframe</var> . <code id=dom-media-getsvgdocument>getSVGDocument</code>()<dt><var>doc</var> = <var>embed</var> . <code id=svg-0:dom-media-getsvgdocument><a href=#dom-media-getsvgdocument>getSVGDocument</a></code>()<dt><var>doc</var> = <var>object</var> . <code id=svg-0:dom-media-getsvgdocument-2><a href=#dom-media-getsvgdocument>getSVGDocument</a></code>()<dd>
+
+    <p>Returns the <code>Document</code> object, in the case of <code id=svg-0:the-iframe-element><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code>, <code id=svg-0:the-embed-element><a href=iframe-embed-object.html#the-embed-element>embed</a></code>, or <code id=svg-0:the-object-element><a href=iframe-embed-object.html#the-object-element>object</a></code> elements being used to embed SVG images.</p>
+
+   </dl>
+
+  
+
+
+
+
+  <h4 id=dimension-attributes><span class=secno>4.8.18</span> <dfn>Dimension attributes</dfn><a href=#dimension-attributes class=self-link></a></h4>
+
+  <p> The <dfn id=attr-dim-width><code>width</code></dfn> and <dfn id=attr-dim-height><code>height</code></dfn> attributes on <code id=dimension-attributes:the-img-element><a href=embedded-content.html#the-img-element>img</a></code>, <code id=dimension-attributes:the-iframe-element><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code>,
+  <code id=dimension-attributes:the-embed-element><a href=iframe-embed-object.html#the-embed-element>embed</a></code>, <code id=dimension-attributes:the-object-element><a href=iframe-embed-object.html#the-object-element>object</a></code>, <code id=dimension-attributes:the-video-element><a href=media.html#the-video-element>video</a></code>, and, when their <code id=dimension-attributes:attr-input-type><a href=input.html#attr-input-type>type</a></code> attribute is in the <a href="input.html#image-button-state-(type=image)" id="dimension-attributes:image-button-state-(type=image)">Image Button</a> state, <code id=dimension-attributes:the-input-element><a href=input.html#the-input-element>input</a></code> elements may be
+  specified to give the dimensions of the visual content of the element (the width and height
+  respectively, relative to the nominal direction of the output medium), in <a href=https://drafts.csswg.org/css-values/#px id="dimension-attributes:'px'" data-x-internal="'px'">CSS
+  pixels</a>. The attributes, if specified, must have values that are <a href=common-microsyntaxes.html#valid-non-negative-integer id=dimension-attributes:valid-non-negative-integer>valid non-negative integers</a>.</p>
+
+  <p>The specified dimensions given may differ from the dimensions specified in the resource itself,
+  since the resource may have a resolution that differs from the CSS pixel resolution. (On screens,
+  <a href=https://drafts.csswg.org/css-values/#px id="dimension-attributes:'px'-2" data-x-internal="'px'">CSS pixels</a> have a resolution of 96ppi, but in general the CSS pixel
+  resolution depends on the reading distance.) If both attributes are specified, then one of the
+  following statements must be true:</p>
+
+  <ul><li><var>specified width</var> - 0.5 ≤
+             <var>specified height</var> * <var>target ratio</var> ≤
+             <var>specified width</var> + 0.5<li><var>specified height</var> - 0.5 ≤
+             <var>specified width</var> / <var>target ratio</var> ≤
+             <var>specified height</var> + 0.5<li><var>specified height</var> = <var>specified width</var> = 0</ul>
+
+  <p>The <var>target ratio</var> is the ratio of the <a id=dimension-attributes:intrinsic-width href=infrastructure.html#intrinsic-width>intrinsic width</a> to the
+  <a id=dimension-attributes:intrinsic-height href=infrastructure.html#intrinsic-height>intrinsic height</a> in the resource. The <var>specified width</var> and <var>specified
+  height</var> are the values of the <code id=dimension-attributes:attr-dim-width><a href=#attr-dim-width>width</a></code> and <code id=dimension-attributes:attr-dim-height><a href=#attr-dim-height>height</a></code> attributes respectively.</p>
+
+  <p>The two attributes must be omitted if the resource in question does not have both an
+  <a id=dimension-attributes:intrinsic-width-2 href=infrastructure.html#intrinsic-width>intrinsic width</a> and an <a id=dimension-attributes:intrinsic-height-2 href=infrastructure.html#intrinsic-height>intrinsic height</a>.</p>
+
+  <p>If the two attributes are both zero, it indicates that the element is not intended for the user
+  (e.g. it might be a part of a service to count page views).</p>
+
+  <p class=note>The dimension attributes are not intended to be used to stretch the image.</p>
+
+  
+
+
+
+  <nav><a href=image-maps.html>← 4.8.13 The map element</a> — <a href=./>Table of Contents</a> — <a href=tables.html>4.9 Tabular data →</a></nav>

@@ -1,0 +1,1047 @@
+<!DOCTYPE html><html class=split lang=en-US-x-hixie><script src=/link-fixup.js defer=""></script><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard, Developer's Edition</title><meta content=#3c790a name=theme-color><link href=https://resources.whatwg.org/logo.svg rel=icon><script>
+   function toggleStatus(div) {
+     div.parentNode.classList.toggle('wrapped');
+   }
+  </script><style>
+   .status { min-height: 0.6em; font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; margin: -2em 0 0 0; border-collapse: initial; border-spacing: initial; }
+   .status:hover { z-index: 9; }
+   .status:focus-within { z-index: 9; }
+   .status.wrapped > :not(input) { display: none; }
+   .status > input { position: absolute; left: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+   .status > p { font-size: 0.6em; margin: 0; padding: 0; }
+   .status > p + p { padding-top: 0.5em; }
+   .status > p > strong { margin-left: 1.5em; }
+   .status > .support { display: block; }
+   .status > .support > span { padding: 0.2em 0; display: block; display: table; }
+   .status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+   .status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+   .status > .support > span.no::before { opacity: 0.5; }
+   .status > .support > span:first-of-type { padding-top: 0.5em; }
+   .status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+   .status > .support > span > span:first-child { width: 100%; }
+   .status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+   .status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+   .status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+   .status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+   .status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+   .status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+   .status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+   .status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+   .status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+   .status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+   .status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+   .status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+   .status > .caniuse { text-align: right; font-style: italic; width: 100%; }
+   .status > .caniuse + p { margin-top: 0.5em; border-top: 1px solid silver; }
+
+   @media (max-width: 767px) {
+     .status { right: -9em; }
+   }
+  </style><link rel=stylesheet href=styles.css><style>.mdn {  display: block;  font: 12px sans-serif;  position: absolute;   z-index: 9;  right: 0.3em;  background-color: #eee;  margin: -26px 0 0 0;  padding: 7px 5px 5px 6px;  min-width: 140px;  box-shadow: 0 0 3px #999;} .mdn input {   cursor: pointer;   position: absolute;   left: 0;   top: -2px;   height: 1em;   border: none;   color: #000;   background: transparent;   margin-left: -8px;   font-size: 10px;   line-height: 1em;} .mdn b {  color: #fff;  background-color: #000;  font-weight: normal;   font-family: zillaslab,Palatino,"Palatino Linotype",serif;  padding: 2px 3px 0px 3px;  line-height: 1.3em;  vertical-align: top;} .mdn details {  display: inline;  margin-top: 1px;} .mdn summary a {  margin-left: -4px;} .nosupportdata {  font-style: italic;  margin-top: 4px;  margin-left: 8px;  padding-bottom: 8px;} .mdnsupport {  display: table;  margin-top: 4px;} .mdnsupport > span {  display: table-row;  padding: 0.2em 0;  padding-top: 0.2em;  font-size: 9.6px;} .mdnsupport > span > span {  display: table-cell;  padding: 0 0.5em;  vertical-align: top;  line-height: 1.5em;} .mdnsupport > span > span:last-child {  text-align: right;  padding: 0;} .mdnsupport > span.no {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.unknown {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.no::before {  opacity:  0.5;} .mdnsupport > span.unknown::before {  opacity:  0.5;}.mdnsupport > span::before {    content: "";    display: table-cell;    min-width: 1.5em;    height: 1.5em;    background: no-repeat center center;        background-image: none;        background-size: auto auto;    background-size: contain;    text-align: right;    font-size: 0.75em;    font-weight: bold;} .mdnsupport > .chrome::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .chrome_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .edge::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .edge_mobile::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .firefox::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .firefox_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .ie::before {  background-image: url(https://resources.whatwg.org/browser-logos/ie.png);} .mdnsupport > .opera::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .opera_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .safari::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari.png);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .samsunginternet_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/samsung.png);} .mdnsupport > .webview_android::before {  background-image: url(https://cdnjs.loli.net/ajax/libs/browser-logos/41.0.0/android-webview-beta/android-webview-beta_32x32.png);} .mdn div:nth-child(n+3) > b {  color: #eee;  background-color: #eee;} p + .mdn { margin-top: -45px } .mdn.before { margin-top: 2px } h2 + .mdn { margin: -48px 0 0 0; } h3 + .mdn { margin: -46px 0 0 0; } h4 + .mdn { margin: -42px 0 0 0; } h5 + .mdn { margin: -40px 0 0 0; } h6 + .mdn { margin: -40px 0 0 0; } .mdn div { margin: 0; } .mdn :link { color: #0000EE; } .mdn :visited { color: #551A8B; } .mdn :link:active, :visited:active { color: #FF0000; } .mdn :link, :visited {   text-decoration: underline;   cursor: pointer;} .mdn.wrapped { min-width: 0px; } .mdn.wrapped details { display: none; } .mdn:hover { z-index: 11; } .mdn:focus-within { z-index: 11; }</style><body>
+  <script async="" src=search.js></script>
+  
+  
+  <header id=head class="head with-buttons">
+   <a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a>
+   
+   <hgroup><h1><a rel=home href=/dev/>HTML: The Living Standard</a></h1><h2 id=dev-edition-h2 class="no-num no-toc">Developer's Edition — Last Updated <span class=pubdate>21 October 2018</span></h2></hgroup>
+   
+
+   <div id=search>
+    <input placeholder="Search. Press '/'" autocomplete=off name=query id=query type=search>
+    <ol id=results></ol>
+   </div>
+  </header>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <nav><a href=text-level-semantics.html>← 4.5 Text-level semantics</a> — <a href=./>Table of Contents</a> — <a href=edits.html>4.7 Edits →</a></nav><ol class=toc><li><ol><li><a href=links.html#links><span class=secno>4.6</span> Links</a><ol><li><a href=links.html#introduction-2><span class=secno>4.6.1</span> Introduction</a><li><a href=links.html#links-created-by-a-and-area-elements><span class=secno>4.6.2</span> Links created by <code>a</code> and <code>area</code> elements</a><li><a href=links.html#api-for-a-and-area-elements><span class=secno>4.6.3</span> API for <code>a</code> and <code>area</code> elements</a><li><a href=links.html#downloading-resources><span class=secno>4.6.4</span> Downloading resources</a><li><a href=links.html#linkTypes><span class=secno>4.6.5</span> Link types</a><ol><li><a href=links.html#rel-alternate><span class=secno>4.6.5.1</span> Link type "<code>alternate</code>"</a><li><a href=links.html#link-type-author><span class=secno>4.6.5.2</span> Link type "<code>author</code>"</a><li><a href=links.html#link-type-bookmark><span class=secno>4.6.5.3</span> Link type "<code>bookmark</code>"</a><li><a href=links.html#link-type-canonical><span class=secno>4.6.5.4</span> Link type "<code>canonical</code>"</a><li><a href=links.html#link-type-dns-prefetch><span class=secno>4.6.5.5</span> Link type "<code>dns-prefetch</code>"</a><li><a href=links.html#link-type-external><span class=secno>4.6.5.6</span> Link type "<code>external</code>"</a><li><a href=links.html#link-type-help><span class=secno>4.6.5.7</span> Link type "<code>help</code>"</a><li><a href=links.html#rel-icon><span class=secno>4.6.5.8</span> Link type "<code>icon</code>"</a><li><a href=links.html#link-type-license><span class=secno>4.6.5.9</span> Link type "<code>license</code>"</a><li><a href=links.html#link-type-modulepreload><span class=secno>4.6.5.10</span> Link type "<code>modulepreload</code>"</a><li><a href=links.html#link-type-nofollow><span class=secno>4.6.5.11</span> Link type "<code>nofollow</code>"</a><li><a href=links.html#link-type-noopener><span class=secno>4.6.5.12</span> Link type "<code>noopener</code>"</a><li><a href=links.html#link-type-noreferrer><span class=secno>4.6.5.13</span> Link type "<code>noreferrer</code>"</a><li><a href=links.html#link-type-pingback><span class=secno>4.6.5.14</span> Link type "<code>pingback</code>"</a><li><a href=links.html#link-type-preconnect><span class=secno>4.6.5.15</span> Link type "<code>preconnect</code>"</a><li><a href=links.html#link-type-prefetch><span class=secno>4.6.5.16</span> Link type "<code>prefetch</code>"</a><li><a href=links.html#link-type-preload><span class=secno>4.6.5.17</span> Link type "<code>preload</code>"</a><li><a href=links.html#link-type-prerender><span class=secno>4.6.5.18</span> Link type "<code>prerender</code>"</a><li><a href=links.html#link-type-search><span class=secno>4.6.5.19</span> Link type "<code>search</code>"</a><li><a href=links.html#link-type-stylesheet><span class=secno>4.6.5.20</span> Link type "<code>stylesheet</code>"</a><li><a href=links.html#link-type-tag><span class=secno>4.6.5.21</span> Link type "<code>tag</code>"</a><li><a href=links.html#sequential-link-types><span class=secno>4.6.5.22</span> Sequential link types</a><ol><li><a href=links.html#link-type-next><span class=secno>4.6.5.22.1</span> Link type "<code>next</code>"</a><li><a href=links.html#link-type-prev><span class=secno>4.6.5.22.2</span> Link type "<code>prev</code>"</a></ol><li><a href=links.html#other-link-types><span class=secno>4.6.5.23</span> Other link types</a></ol></ol></ol></ol><h3 id=links><span class=secno>4.6</span> Links<a href=#links class=self-link></a></h3>
+
+  <h4 id=introduction-2><span class=secno>4.6.1</span> Introduction<a href=#introduction-2 class=self-link></a></h4>
+
+  <p>Links are a conceptual construct, created by <code id=introduction-2:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, <code id=introduction-2:the-area-element><a href=image-maps.html#the-area-element>area</a></code>, and
+  <code id=introduction-2:the-link-element><a href=semantics.html#the-link-element>link</a></code> elements, that <a href=dom.html#represents id=introduction-2:represents>represent</a> a connection between
+  two resources, one of which is the current <code>Document</code>. There are two kinds of links in
+  HTML:</p>
+
+  <dl><dt><dfn id=external-resource-link data-lt="external resource link" data-export="">Links to
+   external resources</dfn><dd><p>These are links to resources that are to be used to augment the current document,
+   generally automatically processed by the user agent.<dt><dfn id=hyperlink data-lt=hyperlink data-export="">Hyperlinks</dfn><dd><p>These are links to other resources that are generally exposed to the user by the user
+   agent so that the user can cause the user agent to <span>navigate</span> to those resources, e.g.
+   to visit them in a browser or download them.</dl>
+
+  <p>For <code id=introduction-2:the-link-element-2><a href=semantics.html#the-link-element>link</a></code> elements with an <code id=introduction-2:attr-link-href><a href=semantics.html#attr-link-href>href</a></code> attribute and a
+  <code id=introduction-2:attr-link-rel><a href=semantics.html#attr-link-rel>rel</a></code> attribute, links must be created for the keywords of the
+  <code id=introduction-2:attr-link-rel-2><a href=semantics.html#attr-link-rel>rel</a></code> attribute, as defined for those keywords in the <a href=#linkTypes>link types</a> section.</p>
+
+  <p>Similarly, for <code id=introduction-2:the-a-element-2><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=introduction-2:the-area-element-2><a href=image-maps.html#the-area-element>area</a></code> elements with an <code id=introduction-2:attr-hyperlink-href><a href=#attr-hyperlink-href>href</a></code> attribute and a <code id=introduction-2:attr-hyperlink-rel><a href=#attr-hyperlink-rel>rel</a></code> attribute, links must be created for the keywords of the
+  <code id=introduction-2:attr-hyperlink-rel-2><a href=#attr-hyperlink-rel>rel</a></code> attribute as defined for those keywords in the <a href=#linkTypes>link types</a> section. Unlike <code id=introduction-2:the-link-element-3><a href=semantics.html#the-link-element>link</a></code> elements, however,
+  <code id=introduction-2:the-a-element-3><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=introduction-2:the-area-element-3><a href=image-maps.html#the-area-element>area</a></code> elements with an <code id=introduction-2:attr-hyperlink-href-2><a href=#attr-hyperlink-href>href</a></code>
+  attribute that either do not have a <code id=introduction-2:attr-hyperlink-rel-3><a href=#attr-hyperlink-rel>rel</a></code> attribute, or
+  whose <code id=introduction-2:attr-hyperlink-rel-4><a href=#attr-hyperlink-rel>rel</a></code> attribute has no keywords that are defined as
+  specifying <a href=#hyperlink id=introduction-2:hyperlink>hyperlinks</a>, must also create a <a href=#hyperlink id=introduction-2:hyperlink-2>hyperlink</a>.
+  This implied hyperlink has no special meaning (it has no <a href=#linkTypes>link type</a>)
+  beyond linking the element's <a id=introduction-2:node-document href=https://dom.spec.whatwg.org/#concept-node-document data-x-internal=node-document>node document</a> to the resource given by the element's <code id=introduction-2:attr-hyperlink-href-3><a href=#attr-hyperlink-href>href</a></code> attribute.</p>
+
+  <p>A <a href=#hyperlink id=introduction-2:hyperlink-3>hyperlink</a> can have one or more <dfn id=hyperlink-annotation>hyperlink
+  annotations</dfn> that modify the processing semantics of that hyperlink.</p>
+
+
+  <h4 id=links-created-by-a-and-area-elements><span class=secno>4.6.2</span> Links created by <code id=links-created-by-a-and-area-elements:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=links-created-by-a-and-area-elements:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements<a href=#links-created-by-a-and-area-elements class=self-link></a></h4>
+
+  <p>The <dfn id=attr-hyperlink-href><code>href</code></dfn> attribute on <code id=links-created-by-a-and-area-elements:the-a-element-2><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=links-created-by-a-and-area-elements:the-area-element-2><a href=image-maps.html#the-area-element>area</a></code> elements must have a value that is a <a id=links-created-by-a-and-area-elements:valid-url-potentially-surrounded-by-spaces href=urls-and-fetching.html#valid-url-potentially-surrounded-by-spaces>valid URL potentially surrounded by
+  spaces</a>.</p>
+
+  <p class=note>The <code id=links-created-by-a-and-area-elements:attr-hyperlink-href><a href=#attr-hyperlink-href>href</a></code> attribute on <code id=links-created-by-a-and-area-elements:the-a-element-3><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=links-created-by-a-and-area-elements:the-area-element-3><a href=image-maps.html#the-area-element>area</a></code> elements is not required; when those elements do not have <code id=links-created-by-a-and-area-elements:attr-hyperlink-href-2><a href=#attr-hyperlink-href>href</a></code> attributes they do not create hyperlinks.</p>
+
+  <p>The <dfn id=attr-hyperlink-target><code>target</code></dfn> attribute, if present, must be
+  a <a id=links-created-by-a-and-area-elements:valid-browsing-context-name-or-keyword href=browsers.html#valid-browsing-context-name-or-keyword>valid browsing context name or keyword</a>. It gives the name of the <a id=links-created-by-a-and-area-elements:browsing-context href=browsers.html#browsing-context>browsing
+  context</a> that will be used. </p>
+
+  <p>When an <code id=links-created-by-a-and-area-elements:the-a-element-4><a href=text-level-semantics.html#the-a-element>a</a></code> or <code id=links-created-by-a-and-area-elements:the-area-element-4><a href=image-maps.html#the-area-element>area</a></code> element's <a id=links-created-by-a-and-area-elements:activation-behaviour href=https://dom.spec.whatwg.org/#eventtarget-activation-behavior data-x-internal=activation-behaviour>activation behavior</a> is
+  invoked, the user agent may allow the user to indicate a preference regarding whether the
+  hyperlink is to be used for <span>navigation</span> or whether the resource it
+  specifies is to be downloaded.</p>
+
+  <p>In the absence of a user preference, the default should be navigation if the element has no
+  <code id=links-created-by-a-and-area-elements:attr-hyperlink-download><a href=#attr-hyperlink-download>download</a></code> attribute, and should be to download the
+  specified resource if it does.</p>
+
+  <p>Whether determined by the user's preferences or via the presence or absence of the attribute,
+  if the decision is to use the hyperlink for <span>navigation</span> then the user
+  agent must <span>follow the hyperlink</span>, and if the decision is
+  to use the hyperlink to download a resource, the user agent must <span>download the hyperlink</span>. These terms are defined in subsequent sections
+  below.</p>
+
+  <p>The <dfn id=attr-hyperlink-download><code>download</code></dfn> attribute, if present,
+  indicates that the author intends the hyperlink to be used for <span>downloading a resource</span>. The attribute may have a value; the value, if any,
+  specifies the default file name that the author recommends for use in labeling the resource in a
+  local file system. There are no restrictions on allowed values, but authors are cautioned that
+  most file systems have limitations with regard to what punctuation is supported in file names,
+  and user agents are likely to adjust file names accordingly.</p>
+
+
+  <p>The <dfn id=ping><code>ping</code></dfn> attribute, if present,
+  gives the URLs of the resources that are interested in being notified if the user follows the
+  hyperlink. The value must be a <a id=links-created-by-a-and-area-elements:set-of-space-separated-tokens href=common-microsyntaxes.html#set-of-space-separated-tokens>set of space-separated tokens</a>, each of which must be a
+  <a id=links-created-by-a-and-area-elements:valid-non-empty-url href=urls-and-fetching.html#valid-non-empty-url>valid non-empty URL</a> whose <a href=https://url.spec.whatwg.org/#concept-url-scheme id=links-created-by-a-and-area-elements:concept-url-scheme data-x-internal=concept-url-scheme>scheme</a> is an
+  <a id=links-created-by-a-and-area-elements:http(s)-scheme href=https://fetch.spec.whatwg.org/#http-scheme data-x-internal=http(s)-scheme>HTTP(S) scheme</a>. <div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> ping<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>15+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>5.0+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox no"><span>Firefox</span> <span>None</span></span><span class="ie no"><span>IE</span> <span>None</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>6+</span></span><span class="edge yes"><span>Edge</span> <span>17+</span></span><span class="opera yes"><span>Opera</span> <span>15+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>4.4+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=ping">caniuse.com</a></div>
+
+  <p><span id=dom-a-rellist></span>The <dfn id=attr-hyperlink-rel><code>rel</code></dfn> attribute on <code id=links-created-by-a-and-area-elements:the-a-element-5><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=links-created-by-a-and-area-elements:the-area-element-5><a href=image-maps.html#the-area-element>area</a></code>
+  elements controls what kinds of links the elements create. The attribute's value must be a
+  <a id=links-created-by-a-and-area-elements:set-of-space-separated-tokens-2 href=common-microsyntaxes.html#set-of-space-separated-tokens>set of space-separated tokens</a>. The <a href=#linkTypes>allowed keywords and their
+  meanings</a> are defined below.<aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLAnchorElement/relList title="The HTMLAnchorElement.relList read-only property reflects the rel attribute. It is a live DOMTokenList containing the set of link types indicating the relationship between the resource represented by the a element and the current document.">HTMLAnchorElement/relList</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>1+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> rellist<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>65+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>9.0+</span></span><span class="and_uc partial"><span>UC Browser for Android (limited)</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>30+</span></span><span class="ie no"><span>IE</span> <span>None</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>9+</span></span><span class="edge yes"><span>Edge</span> <span>18+</span></span><span class="opera yes"><span>Opera</span> <span>52+</span></span><span class="samsung partial"><span>Samsung Internet (limited)</span> <span>5+</span></span><span class="android yes"><span>Android Browser</span> <span>67+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=rellist">caniuse.com</a></div>
+
+  <p><code id=links-created-by-a-and-area-elements:attr-hyperlink-rel><a href=#attr-hyperlink-rel>rel</a></code>'s
+  <a href=https://dom.spec.whatwg.org/#concept-supported-tokens id=links-created-by-a-and-area-elements:concept-supported-tokens data-x-internal=concept-supported-tokens>supported tokens</a> are the keywords defined in
+  <a href=#linkTypes>HTML link types</a> which are allowed on <code id=links-created-by-a-and-area-elements:the-a-element-6><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=links-created-by-a-and-area-elements:the-area-element-6><a href=image-maps.html#the-area-element>area</a></code> elements, impact the processing model, and are supported by the user agent. The
+  possible <a href=https://dom.spec.whatwg.org/#concept-supported-tokens id=links-created-by-a-and-area-elements:concept-supported-tokens-2 data-x-internal=concept-supported-tokens>supported tokens</a> are
+  <code id=links-created-by-a-and-area-elements:link-type-noreferrer><a href=#link-type-noreferrer>noreferrer</a></code> and
+  <code id=links-created-by-a-and-area-elements:link-type-noopener><a href=#link-type-noopener>noopener</a></code>.
+  <code id=links-created-by-a-and-area-elements:attr-hyperlink-rel-2><a href=#attr-hyperlink-rel>rel</a></code>'s
+  <a href=https://dom.spec.whatwg.org/#concept-supported-tokens id=links-created-by-a-and-area-elements:concept-supported-tokens-3 data-x-internal=concept-supported-tokens>supported tokens</a> must only include the tokens from
+  this list that the user agent implements the processing model for.</p>
+
+  <p>Other specifications may add <a href=#linkTypes>HTML link types</a> as defined in <a href=#other-link-types>Other link types</a>, with the following additional requirements:</p>
+
+  <ul><li>Such specifications may require that their link types be included in <code id=links-created-by-a-and-area-elements:attr-link-rel><a href=semantics.html#attr-link-rel>rel</a></code>'s <a href=https://dom.spec.whatwg.org/#concept-supported-tokens id=links-created-by-a-and-area-elements:concept-supported-tokens-4 data-x-internal=concept-supported-tokens>supported
+   tokens</a>.<li>Such specifications may specify that their link types are <a href=#body-ok id=links-created-by-a-and-area-elements:body-ok>body-ok</a>.</ul>
+
+  <p>The <code id=links-created-by-a-and-area-elements:attr-hyperlink-rel-3><a href=#attr-hyperlink-rel>rel</a></code> attribute has no default value. If the
+  attribute is omitted or if none of the values in the attribute are recognized by the user agent,
+  then the document has no particular relationship with the destination resource other than there
+  being a hyperlink between the two.</p>
+
+  <p>The <dfn id=attr-hyperlink-hreflang><code>hreflang</code></dfn> attribute on
+  <code id=links-created-by-a-and-area-elements:the-a-element-7><a href=text-level-semantics.html#the-a-element>a</a></code> elements that create <a href=#hyperlink id=links-created-by-a-and-area-elements:hyperlink>hyperlinks</a>, if present, gives
+  the language of the linked resource. It is purely advisory. The value must be a valid BCP 47
+  language tag. <a href=references.html#refsBCP47>[BCP47]</a> </p>
+
+  <p>The <dfn id=attr-hyperlink-type><code>type</code></dfn> attribute, if present, gives the
+  <a id=links-created-by-a-and-area-elements:mime-type href=https://mimesniff.spec.whatwg.org/#mime-type data-x-internal=mime-type>MIME type</a> of the linked resource. It is purely advisory. The value must be a
+  <a id=links-created-by-a-and-area-elements:valid-mime-type-string href=https://mimesniff.spec.whatwg.org/#valid-mime-type data-x-internal=valid-mime-type-string>valid MIME type string</a>. </p>
+
+  <p>The <dfn id=attr-hyperlink-referrerpolicy><code>referrerpolicy</code></dfn> attribute
+  is a <a id=links-created-by-a-and-area-elements:referrer-policy-attribute href=urls-and-fetching.html#referrer-policy-attribute>referrer policy attribute</a>. Its purpose is to set the <a id=links-created-by-a-and-area-elements:referrer-policy href=https://w3c.github.io/webappsec-referrer-policy/#referrer-policy data-x-internal=referrer-policy>referrer policy</a>
+  used when <span>following hyperlinks</span>. <a href=references.html#refsREFERRERPOLICY>[REFERRERPOLICY]</a></p>
+
+
+  <h4 id=api-for-a-and-area-elements><span class=secno>4.6.3</span> API for <code id=api-for-a-and-area-elements:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=api-for-a-and-area-elements:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements<a href=#api-for-a-and-area-elements class=self-link></a></h4>
+
+  
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/href title="The HTMLHyperlinkElementUtils.href property is a USVString containing the whole URL.">HTMLHyperlinkElementUtils/href</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/href title="The URLUtils.href property is a DOMString containing the whole URL.">Location/href</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/href title="The URLUtils.href property is a DOMString containing the whole URL.">URL/href</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/origin title="The HTMLHyperlinkElementUtils.origin read-only property is a USVString containing the Unicode serialization of the origin of the represented URL">HTMLHyperlinkElementUtils/origin</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/origin title="The URLUtils.origin read-only property is a DOMString containing the Unicode serialization of the origin of the represented URL, that is, for http and https, the scheme followed by '://', followed by the domain, followed by ':', followed by the port (the default port, 80 and 443 respectively, if explicitely specified). For URL using file: scheme, the value is browser dependant.">Location/origin</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie yes"><span>Internet Explorer</span><span>11+</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/protocol title="The HTMLHyperlinkElementUtils.protocol property is a USVString representing the protocol scheme of the URL, including the final ':'.">HTMLHyperlinkElementUtils/protocol</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge no"><span>Edge</span><span>No</span></span><span class="edge_mobile no"><span>Edge Mobile</span><span>No</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/protocol title="The URLUtils.protocol property is a DOMString representing the protocol scheme of the URL, including the final ':'.">Location/protocol</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/protocol title="The URLUtils.protocol property is a DOMString representing the protocol scheme of the URL, including the final ':'.">URL/protocol</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/username title="The HTMLHyperlinkElementUtils.username property is a USVString containing the username specified before the domain name.">HTMLHyperlinkElementUtils/username</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/username title="The URLUtils.username property is a DOMString containing the username specified before the domain name.">Location/username</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/username title="The URLUtils.username property is a DOMString containing the username specified before the domain name.">URL/username</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>52+</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>52+</span></span><span class="edge yes"><span>Edge</span><span>12+</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>12+</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>52+</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/password title="The HTMLHyperlinkElementUtils.password property is a USVString containing the password specified before the domain name.">HTMLHyperlinkElementUtils/password</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/password title="The URLUtils.password property is a DOMString containing the password specified before the domain name.">Location/password</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/password title="The URLUtils.password property is a DOMString containing the password specified before the domain name.">URL/password</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>52+</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>52+</span></span><span class="edge yes"><span>Edge</span><span>12+</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>12+</span></span><span class="firefox yes"><span>Firefox</span><span>26+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>26+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>52+</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/host title="The HTMLHyperlinkElementUtils.host property is a USVString containing the host, that is the hostname, and then, if the port of the URL is nonempty, a ':', and the port of the URL.">HTMLHyperlinkElementUtils/host</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/host title="The URLUtils.host property is a DOMString containing the host, that is the hostname, and then, if the port of the URL is nonempty, a ':', and the port of the URL.">Location/host</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/host title="The URLUtils.host property is a DOMString containing the host, that is the hostname, and then, if the port of the URL is nonempty, a ':', and the port of the URL.">URL/host</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/hostname title="The HTMLHyperlinkElementUtils.hostname property is a USVString containing the domain of the URL.">HTMLHyperlinkElementUtils/hostname</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname title="The URLUtils.hostname property is a DOMString containing the domain of the URL.">Location/hostname</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/hostname title="The URLUtils.hostname property is a DOMString containing the domain of the URL.">URL/hostname</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/port title="The HTMLHyperlinkElementUtils.port property is a USVString containing the port number of the URL. If the URL does not contain an explicit port number, it will be set to ''.">HTMLHyperlinkElementUtils/port</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge no"><span>Edge</span><span>No</span></span><span class="edge_mobile no"><span>Edge Mobile</span><span>No</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/port title="The URLUtils.port property is a DOMString containing the port number of the URL.">Location/port</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/port title="The URLUtils.port property is a DOMString containing the port number of the URL.">URL/port</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/pathname title="The HTMLHyperlinkElementUtils.pathname property is a USVString containing an initial '/' followed by the path of the URL (or the empty string if there is no path).">HTMLHyperlinkElementUtils/pathname</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge no"><span>Edge</span><span>No</span></span><span class="edge_mobile no"><span>Edge Mobile</span><span>No</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/pathname title="The URLUtils.pathname property is a DOMString containing an initial '/' followed by the path of the URL.">Location/pathname</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname title="The URLUtils.pathname property is a DOMString containing an initial '/' followed by the path of the URL.">URL/pathname</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>53+</span></span><span class="firefox no"><span>Firefox</span><span>No</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>53+</span></span><span class="firefox_android no"><span>Firefox Android</span><span>No</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/search title="The HTMLHyperlinkElementUtils.search property is a search string, also called a query string, that is USVString containing a '?' followed by the parameters of the URL.">HTMLHyperlinkElementUtils/search</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/search title="The URLUtils.search property is a DOMString containing a '?' followed by the parameters of the URL.">Location/search</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/search title="The URLUtils.search property is a DOMString containing a '?' followed by the parameters of the URL.">URL/search</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>53+</span></span><span class="firefox no"><span>Firefox</span><span>No</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>53+</span></span><span class="firefox_android no"><span>Firefox Android</span><span>No</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLHyperlinkElementUtils/hash title="The HTMLHyperlinkElementUtils.hash property returns a DOMString containing a '#' followed by the fragment identifier of the URL.">HTMLHyperlinkElementUtils/hash</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android no"><span>Opera Android</span><span>No</span></span><span class="safari no"><span>Safari</span><span>No</span></span><span class="safari_ios no"><span>Safari iOS</span><span>No</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Location/hash title="The URLUtils.hash property returns a DOMString containing a '#' followed by the fragment identifier of the URL. The hash is not percent encoded.">Location/hash</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/URL/hash title="The URLUtils.hash property returns a DOMString containing a '#' followed by the fragment identifier of the URL. The hash is not percent encoded.">URL/hash</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>13+</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>22+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>22+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><dl class=domintro><dt><var>hyperlink</var> . <code>toString()</code><dt><var>hyperlink</var> . <code id=dom-hyperlink-href>href</code><dd>
+    <p>Returns the hyperlink's URL.</p>
+    <p>Can be set, to change the URL.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-origin>origin</code><dd>
+    <p>Returns the hyperlink's URL's origin.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-protocol>protocol</code><dd>
+    <p>Returns the hyperlink's URL's scheme.</p>
+    <p>Can be set, to change the URL's scheme.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-username>username</code><dd>
+    <p>Returns the hyperlink's URL's username.</p>
+    <p>Can be set, to change the URL's username.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-password>password</code><dd>
+    <p>Returns the hyperlink's URL's password.</p>
+    <p>Can be set, to change the URL's password.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-host>host</code><dd>
+    <p>Returns the hyperlink's URL's host and port (if different from the default port for the
+    scheme).</p>
+    <p>Can be set, to change the URL's host and port.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-hostname>hostname</code><dd>
+    <p>Returns the hyperlink's URL's host.</p>
+    <p>Can be set, to change the URL's host.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-port>port</code><dd>
+    <p>Returns the hyperlink's URL's port.</p>
+    <p>Can be set, to change the URL's port.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-pathname>pathname</code><dd>
+    <p>Returns the hyperlink's URL's path.</p>
+    <p>Can be set, to change the URL's path.</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-search>search</code><dd>
+    <p>Returns the hyperlink's URL's query (includes leading "<code>?</code>" if
+    non-empty).</p>
+    <p>Can be set, to change the URL's query (ignores leading "<code>?</code>").</p>
+   <dt><var>hyperlink</var> . <code id=dom-hyperlink-hash>hash</code><dd>
+    <p>Returns the hyperlink's URL's fragment (includes leading "<code>#</code>" if
+    non-empty).</p>
+    <p>Can be set, to change the URL's fragment (ignores leading "<code>#</code>").</p>
+   </dl>
+
+  
+
+
+
+
+  <h4 id=downloading-resources><span class=secno>4.6.4</span> Downloading resources<a href=#downloading-resources class=self-link></a></h4><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> download<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>14+</span></span><span class="ios_saf no"><span>iOS Safari</span> <span>None</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>20+</span></span><span class="ie no"><span>IE</span> <span>None</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>10.1+</span></span><span class="edge yes"><span>Edge</span> <span>13+</span></span><span class="opera yes"><span>Opera</span> <span>15+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>4.4+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=download">caniuse.com</a></div>
+
+  <p>In some cases, resources are intended for later use rather than immediate viewing. To indicate
+  that a resource is intended to be downloaded for use later, rather than immediately used, the
+  <code id=downloading-resources:attr-hyperlink-download><a href=#attr-hyperlink-download>download</a></code> attribute can be specified on the
+  <code id=downloading-resources:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> or <code id=downloading-resources:the-area-element><a href=image-maps.html#the-area-element>area</a></code> element that creates the <a href=#hyperlink id=downloading-resources:hyperlink>hyperlink</a> to that
+  resource.</p>
+
+  <p>The attribute can furthermore be given a value, to specify the file name that user agents are
+  to use when storing the resource in a file system. This value can be overridden by the `<code id=downloading-resources:http-content-disposition><a data-x-internal=http-content-disposition href=https://tools.ietf.org/html/rfc6266>Content-Disposition</a></code>` HTTP header's filename parameters.
+  <a href=references.html#refsRFC6266>[RFC6266]</a></p>
+
+  <p>In cross-origin situations, the <code id=downloading-resources:attr-hyperlink-download-2><a href=#attr-hyperlink-download>download</a></code>
+  attribute has to be combined with the `<code id=downloading-resources:http-content-disposition-2><a data-x-internal=http-content-disposition href=https://tools.ietf.org/html/rfc6266>Content-Disposition</a></code>` HTTP header, specifically with the
+  <code>attachment</code> disposition type, to avoid the user being warned of possibly
+  nefarious activity. (This is to protect users from being made to download sensitive personal or
+  confidential information without their full understanding.)</p>
+
+  
+
+
+
+
+  
+
+  <div class=note>
+
+   <p>The <code id=downloading-resources:ping><a href=#ping>ping</a></code> attribute is redundant with pre-existing
+   technologies like HTTP redirects and JavaScript in allowing Web pages to track which off-site
+   links are most popular or allowing advertisers to track click-through rates.</p>
+
+   <p>However, the <code id=downloading-resources:ping-2><a href=#ping>ping</a></code> attribute provides these advantages
+   to the user over those alternatives:</p>
+
+   <ul><li>It allows the user to see the final target URL unobscured.<li>It allows the UA to inform the user about the out-of-band notifications.<li>It allows the user to disable the notifications without losing the underlying link
+    functionality.<li>It allows the UA to optimize the use of available network bandwidth so that the target page
+    loads faster.</ul>
+
+   <p>Thus, while it is possible to track users without this feature, authors are encouraged to use
+   the <code id=downloading-resources:ping-3><a href=#ping>ping</a></code> attribute so that the user agent can make the
+   user experience more transparent.</p>
+
+  </div>
+
+  
+
+
+
+  <h4 id=linkTypes><span class=secno>4.6.5</span> Link types<a href=#linkTypes class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types title="In HTML, link types indicate the relationship between two documents, in which one links to the other using an a, area, or link element.">Link_types</a></summary><p class=mdnsupport><span class="chrome unknown"><span>Chrome</span><span>?</span></span><span class="chrome_android unknown"><span>Chrome Android</span><span>?</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox unknown"><span>Firefox</span><span>?</span></span><span class="firefox_android unknown"><span>Firefox Android</span><span>?</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android unknown"><span>WebView Android</span><span>?</span></span></details></div></aside>
+
+  <p>The following table summarizes the link types that are defined by this specification, by their
+  corresponding keywords. This table is non-normative; the actual definitions for the link types are
+  given in the next few sections.</p>
+
+  <p>In this section, the term <i>referenced document</i> refers to the resource identified by the
+  element representing the link, and the term <i>current document</i> refers to the resource within
+  which the element representing the link finds itself.</p>
+
+  
+
+  <p>Except where otherwise specified, a keyword must not be specified more than once per <code id=linkTypes:attr-hyperlink-rel><a href=#attr-hyperlink-rel>rel</a></code> attribute.</p>
+
+  <p>Some of the sections that follow the table below list synonyms for certain keywords. The
+  indicated synonyms  must
+  not be used in documents (for example, the keyword "<code>copyright</code>").</p>
+
+  <p>Keywords are always <a id=linkTypes:ascii-case-insensitive href=https://infra.spec.whatwg.org/#ascii-case-insensitive data-x-internal=ascii-case-insensitive>ASCII case-insensitive</a>.</p>
+
+  <p class=example>Thus, <code>rel="next"</code> is the same as <code>rel="NEXT"</code>.</p>
+
+  <p>Keywords that are <dfn id=body-ok>body-ok</dfn> affect whether <code id=linkTypes:the-link-element><a href=semantics.html#the-link-element>link</a></code> elements are
+  <a id=linkTypes:allowed-in-the-body href=semantics.html#allowed-in-the-body>allowed in the body</a>. The <a href=#body-ok id=linkTypes:body-ok>body-ok</a> keywords defined by this specification
+  are
+  <code id=linkTypes:link-type-dns-prefetch><a href=#link-type-dns-prefetch>dns-prefetch</a></code>,
+  <code id=linkTypes:link-type-modulepreload><a href=#link-type-modulepreload>modulepreload</a></code>,
+  <code id=linkTypes:link-type-pingback><a href=#link-type-pingback>pingback</a></code>,
+  <code id=linkTypes:link-type-preconnect><a href=#link-type-preconnect>preconnect</a></code>,
+  <code id=linkTypes:link-type-prefetch><a href=#link-type-prefetch>prefetch</a></code>,
+  <code id=linkTypes:link-type-preload><a href=#link-type-preload>preload</a></code>,
+  <code id=linkTypes:link-type-prerender><a href=#link-type-prerender>prerender</a></code>, and
+  <code id=linkTypes:link-type-stylesheet><a href=#link-type-stylesheet>stylesheet</a></code>.
+  Other specifications can also define <a href=#body-ok id=linkTypes:body-ok-2>body-ok</a> keywords.</p>
+
+  <table class=yesno><thead><tr><th rowspan=2>Link type<th colspan=2>Effect on...<th rowspan=2><a href=#body-ok id=linkTypes:body-ok-3>body-ok</a><th rowspan=2>Brief description<tr><th><code id=linkTypes:the-link-element-2><a href=semantics.html#the-link-element>link</a></code><th><code id=linkTypes:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=linkTypes:the-area-element><a href=image-maps.html#the-area-element>area</a></code><tbody><tr><td><code id=linkTypes:rel-alternate><a href=#rel-alternate>alternate</a></code><td><a href=#hyperlink id=linkTypes:hyperlink>Hyperlink</a><td><a href=#hyperlink id=linkTypes:hyperlink-2>Hyperlink</a><td class=no> · <td>Gives alternate representations of the current document.<tr><td><code id=linkTypes:link-type-canonical><a href=#link-type-canonical>canonical</a></code><td><a href=#hyperlink id=linkTypes:hyperlink-3>Hyperlink</a><td><em>not allowed</em><td class=no> · <td>Gives the preferred URL for the current document.<tr><td><code id=linkTypes:link-type-author><a href=#link-type-author>author</a></code><td><a href=#hyperlink id=linkTypes:hyperlink-4>Hyperlink</a><td><a href=#hyperlink id=linkTypes:hyperlink-5>Hyperlink</a><td class=no> · <td>Gives a link to the author of the current document or article.<tr><td><code id=linkTypes:link-type-bookmark><a href=#link-type-bookmark>bookmark</a></code><td><em>not allowed</em><td><a href=#hyperlink id=linkTypes:hyperlink-6>Hyperlink</a><td class=no> · <td>Gives the permalink for the nearest ancestor section.<tr><td><code id=linkTypes:link-type-dns-prefetch-2><a href=#link-type-dns-prefetch>dns-prefetch</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Specifies that the user agent should preemptively perform DNS resolution for the target resource's <a id=linkTypes:concept-origin href=origin.html#concept-origin>origin</a>.<tr><td><code id=linkTypes:link-type-external><a href=#link-type-external>external</a></code><td><em>not allowed</em><td><a href=#hyperlink-annotation id=linkTypes:hyperlink-annotation>Annotation</a><td class=no> · <td>Indicates that the referenced document is not part of the same site as the current document.<tr><td><code id=linkTypes:link-type-help><a href=#link-type-help>help</a></code><td><a href=#hyperlink id=linkTypes:hyperlink-7>Hyperlink</a><td><a href=#hyperlink id=linkTypes:hyperlink-8>Hyperlink</a><td class=no> · <td>Provides a link to context-sensitive help.<tr><td><code id=linkTypes:rel-icon><a href=#rel-icon>icon</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-2>External Resource</a><td><em>not allowed</em><td class=no> · <td>Imports an icon to represent the current document.<tr><td><code id=linkTypes:link-type-modulepreload-2><a href=#link-type-modulepreload>modulepreload</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-3>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Specifies that the user agent must preemptively <span>fetch the module
+     script</span> and store it in the document's <a href=dom.html#concept-document-module-map id=linkTypes:concept-document-module-map>module map</a> for later
+     evaluation. Optionally, the module's dependencies can be fetched as well.<tr><td><code id=linkTypes:link-type-license><a href=#link-type-license>license</a></code><td><a href=#hyperlink id=linkTypes:hyperlink-9>Hyperlink</a><td><a href=#hyperlink id=linkTypes:hyperlink-10>Hyperlink</a><td class=no> · <td>Indicates that the main content of the current document is covered by the copyright license described by the referenced document.<tr><td><code id=linkTypes:link-type-next><a href=#link-type-next>next</a></code><td><a href=#hyperlink id=linkTypes:hyperlink-11>Hyperlink</a><td><a href=#hyperlink id=linkTypes:hyperlink-12>Hyperlink</a><td class=no> · <td>Indicates that the current document is a part of a series, and that the next document in the series is the referenced document.<tr><td><code id=linkTypes:link-type-nofollow><a href=#link-type-nofollow>nofollow</a></code><td><em>not allowed</em><td><a href=#hyperlink-annotation id=linkTypes:hyperlink-annotation-2>Annotation</a><td class=no> · <td>Indicates that the current document's original author or publisher does not endorse the referenced document.<tr><td><code id=linkTypes:link-type-noopener><a href=#link-type-noopener>noopener</a></code><td><em>not allowed</em><td><a href=#hyperlink-annotation id=linkTypes:hyperlink-annotation-3>Annotation</a><td class=no> · <td>Indicates that any <a id=linkTypes:browsing-context href=browsers.html#browsing-context>browsing context</a> created by following the hyperlink is
+     <a id=linkTypes:disowned-its-opener href=browsers.html#disowned-its-opener>disowned</a>.<tr><td><code id=linkTypes:link-type-noreferrer><a href=#link-type-noreferrer>noreferrer</a></code><td><em>not allowed</em><td><a href=#hyperlink-annotation id=linkTypes:hyperlink-annotation-4>Annotation</a><td class=no> · <td>Indicates that any <a id=linkTypes:browsing-context-2 href=browsers.html#browsing-context>browsing context</a> created by following the hyperlink is
+     <a id=linkTypes:disowned-its-opener-2 href=browsers.html#disowned-its-opener>disowned</a> and will not get a `<code id=linkTypes:http-referer><a data-x-internal=http-referer href=https://tools.ietf.org/html/rfc7231#section-5.5.2>Referer</a></code>` (sic)
+     header.<tr><td><code id=linkTypes:link-type-pingback-2><a href=#link-type-pingback>pingback</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-4>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Gives the address of the pingback server that handles pingbacks to the current document.<tr><td><code id=linkTypes:link-type-preconnect-2><a href=#link-type-preconnect>preconnect</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-5>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Specifies that the user agent should preemptively connect to the target resource's <a id=linkTypes:concept-origin-2 href=origin.html#concept-origin>origin</a>.<tr><td><code id=linkTypes:link-type-prefetch-2><a href=#link-type-prefetch>prefetch</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-6>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Specifies that the user agent should preemptively <a href=https://fetch.spec.whatwg.org/#concept-fetch id=linkTypes:concept-fetch data-x-internal=concept-fetch>fetch</a> and cache the target resource as it is likely to be required for a followup <span>navigation</span>.<tr><td><code id=linkTypes:link-type-preload-2><a href=#link-type-preload>preload</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-7>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Specifies that the user agent must preemptively <a href=https://fetch.spec.whatwg.org/#concept-fetch id=linkTypes:concept-fetch-2 data-x-internal=concept-fetch>fetch</a> and cache the target resource for current <span>navigation</span> according to the <a href=https://fetch.spec.whatwg.org/#concept-potential-destination id=linkTypes:concept-potential-destination data-x-internal=concept-potential-destination>potential destination</a> given by the <code id=linkTypes:attr-link-as><a href=semantics.html#attr-link-as>as</a></code> attribute (and the <a href=https://fetch.spec.whatwg.org/#concept-request-priority id=linkTypes:concept-request-priority data-x-internal=concept-request-priority>priority</a> associated with the <a href=https://fetch.spec.whatwg.org/#concept-potential-destination-translate id=linkTypes:concept-potential-destination-translate data-x-internal=concept-potential-destination-translate>corresponding</a> <a href=https://fetch.spec.whatwg.org/#concept-request-destination id=linkTypes:concept-request-destination data-x-internal=concept-request-destination>destination</a>).<tr><td><code id=linkTypes:link-type-prerender-2><a href=#link-type-prerender>prerender</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-8>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Specifies that the user agent should preemptively <a href=https://fetch.spec.whatwg.org/#concept-fetch id=linkTypes:concept-fetch-3 data-x-internal=concept-fetch>fetch</a> the target resource and process it in a way that helps deliver a faster response in the future.<tr><td><code id=linkTypes:link-type-prev><a href=#link-type-prev>prev</a></code><td><a href=#hyperlink id=linkTypes:hyperlink-13>Hyperlink</a><td><a href=#hyperlink id=linkTypes:hyperlink-14>Hyperlink</a><td class=no> · <td>Indicates that the current document is a part of a series, and that the previous document in the series is the referenced document.<tr><td><code id=linkTypes:link-type-search><a href=#link-type-search>search</a></code><td><a href=#hyperlink id=linkTypes:hyperlink-15>Hyperlink</a><td><a href=#hyperlink id=linkTypes:hyperlink-16>Hyperlink</a><td class=no> · <td>Gives a link to a resource that can be used to search through the current document and its related pages.<tr><td><code id=linkTypes:link-type-stylesheet-2><a href=#link-type-stylesheet>stylesheet</a></code><td><a href=#external-resource-link id=linkTypes:external-resource-link-9>External Resource</a><td><em>not allowed</em><td class=yes> Yes <td>Imports a style sheet.<tr><td><code id=linkTypes:link-type-tag><a href=#link-type-tag>tag</a></code><td><em>not allowed</em><td><a href=#hyperlink id=linkTypes:hyperlink-17>Hyperlink</a><td class=no> · <td>Gives a tag (identified by the given address) that applies to the current document.</table>
+
+  
+
+
+  <h5 id=rel-alternate><span class=secno>4.6.5.1</span> Link type "<dfn><code>alternate</code></dfn>"<a href=#rel-alternate class=self-link></a></h5>
+
+  <p>The <code id=rel-alternate:rel-alternate><a href=#rel-alternate>alternate</a></code> keyword may be used with <code id=rel-alternate:the-link-element><a href=semantics.html#the-link-element>link</a></code>,
+  <code id=rel-alternate:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=rel-alternate:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements.</p>
+
+  <p>The meaning of this keyword depends on the values of the other attributes.</p>
+
+  <dl class=switch><dt>If the element is a <code id=rel-alternate:the-link-element-2><a href=semantics.html#the-link-element>link</a></code> element and the <code id=rel-alternate:attr-link-rel><a href=semantics.html#attr-link-rel>rel</a></code>
+   attribute also contains the keyword <code id=rel-alternate:link-type-stylesheet><a href=#link-type-stylesheet>stylesheet</a></code><dd>
+
+    <p>The <code id=rel-alternate:rel-alternate-2><a href=#rel-alternate>alternate</a></code> keyword modifies the meaning of the <code id=rel-alternate:link-type-stylesheet-2><a href=#link-type-stylesheet>stylesheet</a></code> keyword in the way described for that keyword. The
+    <code id=rel-alternate:rel-alternate-3><a href=#rel-alternate>alternate</a></code> keyword does not create a link of its own.</p>
+
+    <div class=example>
+
+     <p>Here, a set of <code id=rel-alternate:the-link-element-3><a href=semantics.html#the-link-element>link</a></code> elements provide some style sheets:</p>
+
+     <pre><code class='html'><c- c>&lt;!-- a persistent style sheet --&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;default.css&quot;</c-><c- p>&gt;</c->
+
+<c- c>&lt;!-- the preferred alternate style sheet --&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;green.css&quot;</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Green styles&quot;</c-><c- p>&gt;</c->
+
+<c- c>&lt;!-- some alternate style sheets --&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;contrast.css&quot;</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;High contrast&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;big.css&quot;</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Big fonts&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;wide.css&quot;</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Wide screen&quot;</c-><c- p>&gt;</c-></code></pre>
+
+    </div>
+
+   <dt>If the <code id=rel-alternate:rel-alternate-4><a href=#rel-alternate>alternate</a></code> keyword is used with the <code id=rel-alternate:attr-hyperlink-type><a href=#attr-hyperlink-type>type</a></code> attribute set to the value <code>application/rss+xml</code> or the value <code>application/atom+xml</code><dd>
+
+    <p>The keyword creates a <a href=#hyperlink id=rel-alternate:hyperlink>hyperlink</a> referencing a syndication feed (though not
+    necessarily syndicating exactly the same content as the current page).</p>
+
+    
+
+    <div class=example>
+     <p>The following <code id=rel-alternate:the-link-element-4><a href=semantics.html#the-link-element>link</a></code> elements give syndication feeds for a blog:</p>
+
+     <pre><code class='html'><c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/atom+xml&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;posts.xml&quot;</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Cool Stuff Blog&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/atom+xml&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;posts.xml?category=robots&quot;</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Cool Stuff Blog: robots category&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/atom+xml&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;comments.xml&quot;</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Cool Stuff Blog: Comments&quot;</c-><c- p>&gt;</c-></code></pre>
+
+     <p>Such <code id=rel-alternate:the-link-element-5><a href=semantics.html#the-link-element>link</a></code> elements would be used by user agents engaged in feed autodiscovery,
+     with the first being the default (where applicable).</p>
+
+     <p>The following example offers various different syndication feeds to the user, using
+     <code id=rel-alternate:the-a-element-2><a href=text-level-semantics.html#the-a-element>a</a></code> elements:</p>
+
+     <pre><code class='html'><c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->You can access the planets database using Atom feeds:<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>ul</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>li</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;recently-visited-planets.xml&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/atom+xml&quot;</c-><c- p>&gt;</c->Recently Visited Planets<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;&lt;/</c-><c- f>li</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>li</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;known-bad-planets.xml&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/atom+xml&quot;</c-><c- p>&gt;</c->Known Bad Planets<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;&lt;/</c-><c- f>li</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>li</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;unexplored-planets.xml&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;alternate&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/atom+xml&quot;</c-><c- p>&gt;</c->Unexplored Planets<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;&lt;/</c-><c- f>li</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>ul</c-><c- p>&gt;</c-></code></pre>
+
+     <p>These links would not be used in feed autodiscovery.</p>
+    </div>
+
+   <dt>Otherwise<dd>
+
+    <p>The keyword creates a <a href=#hyperlink id=rel-alternate:hyperlink-2>hyperlink</a> referencing an alternate representation of the
+    current document.</p>
+
+    <p>The nature of the referenced document is given by the <code id=rel-alternate:attr-hyperlink-hreflang><a href=#attr-hyperlink-hreflang>hreflang</a></code>, and <code id=rel-alternate:attr-hyperlink-type-2><a href=#attr-hyperlink-type>type</a></code> attributes.</p>
+
+    <p>If the <code id=rel-alternate:rel-alternate-5><a href=#rel-alternate>alternate</a></code> keyword is used with the <code id=rel-alternate:attr-hyperlink-hreflang-2><a href=#attr-hyperlink-hreflang>hreflang</a></code> attribute, and that attribute's value differs
+    from the <a id=rel-alternate:document-element href=https://dom.spec.whatwg.org/#document-element data-x-internal=document-element>document element</a>'s <span>language</span>, it indicates that the referenced
+    document is a translation.</p>
+
+    <p>If the <code id=rel-alternate:rel-alternate-6><a href=#rel-alternate>alternate</a></code> keyword is used with the <code id=rel-alternate:attr-hyperlink-type-3><a href=#attr-hyperlink-type>type</a></code> attribute, it indicates that the referenced document is
+    a reformulation of the current document in the specified format.</p>
+
+    <p>The <code id=rel-alternate:attr-hyperlink-hreflang-3><a href=#attr-hyperlink-hreflang>hreflang</a></code> and <code id=rel-alternate:attr-hyperlink-type-4><a href=#attr-hyperlink-type>type</a></code> attributes can be combined when specified with the <code id=rel-alternate:rel-alternate-7><a href=#rel-alternate>alternate</a></code> keyword.</p>
+
+    <div class=example>
+
+     <p>The following example shows how you can specify versions of the page that use alternative
+     formats, are aimed at other languages, and that are intended for other media:</p>
+
+     <pre><code class='html'><c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>alternate</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/en/html&quot;</c-> <c- e>hreflang</c-><c- o>=</c-><c- s>en</c-> <c- e>type</c-><c- o>=</c-><c- s>text/html</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;English HTML&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>alternate</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/fr/html&quot;</c-> <c- e>hreflang</c-><c- o>=</c-><c- s>fr</c-> <c- e>type</c-><c- o>=</c-><c- s>text/html</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;French HTML&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>alternate</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/en/html/print&quot;</c-> <c- e>hreflang</c-><c- o>=</c-><c- s>en</c-> <c- e>type</c-><c- o>=</c-><c- s>text/html</c-> <c- e>media</c-><c- o>=</c-><c- s>print</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;English HTML (for printing)&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>alternate</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/fr/html/print&quot;</c-> <c- e>hreflang</c-><c- o>=</c-><c- s>fr</c-> <c- e>type</c-><c- o>=</c-><c- s>text/html</c-> <c- e>media</c-><c- o>=</c-><c- s>print</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;French HTML (for printing)&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>alternate</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/en/pdf&quot;</c-> <c- e>hreflang</c-><c- o>=</c-><c- s>en</c-> <c- e>type</c-><c- o>=</c-><c- s>application/pdf</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;English PDF&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>alternate</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/fr/pdf&quot;</c-> <c- e>hreflang</c-><c- o>=</c-><c- s>fr</c-> <c- e>type</c-><c- o>=</c-><c- s>application/pdf</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;French PDF&quot;</c-><c- p>&gt;</c-></code></pre>
+
+    </div>
+
+    <p>This relationship is transitive — that is, if a document links to two other documents
+    with the link type "<code id=rel-alternate:rel-alternate-8><a href=#rel-alternate>alternate</a></code>", then, in addition to implying
+    that those documents are alternative representations of the first document, it is also implying
+    that those two documents are alternative representations of each other.</p>
+
+   </dl>
+
+
+
+  <h5 id=link-type-author><span class=secno>4.6.5.2</span> Link type "<dfn><code>author</code></dfn>"<a href=#link-type-author class=self-link></a></h5>
+
+  <p>The <code id=link-type-author:link-type-author><a href=#link-type-author>author</a></code> keyword may be used with <code id=link-type-author:the-link-element><a href=semantics.html#the-link-element>link</a></code>,
+  <code id=link-type-author:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=link-type-author:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-author:hyperlink>hyperlink</a>.</p>
+
+  <p>For <code id=link-type-author:the-a-element-2><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=link-type-author:the-area-element-2><a href=image-maps.html#the-area-element>area</a></code> elements, the <code id=link-type-author:link-type-author-2><a href=#link-type-author>author</a></code>
+  keyword indicates that the referenced document provides further information about the author of
+  the nearest <code id=link-type-author:the-article-element><a href=sections.html#the-article-element>article</a></code> element ancestor of the element defining the hyperlink, if there
+  is one, or of the page as a whole, otherwise.</p>
+
+  <p>For <code id=link-type-author:the-link-element-2><a href=semantics.html#the-link-element>link</a></code> elements, the <code id=link-type-author:link-type-author-3><a href=#link-type-author>author</a></code> keyword indicates
+  that the referenced document provides further information about the author for the page as a
+  whole.</p>
+
+  <p class=note>The "referenced document" can be, and often is, a <code id=link-type-author:mailto-protocol><a data-x-internal=mailto-protocol href=https://tools.ietf.org/html/rfc6068#section-2>mailto:</a></code> URL giving the e-mail address of the author. <a href=references.html#refsMAILTO>[MAILTO]</a></p>
+
+  
+
+
+  <h5 id=link-type-bookmark><span class=secno>4.6.5.3</span> Link type "<dfn><code>bookmark</code></dfn>"<a href=#link-type-bookmark class=self-link></a></h5>
+
+  <p>The <code id=link-type-bookmark:link-type-bookmark><a href=#link-type-bookmark>bookmark</a></code> keyword may be used with <code id=link-type-bookmark:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=link-type-bookmark:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-bookmark:hyperlink>hyperlink</a>.</p>
+
+  <p>The <code id=link-type-bookmark:link-type-bookmark-2><a href=#link-type-bookmark>bookmark</a></code> keyword gives a permalink for the nearest
+  ancestor <code id=link-type-bookmark:the-article-element><a href=sections.html#the-article-element>article</a></code> element of the linking element in question, or of <a href=#associatedSection>the section the linking element is most closely associated with</a>, if
+  there are no ancestor <code id=link-type-bookmark:the-article-element-2><a href=sections.html#the-article-element>article</a></code> elements.</p>
+
+  <div class=example>
+
+   <p>The following snippet has three permalinks. A user agent could determine which permalink
+   applies to which part of the spec by looking at where the permalinks are given.</p>
+
+   <pre><code class='html'> ...
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>h1</c-><c- p>&gt;</c->Example of permalinks<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>div</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;a&quot;</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>h2</c-><c- p>&gt;</c->First example<c- p>&lt;/</c-><c- f>h2</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;a.html&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;bookmark&quot;</c-><c- p>&gt;</c->This permalink applies to
+   only the content from the first H2 to the second H2<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->. The DIV isn&apos;t
+   exactly that section, but it roughly corresponds to it.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>div</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>h2</c-><c- p>&gt;</c->Second example<c- p>&lt;/</c-><c- f>h2</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>article</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;b&quot;</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;b.html&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;bookmark&quot;</c-><c- p>&gt;</c->This permalink applies to
+   the outer ARTICLE element<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> (which could be, e.g., a blog post).<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>article</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;c&quot;</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;c.html&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;bookmark&quot;</c-><c- p>&gt;</c->This permalink applies to
+    the inner ARTICLE element<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> (which could be, e.g., a blog comment).<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+   <c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+ ...</code></pre>
+
+  </div>
+
+
+  <h5 id=link-type-canonical><span class=secno>4.6.5.4</span> Link type "<dfn><code>canonical</code></dfn>"<a href=#link-type-canonical class=self-link></a></h5>
+
+  <p>The <code id=link-type-canonical:link-type-canonical><a href=#link-type-canonical>canonical</a></code> keyword may be used with <code id=link-type-canonical:the-link-element><a href=semantics.html#the-link-element>link</a></code>
+  element. This keyword creates a <a href=#hyperlink id=link-type-canonical:hyperlink>hyperlink</a>.</p>
+
+  <p>The <code id=link-type-canonical:link-type-canonical-2><a href=#link-type-canonical>canonical</a></code> keyword indicates that URL given by the <code id=link-type-canonical:attr-link-href><a href=semantics.html#attr-link-href>href</a></code> attribute is the preferred URL for the current document. That
+  helps search engines reduce duplicate content, as described in more detail in <cite>The Canonical
+  Link Relation</cite> specification. <a href=references.html#refsRFC6596>[RFC6596]</a></p>
+
+
+  <h5 id=link-type-dns-prefetch><span class=secno>4.6.5.5</span> Link type "<dfn><code>dns-prefetch</code></dfn>"<a href=#link-type-dns-prefetch class=self-link></a></h5>
+
+  <p>The <code id=link-type-dns-prefetch:link-type-dns-prefetch><a href=#link-type-dns-prefetch>dns-prefetch</a></code> keyword may be used with
+  <code id=link-type-dns-prefetch:the-link-element><a href=semantics.html#the-link-element>link</a></code> elements. This keyword creates an <a href=#external-resource-link id=link-type-dns-prefetch:external-resource-link>external
+  resource link</a>. This keyword is <a href=#body-ok id=link-type-dns-prefetch:body-ok>body-ok</a>.</p>
+
+  <p>The <code id=link-type-dns-prefetch:link-type-dns-prefetch-2><a href=#link-type-dns-prefetch>dns-prefetch</a></code> keyword indicates that preemptively
+  performing DNS resolution for the <a id=link-type-dns-prefetch:concept-origin href=origin.html#concept-origin>origin</a> of the specified resource is likely to be
+  beneficial, as it is highly likely that the user will require resources located at that
+  <a id=link-type-dns-prefetch:concept-origin-2 href=origin.html#concept-origin>origin</a>, and the user experience would be improved by preempting the latency costs
+  associated with DNS resolution.  <a href=references.html#refsRESOURCEHINTS>[RESOURCEHINTS]</a></p>
+
+  <p>There is no default type for resources given by the <code id=link-type-dns-prefetch:link-type-dns-prefetch-3><a href=#link-type-dns-prefetch>dns-prefetch</a></code> keyword.</p>
+
+
+  <h5 id=link-type-external><span class=secno>4.6.5.6</span> Link type "<dfn><code>external</code></dfn>"<a href=#link-type-external class=self-link></a></h5>
+  
+
+  <p>The <code id=link-type-external:link-type-external><a href=#link-type-external>external</a></code> keyword may be used with <code id=link-type-external:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=link-type-external:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword does not create a <a href=#hyperlink id=link-type-external:hyperlink>hyperlink</a>, but <a href=#hyperlink-annotation id=link-type-external:hyperlink-annotation>annotates</a> any other hyperlinks created by the element (the
+  implied hyperlink, if no other keywords create one).</p>
+
+  <p>The <code id=link-type-external:link-type-external-2><a href=#link-type-external>external</a></code> keyword indicates that the link is leading to a
+  document that is not part of the site that the current document forms a part of.</p>
+
+
+  <h5 id=link-type-help><span class=secno>4.6.5.7</span> Link type "<dfn><code>help</code></dfn>"<a href=#link-type-help class=self-link></a></h5>
+
+  <p>The <code id=link-type-help:link-type-help><a href=#link-type-help>help</a></code> keyword may be used with <code id=link-type-help:the-link-element><a href=semantics.html#the-link-element>link</a></code>,
+  <code id=link-type-help:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=link-type-help:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-help:hyperlink>hyperlink</a>.</p>
+
+  <p>For <code id=link-type-help:the-a-element-2><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=link-type-help:the-area-element-2><a href=image-maps.html#the-area-element>area</a></code> elements, the <code id=link-type-help:link-type-help-2><a href=#link-type-help>help</a></code>
+  keyword indicates that the referenced document provides further help information for the parent of
+  the element defining the hyperlink, and its children.</p>
+
+  <div class=example>
+
+   <p>In the following example, the form control has associated context-sensitive help. The user
+   agent could use this information, for example, displaying the referenced document if the user
+   presses the "Help" or "F1" key.</p>
+
+   <pre><code class='html'> <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>label</c-><c- p>&gt;</c-> Topic: <c- p>&lt;</c-><c- f>input</c-> <c- e>name</c-><c- o>=</c-><c- s>topic</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;help/topic.html&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;help&quot;</c-><c- p>&gt;</c->(Help)<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;&lt;/</c-><c- f>label</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <p>For <code id=link-type-help:the-link-element-2><a href=semantics.html#the-link-element>link</a></code> elements, the <code id=link-type-help:link-type-help-3><a href=#link-type-help>help</a></code> keyword indicates that
+  the referenced document provides help for the page as a whole.</p>
+
+  <p>For <code id=link-type-help:the-a-element-3><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=link-type-help:the-area-element-3><a href=image-maps.html#the-area-element>area</a></code> elements, on some browsers, the <code id=link-type-help:link-type-help-4><a href=#link-type-help>help</a></code> keyword causes the link to use a different cursor.</p>
+
+
+  <h5 id=rel-icon><span class=secno>4.6.5.8</span> Link type "<dfn><code>icon</code></dfn>"<a href=#rel-icon class=self-link></a></h5><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> link-icon-png<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>4+</span></span><span class="ios_saf no"><span>iOS Safari</span> <span>None</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>2+</span></span><span class="ie yes"><span>IE</span> <span>11+</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>3.1+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>9+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>2.1+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=link-icon-png">caniuse.com</a></div>
+
+  <p>The <code id=rel-icon:rel-icon><a href=#rel-icon>icon</a></code> keyword may be used with <code id=rel-icon:the-link-element><a href=semantics.html#the-link-element>link</a></code> elements.
+  This keyword creates an <a href=#external-resource-link id=rel-icon:external-resource-link>external resource link</a>.</p>
+
+  
+
+  <p>Icons could be auditory icons, visual icons, or other kinds of icons. </p>
+
+  
+
+  <p>The <code id=rel-icon:attr-link-sizes><a href=semantics.html#attr-link-sizes>sizes</a></code> keywords represent icon sizes in raw pixels (as
+  opposed to <a href=https://drafts.csswg.org/css-values/#px id="rel-icon:'px'" data-x-internal="'px'">CSS pixels</a>).</p>
+
+  <p class=note>An icon that is 50 <a href=https://drafts.csswg.org/css-values/#px id="rel-icon:'px'-2" data-x-internal="'px'">CSS pixels</a> wide intended for
+  displays with a device pixel density of two device pixels per <a href=https://drafts.csswg.org/css-values/#px id="rel-icon:'px'-3" data-x-internal="'px'">CSS pixel</a>
+  (2x, 192dpi) would have a width of 100 raw pixels. This feature does not support indicating that a
+  different resource is to be used for small high-resolution icons vs large low-resolution icons
+  (e.g. 50×50 2x vs 100×100 1x).</p>
+
+  
+
+  <p>The <dfn id=attr-link-sizes-any><code>any</code></dfn> keyword represents that the
+  resource contains a scalable icon, e.g. as provided by an SVG image.</p>
+
+  
+
+  <p>The keywords specified on the <code id=rel-icon:attr-link-sizes-2><a href=semantics.html#attr-link-sizes>sizes</a></code> attribute must not
+  represent icon sizes that are not actually available in the linked resource.</p>
+
+  
+
+  <div class=example>
+
+   <p>The following snippet shows the top part of an application with several icons.</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->lsForums — Inbox<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>icon</c-> <c- e>href</c-><c- o>=</c-><c- s>favicon.png</c-> <c- e>sizes</c-><c- o>=</c-><c- s>&quot;16x16&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;image/png&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>icon</c-> <c- e>href</c-><c- o>=</c-><c- s>windows.ico</c-> <c- e>sizes</c-><c- o>=</c-><c- s>&quot;32x32 48x48&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;image/vnd.microsoft.icon&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>icon</c-> <c- e>href</c-><c- o>=</c-><c- s>mac.icns</c-> <c- e>sizes</c-><c- o>=</c-><c- s>&quot;128x128 512x512 8192x8192 32768x32768&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>icon</c-> <c- e>href</c-><c- o>=</c-><c- s>iphone.png</c-> <c- e>sizes</c-><c- o>=</c-><c- s>&quot;57x57&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;image/png&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>icon</c-> <c- e>href</c-><c- o>=</c-><c- s>gnome.svg</c-> <c- e>sizes</c-><c- o>=</c-><c- s>&quot;any&quot;</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;image/svg+xml&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>stylesheet</c-> <c- e>href</c-><c- o>=</c-><c- s>lsforums.css</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>script</c-> <c- e>src</c-><c- o>=</c-><c- s>lsforums.js</c-><c- p>&gt;&lt;/</c-><c- f>script</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>meta</c-> <c- e>name</c-><c- o>=</c-><c- s>application-name</c-> <c- e>content</c-><c- o>=</c-><c- s>&quot;lsForums&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  ...</code></pre>
+
+  </div>
+
+  <p>For historical reasons, the <code id=rel-icon:rel-icon-2><a href=#rel-icon>icon</a></code> keyword may be preceded by the
+  keyword "<code>shortcut</code>". If the "<code>shortcut</code>" keyword is
+  present, the <code id=rel-icon:attr-hyperlink-rel><a href=#attr-hyperlink-rel>rel</a></code> attribute's entire value must be an
+  <a id=rel-icon:ascii-case-insensitive href=https://infra.spec.whatwg.org/#ascii-case-insensitive data-x-internal=ascii-case-insensitive>ASCII case-insensitive</a> match for the string "<code>shortcut icon</code>" (with a single U+0020 SPACE character between the tokens and
+  no other <a id=rel-icon:space-characters href=https://infra.spec.whatwg.org/#ascii-whitespace data-x-internal=space-characters>ASCII whitespace</a>).</p>
+
+
+  <h5 id=link-type-license><span class=secno>4.6.5.9</span> Link type "<dfn><code>license</code></dfn>"<a href=#link-type-license class=self-link></a></h5>
+
+  <p>The <code id=link-type-license:link-type-license><a href=#link-type-license>license</a></code> keyword may be used with <code id=link-type-license:the-link-element><a href=semantics.html#the-link-element>link</a></code>,
+  <code id=link-type-license:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=link-type-license:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-license:hyperlink>hyperlink</a>.</p>
+
+  <p>The <code id=link-type-license:link-type-license-2><a href=#link-type-license>license</a></code> keyword indicates that the referenced document
+  provides the copyright license terms under which the main content of the current document is
+  provided.</p>
+
+  <p>This specification does not specify how to distinguish between the main content of a document
+  and content that is not deemed to be part of that main content. The distinction should be made
+  clear to the user.</p>
+
+  <div class=example>
+
+   <p>Consider a photo sharing site. A page on that site might describe and show a photograph, and
+   the page might be marked up as follows:</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Exampl Pictures: Kissat<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/style/default&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>h1</c-><c- p>&gt;</c->Kissat<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>nav</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;../&quot;</c-><c- p>&gt;</c->Return to photo index<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>nav</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>figure</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>img</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;/pix/39627052_fd8dcd98b5.jpg&quot;</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>figcaption</c-><c- p>&gt;</c->Kissat<c- p>&lt;/</c-><c- f>figcaption</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>figure</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->One of them has six toes!<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>small</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;license&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;http://www.opensource.org/licenses/mit-license.php&quot;</c-><c- p>&gt;</c->MIT Licensed<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;&lt;/</c-><c- f>small</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>footer</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/&quot;</c-><c- p>&gt;</c->Home<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> | <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;../&quot;</c-><c- p>&gt;</c->Photo index<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>small</c-><c- p>&gt;</c->© copyright 2009 Exampl Pictures. All Rights Reserved.<c- p>&lt;/</c-><c- f>small</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>footer</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c-></code></pre>
+
+   <p>In this case the <code id=link-type-license:link-type-license-3><a href=#link-type-license>license</a></code> applies to just the photo (the main
+   content of the document), not the whole document. In particular not the design of the page
+   itself, which is covered by the copyright given at the bottom of the document. This could be made
+   clearer in the styling (e.g. making the license link prominently positioned near the photograph,
+   while having the page copyright in light small text at the foot of the page).</p>
+
+  </div>
+
+  
+
+
+  <h5 id=link-type-modulepreload><span class=secno>4.6.5.10</span> Link type "<dfn><code>modulepreload</code></dfn>"<a href=#link-type-modulepreload class=self-link></a></h5>
+
+  <p>The <code id=link-type-modulepreload:link-type-modulepreload><a href=#link-type-modulepreload>modulepreload</a></code> keyword may be used with
+  <code id=link-type-modulepreload:the-link-element><a href=semantics.html#the-link-element>link</a></code> elements. This keyword creates an <a href=#external-resource-link id=link-type-modulepreload:external-resource-link>external resource link</a>. This
+  keyword is <a href=#body-ok id=link-type-modulepreload:body-ok>body-ok</a>.</p>
+
+  <p>The <code id=link-type-modulepreload:link-type-modulepreload-2><a href=#link-type-modulepreload>modulepreload</a></code> keyword is a specialized alternative
+  to the <code id=link-type-modulepreload:link-type-preload><a href=#link-type-preload>preload</a></code> keyword, with a processing model geared toward
+  preloading <span>module scripts</span>. In particular, it uses the specific
+  fetch behavior for module scripts (including, e.g., a different interpretation of the <code id=link-type-modulepreload:attr-link-crossorigin><a href=semantics.html#attr-link-crossorigin>crossorigin</a></code> attribute), and places the result into the
+  appropriate <a href=dom.html#concept-document-module-map id=link-type-modulepreload:concept-document-module-map>module map</a> for later evaluation. In
+  contrast, a similar <a href=#external-resource-link id=link-type-modulepreload:external-resource-link-2>external resource link</a> using the <code id=link-type-modulepreload:link-type-preload-2><a href=#link-type-preload>preload</a></code> keyword would place the result in the preload cache, without
+  affecting the document's <a href=dom.html#concept-document-module-map id=link-type-modulepreload:concept-document-module-map-2>module map</a>.</p>
+
+  <p>Additionally, implementations can take advantage of the fact that <span>module scripts</span> declare their dependencies in order to fetch the specified module's
+  dependency as well. This is intended as an optimization opportunity, since the user agent knows
+  that, in all likelihood, those dependencies will also be needed later. It will not generally be
+  observable without using technology such as service workers, or monitoring on the server side.
+  Notably, the appropriate <code id=link-type-modulepreload:event-load><a href=indices.html#event-load>load</a></code> or <code id=link-type-modulepreload:event-error><a href=indices.html#event-error>error</a></code> events will occur after the specified module is fetched, and
+  will not wait for any dependencies.</p>
+
+  
+
+  <p class=note>Unlike some other link relations, changing the relevant attributes (such as <code id=link-type-modulepreload:attr-link-as><a href=semantics.html#attr-link-as>as</a></code>, <code id=link-type-modulepreload:attr-link-crossorigin-2><a href=semantics.html#attr-link-crossorigin>crossorigin</a></code>, and
+  <code id=link-type-modulepreload:attr-link-referrerpolicy><a href=semantics.html#attr-link-referrerpolicy>referrerpolicy</a></code>) of such a <code id=link-type-modulepreload:the-link-element-2><a href=semantics.html#the-link-element>link</a></code>
+  attribute does not trigger a new fetch. This is because the document's <a href=dom.html#concept-document-module-map id=link-type-modulepreload:concept-document-module-map-3>module map</a> has already been populated by a previous
+  fetch, and so re-fetching would be pointless.</p>
+
+  
+
+  <div id=example-modulepreload-manifest class=example>
+   <p>The following snippet shows the top part of an application with several modules preloaded:</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE html&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->IRCFog<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;modulepreload&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;app.mjs&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;modulepreload&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;helpers.mjs&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;modulepreload&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;irc.mjs&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;modulepreload&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;fog-machine.mjs&quot;</c-><c- p>&gt;</c->
+
+<c- p>&lt;</c-><c- f>script</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;module&quot;</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;app.mjs&quot;</c-><c- p>&gt;</c->
+...</code></pre>
+
+   <p>Assume that the module graph for the application is as follows:</p>
+
+   <img alt="The module graph is rooted at app.mjs, which depends on irc.mjs and fog-machine.mjs. In turn, irc.mjs depends on helpers.mjs." src=images/ircfog-modules.svg width=301 height=151>
+
+   <p>Here we see the application developer has used <code id=link-type-modulepreload:link-type-modulepreload-3><a href=#link-type-modulepreload>modulepreload</a></code> all of the modules in their module graph,
+   ensuring that the user agent initiates fetches for them all. Without such preloading, the user
+   agent might need to go through multiple network roundtrips before discovering <code>helpers.mjs</code>, if technologies such as HTTP/2 Server Push are not in play. In
+   this way, <code id=link-type-modulepreload:link-type-modulepreload-4><a href=#link-type-modulepreload>modulepreload</a></code> <code id=link-type-modulepreload:the-link-element-3><a href=semantics.html#the-link-element>link</a></code> elements can be
+   used as a sort of "manifest" of the application's modules.</p>
+  </div>
+
+  <div id=example-modulepreload-dynamic-import class=example>
+   <p>The following code shows how <code id=link-type-modulepreload:link-type-modulepreload-5><a href=#link-type-modulepreload>modulepreload</a></code> links can
+   be used in conjunction with <code id=link-type-modulepreload:import()><a data-x-internal=import() href=https://tc39.github.io/proposal-dynamic-import/#sec-import-calls>import()</a></code> to ensure network fetching is done ahead of
+   time, so that when <code id=link-type-modulepreload:import()-2><a data-x-internal=import() href=https://tc39.github.io/proposal-dynamic-import/#sec-import-calls>import()</a></code> is called, the module is already ready (but not
+   evaluated) in the <span>module map</span>:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;modulepreload&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;awesome-viewer.mjs&quot;</c-><c- p>&gt;</c->
+
+<c- p>&lt;</c-><c- f>button</c-> <c- e>onclick</c-><c- o>=</c-><c- s>&quot;import(&apos;./awesome-viewer.mjs&apos;).then(m =&gt; m.view())&quot;</c-><c- p>&gt;</c->
+  View awesome thing
+<c- p>&lt;/</c-><c- f>button</c-><c- p>&gt;</c-></code></pre>
+  </div>
+
+  <h5 id=link-type-nofollow><span class=secno>4.6.5.11</span> Link type "<dfn><code>nofollow</code></dfn>"<a href=#link-type-nofollow class=self-link></a></h5>
+
+  <p>The <code id=link-type-nofollow:link-type-nofollow><a href=#link-type-nofollow>nofollow</a></code> keyword may be used with <code id=link-type-nofollow:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=link-type-nofollow:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword does not create a <a href=#hyperlink id=link-type-nofollow:hyperlink>hyperlink</a>, but <a href=#hyperlink-annotation id=link-type-nofollow:hyperlink-annotation>annotates</a> any other hyperlinks created by the element (the
+  implied hyperlink, if no other keywords create one).</p>
+
+  <p>The <code id=link-type-nofollow:link-type-nofollow-2><a href=#link-type-nofollow>nofollow</a></code> keyword indicates that the link is not endorsed
+  by the original author or publisher of the page, or that the link to the referenced document was
+  included primarily because of a commercial relationship between people affiliated with the two
+  pages.</p>
+
+
+  <h5 id=link-type-noopener><span class=secno>4.6.5.12</span> Link type "<dfn><code>noopener</code></dfn>"<a href=#link-type-noopener class=self-link></a></h5><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> rel-noopener<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>49+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>10.3+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>52+</span></span><span class="ie no"><span>IE</span> <span>None</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>10.1+</span></span><span class="edge no"><span>Edge</span> <span>None</span></span><span class="opera yes"><span>Opera</span> <span>36+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>5+</span></span><span class="android yes"><span>Android Browser</span> <span>67+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=rel-noopener">caniuse.com</a></div>
+
+  <p>The <code id=link-type-noopener:link-type-noopener><a href=#link-type-noopener>noopener</a></code> keyword may be used with <code id=link-type-noopener:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=link-type-noopener:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword does not create a <a href=#hyperlink id=link-type-noopener:hyperlink>hyperlink</a>, but <a href=#hyperlink-annotation id=link-type-noopener:hyperlink-annotation>annotates</a> any other hyperlinks created by the element (the
+  implied hyperlink, if no other keywords create one).</p>
+
+  <p>The keyword indicates that any newly created <a id=link-type-noopener:browsing-context href=browsers.html#browsing-context>browsing context</a> which results from
+  following the <a href=#hyperlink id=link-type-noopener:hyperlink-2>hyperlink</a> will be <a id=link-type-noopener:disowned-its-opener href=browsers.html#disowned-its-opener>disowned</a>, which means that its <code id=link-type-noopener:dom-opener><a href=browsers.html#dom-opener>window.opener</a></code> attribute will be null.</p>
+
+
+  <h5 id=link-type-noreferrer><span class=secno>4.6.5.13</span> Link type "<dfn><code>noreferrer</code></dfn>"<a href=#link-type-noreferrer class=self-link></a></h5><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> rel-noreferrer<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>16+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>4.0+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>33+</span></span><span class="ie partial"><span>IE (limited)</span> <span>11+</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>5+</span></span><span class="edge yes"><span>Edge</span> <span>13+</span></span><span class="opera yes"><span>Opera</span> <span>15+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>2.3+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=rel-noreferrer">caniuse.com</a></div>
+
+  <p>The <code id=link-type-noreferrer:link-type-noreferrer><a href=#link-type-noreferrer>noreferrer</a></code> keyword may be used with <code id=link-type-noreferrer:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=link-type-noreferrer:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword does not create a <a href=#hyperlink id=link-type-noreferrer:hyperlink>hyperlink</a>, but <a href=#hyperlink-annotation id=link-type-noreferrer:hyperlink-annotation>annotates</a> any other hyperlinks created by the element (the
+  implied hyperlink, if no other keywords create one).</p>
+
+  <p>It indicates that no referrer information is to be leaked when following the link.</p>
+
+  
+
+
+  <h5 id=link-type-pingback><span class=secno>4.6.5.14</span> Link type "<dfn><code>pingback</code></dfn>"<a href=#link-type-pingback class=self-link></a></h5>
+
+  <p>The <code id=link-type-pingback:link-type-pingback><a href=#link-type-pingback>pingback</a></code> keyword may be used with <code id=link-type-pingback:the-link-element><a href=semantics.html#the-link-element>link</a></code>
+  elements. This keyword creates an <a href=#external-resource-link id=link-type-pingback:external-resource-link>external resource
+  link</a>. This keyword is <a href=#body-ok id=link-type-pingback:body-ok>body-ok</a>.</p>
+
+  <p>For the semantics of the <code id=link-type-pingback:link-type-pingback-2><a href=#link-type-pingback>pingback</a></code> keyword, see the Pingback
+  1.0 specification. <a href=references.html#refsPINGBACK>[PINGBACK]</a></p>
+
+
+  <h5 id=link-type-preconnect><span class=secno>4.6.5.15</span> Link type "<dfn><code>preconnect</code></dfn>"<a href=#link-type-preconnect class=self-link></a></h5>
+
+  <p>The <code id=link-type-preconnect:link-type-preconnect><a href=#link-type-preconnect>preconnect</a></code> keyword may be used with <code id=link-type-preconnect:the-link-element><a href=semantics.html#the-link-element>link</a></code>
+  elements. This keyword creates an <a href=#external-resource-link id=link-type-preconnect:external-resource-link>external resource
+  link</a>. This keyword is <a href=#body-ok id=link-type-preconnect:body-ok>body-ok</a>.</p>
+
+  <p>The <code id=link-type-preconnect:link-type-preconnect-2><a href=#link-type-preconnect>preconnect</a></code> keyword indicates that preemptively
+  initiating a connection to the <a id=link-type-preconnect:concept-origin href=origin.html#concept-origin>origin</a> of the specified resource is likely to be
+  beneficial, as it is highly likely that the user will require resources located at that
+  <a id=link-type-preconnect:concept-origin-2 href=origin.html#concept-origin>origin</a>, and the user experience would be improved by preempting the latency costs
+  associated with establishing the connection.  <a href=references.html#refsRESOURCEHINTS>[RESOURCEHINTS]</a></p>
+
+  <p>There is no default type for resources given by the <code id=link-type-preconnect:link-type-preconnect-3><a href=#link-type-preconnect>preconnect</a></code> keyword.</p>
+
+
+  <h5 id=link-type-prefetch><span class=secno>4.6.5.16</span> Link type "<dfn><code>prefetch</code></dfn>"<a href=#link-type-prefetch class=self-link></a></h5>
+
+  <p>The <code id=link-type-prefetch:link-type-prefetch><a href=#link-type-prefetch>prefetch</a></code> keyword may be used with <code id=link-type-prefetch:the-link-element><a href=semantics.html#the-link-element>link</a></code>
+  elements. This keyword creates an <a href=#external-resource-link id=link-type-prefetch:external-resource-link>external resource
+  link</a>. This keyword is <a href=#body-ok id=link-type-prefetch:body-ok>body-ok</a>.</p>
+
+  <p>The <code id=link-type-prefetch:link-type-prefetch-2><a href=#link-type-prefetch>prefetch</a></code> keyword indicates that preemptively <a href=https://fetch.spec.whatwg.org/#concept-fetch id=link-type-prefetch:concept-fetch data-x-internal=concept-fetch>fetching</a> and caching the specified resource is likely to be
+  beneficial, as it is highly likely that the user will require this resource for future
+  navigations. 
+  <a href=references.html#refsRESOURCEHINTS>[RESOURCEHINTS]</a></p>
+
+  <p>There is no default type for resources given by the <code id=link-type-prefetch:link-type-prefetch-3><a href=#link-type-prefetch>prefetch</a></code>
+  keyword.</p>
+
+
+  <h5 id=link-type-preload><span class=secno>4.6.5.17</span> Link type "<dfn><code>preload</code></dfn>"<a href=#link-type-preload class=self-link></a></h5>
+
+  <p>The <code id=link-type-preload:link-type-preload><a href=#link-type-preload>preload</a></code> keyword may be used with <code id=link-type-preload:the-link-element><a href=semantics.html#the-link-element>link</a></code>
+  elements. This keyword creates an <a href=#external-resource-link id=link-type-preload:external-resource-link>external resource
+  link</a>. This keyword is <a href=#body-ok id=link-type-preload:body-ok>body-ok</a>.</p>
+
+  <p>The <code id=link-type-preload:link-type-preload-2><a href=#link-type-preload>preload</a></code> keyword indicates that the user agent must
+  preemptively <a href=https://fetch.spec.whatwg.org/#concept-fetch id=link-type-preload:concept-fetch data-x-internal=concept-fetch>fetch</a> and cache the specified resource according
+  to the <a href=https://fetch.spec.whatwg.org/#concept-potential-destination id=link-type-preload:concept-potential-destination data-x-internal=concept-potential-destination>potential destination</a> given by the
+  <code id=link-type-preload:attr-link-as><a href=semantics.html#attr-link-as>as</a></code> attribute (and the <a href=https://fetch.spec.whatwg.org/#concept-request-priority id=link-type-preload:concept-request-priority data-x-internal=concept-request-priority>priority</a> associated with the <a href=https://fetch.spec.whatwg.org/#concept-potential-destination-translate id=link-type-preload:concept-potential-destination-translate data-x-internal=concept-potential-destination-translate>corresponding</a> <a href=https://fetch.spec.whatwg.org/#concept-request-destination id=link-type-preload:concept-request-destination data-x-internal=concept-request-destination>destination</a>), as it is highly likely that the user
+  will require this resource for the current navigation.  <a href=references.html#refsPRELOAD>[PRELOAD]</a></p>
+
+  <p>There is no default type for resources given by the <code id=link-type-preload:link-type-preload-3><a href=#link-type-preload>preload</a></code>
+  keyword.</p>
+
+
+  <h5 id=link-type-prerender><span class=secno>4.6.5.18</span> Link type "<dfn><code>prerender</code></dfn>"<a href=#link-type-prerender class=self-link></a></h5>
+
+  <p>The <code id=link-type-prerender:link-type-prerender><a href=#link-type-prerender>prerender</a></code> keyword may be used with <code id=link-type-prerender:the-link-element><a href=semantics.html#the-link-element>link</a></code>
+  elements. This keyword creates an <a href=#external-resource-link id=link-type-prerender:external-resource-link>external resource
+  link</a>. This keyword is <a href=#body-ok id=link-type-prerender:body-ok>body-ok</a>.</p>
+
+  <p>The <code id=link-type-prerender:link-type-prerender-2><a href=#link-type-prerender>prerender</a></code> keyword indicates that the specified resource
+  might be required by the next navigation, and so it may be beneficial to not only preemptively
+  <a href=https://fetch.spec.whatwg.org/#concept-fetch id=link-type-prerender:concept-fetch data-x-internal=concept-fetch>fetch</a> the resource, but also to process it, e.g. by <a href=https://fetch.spec.whatwg.org/#concept-fetch id=link-type-prerender:concept-fetch-2 data-x-internal=concept-fetch>fetching</a> its subresources or performing some rendering. 
+  <a href=references.html#refsRESOURCEHINTS>[RESOURCEHINTS]</a></p>
+
+  <p>There is no default type for resources given by the <code id=link-type-prerender:link-type-prerender-3><a href=#link-type-prerender>prerender</a></code> keyword.</p>
+
+
+  <h5 id=link-type-search><span class=secno>4.6.5.19</span> Link type "<dfn><code>search</code></dfn>"<a href=#link-type-search class=self-link></a></h5>
+
+  <p>The <code id=link-type-search:link-type-search><a href=#link-type-search>search</a></code> keyword may be used with <code id=link-type-search:the-link-element><a href=semantics.html#the-link-element>link</a></code>,
+  <code id=link-type-search:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=link-type-search:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-search:hyperlink>hyperlink</a>.</p>
+
+  <p>The <code id=link-type-search:link-type-search-2><a href=#link-type-search>search</a></code> keyword indicates that the referenced document
+  provides an interface specifically for searching the document and its related resources.</p>
+
+  <p class=note>OpenSearch description documents can be used with <code id=link-type-search:the-link-element-2><a href=semantics.html#the-link-element>link</a></code> elements and
+  the <code id=link-type-search:link-type-search-3><a href=#link-type-search>search</a></code> link type to enable user agents to autodiscover search
+  interfaces. <a href=references.html#refsOPENSEARCH>[OPENSEARCH]</a></p>
+
+
+  <h5 id=link-type-stylesheet><span class=secno>4.6.5.20</span> Link type "<dfn><code>stylesheet</code></dfn>"<a href=#link-type-stylesheet class=self-link></a></h5>
+
+  <p>The <code id=link-type-stylesheet:link-type-stylesheet><a href=#link-type-stylesheet>stylesheet</a></code> keyword may be used with <code id=link-type-stylesheet:the-link-element><a href=semantics.html#the-link-element>link</a></code>
+  elements. This keyword creates an <a href=#external-resource-link id=link-type-stylesheet:external-resource-link>external resource
+  link</a> that contributes to the styling processing model. This keyword is
+  <a href=#body-ok id=link-type-stylesheet:body-ok>body-ok</a>.</p>
+
+  <p>The specified resource is a CSS style sheet that describes how to present the document.</p>
+
+  <p>If the <code id=link-type-stylesheet:rel-alternate><a href=#rel-alternate>alternate</a></code> keyword is also specified on the
+  <code id=link-type-stylesheet:the-link-element-2><a href=semantics.html#the-link-element>link</a></code> element, then <dfn id=the-link-is-an-alternative-stylesheet>the link is an
+  alternative style sheet</dfn>; in this case, the <code id=link-type-stylesheet:attr-title><a href=dom.html#attr-title>title</a></code> attribute
+  must be specified on the <code id=link-type-stylesheet:the-link-element-3><a href=semantics.html#the-link-element>link</a></code> element, with a non-empty value.</p>
+
+  <p>The default type for resources given by the <code id=link-type-stylesheet:link-type-stylesheet-2><a href=#link-type-stylesheet>stylesheet</a></code>
+  keyword is <code id=link-type-stylesheet:text/css><a href=indices.html#text/css>text/css</a></code>.</p>
+
+  
+
+
+
+  <h5 id=link-type-tag><span class=secno>4.6.5.21</span> Link type "<dfn><code>tag</code></dfn>"<a href=#link-type-tag class=self-link></a></h5>
+
+  <p>The <code id=link-type-tag:link-type-tag><a href=#link-type-tag>tag</a></code> keyword may be used with <code id=link-type-tag:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and
+  <code id=link-type-tag:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-tag:hyperlink>hyperlink</a>.</p>
+
+  <p>The <code id=link-type-tag:link-type-tag-2><a href=#link-type-tag>tag</a></code> keyword indicates that the <em>tag</em> that the
+  referenced document represents applies to the current document.</p>
+
+  <p class=note>Since it indicates that the tag <em>applies to the current document</em>, it would
+  be inappropriate to use this keyword in the markup of a <a href=semantics-other.html#tag-cloud>tag cloud</a>, which
+  lists the popular tags across a set of pages.</p>
+
+  <div class=example>
+
+   <p>This document is about some gems, and so it is <i>tagged</i> with "<code>https://en.wikipedia.org/wiki/Gemstone</code>" to unambiguously categorize it as applying
+   to the "jewel" kind of gems, and not to, say, the towns in the US, the Ruby package format, or
+   the Swiss locomotive class:</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->My Precious<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>header</c-><c- p>&gt;&lt;</c-><c- f>h1</c-><c- p>&gt;</c->My precious<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->Summer 2012<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;&lt;/</c-><c- f>header</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->Recently I managed to dispose of a red gem that had been
+  bothering me. I now have a much nicer blue sapphire.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->The red gem had been found in a bauxite stone while I was digging
+  out the office level, but nobody was willing to haul it away. The
+  same red gem stayed there for literally years.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>footer</c-><c- p>&gt;</c->
+   Tags: <c- p>&lt;</c-><c- f>a</c-> <c- e>rel</c-><c- o>=</c-><c- s>tag</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;https://en.wikipedia.org/wiki/Gemstone&quot;</c-><c- p>&gt;</c->Gemstone<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>footer</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>In <em>this</em> document, there are two articles. The "<code id=link-type-tag:link-type-tag-3><a href=#link-type-tag>tag</a></code>"
+   link, however, applies to the whole page (and would do so wherever it was placed, including if it
+   was within the <code id=link-type-tag:the-article-element><a href=sections.html#the-article-element>article</a></code> elements).</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Gem 4/4<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>article</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>h1</c-><c- p>&gt;</c->801: Steinbock<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->The number 801 Gem 4/4 electro-diesel has an ibex and was rebuilt in 2002.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>article</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>h1</c-><c- p>&gt;</c->802: Murmeltier<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>figure</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>img</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;https://upload.wikimedia.org/wikipedia/commons/b/b0/Trains_de_la_Bernina_en_hiver_2.jpg&quot;</c->
+         <c- e>alt</c-><c- o>=</c-><c- s>&quot;The 802 was red with pantographs and tall vents on the side.&quot;</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>figcaption</c-><c- p>&gt;</c->The 802 in the 1980s, above Lago Bianco.<c- p>&lt;/</c-><c- f>figcaption</c-><c- p>&gt;</c->
+   <c- p>&lt;/</c-><c- f>figure</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->The number 802 Gem 4/4 electro-diesel has a marmot and was rebuilt in 2003.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-> <c- e>class</c-><c- o>=</c-><c- s>&quot;topic&quot;</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>rel</c-><c- o>=</c-><c- s>tag</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;https://en.wikipedia.org/wiki/Rhaetian_Railway_Gem_4/4&quot;</c-><c- p>&gt;</c->Gem 4/4<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+
+
+  <h5 id=sequential-link-types><span class=secno>4.6.5.22</span> Sequential link types<a href=#sequential-link-types class=self-link></a></h5>
+
+  <p>Some documents form part of a sequence of documents.</p>
+
+  <p>A sequence of documents is one where each document can have a <em>previous sibling</em> and a
+  <em>next sibling</em>. A document with no previous sibling is the start of its sequence, a
+  document with no next sibling is the end of its sequence.</p>
+
+  <p>A document may be part of multiple sequences.</p>
+
+
+  <h6 id=link-type-next><span class=secno>4.6.5.22.1</span> Link type "<dfn><code>next</code></dfn>"<a href=#link-type-next class=self-link></a></h6>
+
+  <p>The <code id=link-type-next:link-type-next><a href=#link-type-next>next</a></code> keyword may be used with <code id=link-type-next:the-link-element><a href=semantics.html#the-link-element>link</a></code>,
+  <code id=link-type-next:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=link-type-next:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-next:hyperlink>hyperlink</a>.</p>
+
+  <p>The <code id=link-type-next:link-type-next-2><a href=#link-type-next>next</a></code> keyword indicates that the document is part of a
+  sequence, and that the link is leading to the document that is the next logical document in the
+  sequence.</p>
+
+  
+
+
+  <h6 id=link-type-prev><span class=secno>4.6.5.22.2</span> Link type "<dfn><code>prev</code></dfn>"<a href=#link-type-prev class=self-link></a></h6>
+
+  <p>The <code id=link-type-prev:link-type-prev><a href=#link-type-prev>prev</a></code> keyword may be used with <code id=link-type-prev:the-link-element><a href=semantics.html#the-link-element>link</a></code>,
+  <code id=link-type-prev:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=link-type-prev:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements. This keyword creates a <a href=#hyperlink id=link-type-prev:hyperlink>hyperlink</a>.</p>
+
+  <p>The <code id=link-type-prev:link-type-prev-2><a href=#link-type-prev>prev</a></code> keyword indicates that the document is part of a
+  sequence, and that the link is leading to the document that is the previous logical document in
+  the sequence.</p>
+
+  
+
+
+  <h5 id=other-link-types><span class=secno>4.6.5.23</span> Other link types<a href=#other-link-types class=self-link></a></h5>
+
+  <p><dfn id=concept-rel-extensions>Extensions to the predefined set of link types</dfn> may be
+  registered in the <a href=http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions>microformats
+  wiki existing-rel-values page</a>. <a href=references.html#refsMFREL>[MFREL]</a></p>
+
+  <p>Anyone is free to edit the <span>microformats wiki existing-rel-values page</span> at
+  any time to add a type. Extension types must be specified with the following information:</p>
+
+  <dl><dt>Keyword<dd>
+
+    <p>The actual value being defined. The value should not be confusingly similar to any other
+    defined value (e.g. differing only in case).</p>
+
+    <p>If the value contains a U+003A COLON character (:), it must also be an <a id=other-link-types:absolute-url href=https://url.spec.whatwg.org/#syntax-url-absolute data-x-internal=absolute-url>absolute
+    URL</a>.</p>
+
+   <dt>Effect on... <code id=other-link-types:the-link-element><a href=semantics.html#the-link-element>link</a></code><dd>
+
+    <p>One of the following:</p>
+
+    <dl><dt>Not allowed<dd>The keyword must not be specified on <code id=other-link-types:the-link-element-2><a href=semantics.html#the-link-element>link</a></code> elements.<dt>Hyperlink<dd>The keyword may be specified on a <code id=other-link-types:the-link-element-3><a href=semantics.html#the-link-element>link</a></code> element; it creates a
+     <a href=#hyperlink id=other-link-types:hyperlink>hyperlink</a>.<dt>External Resource<dd>The keyword may be specified on a <code id=other-link-types:the-link-element-4><a href=semantics.html#the-link-element>link</a></code> element; it creates an <a href=#external-resource-link id=other-link-types:external-resource-link>external
+     resource link</a>.</dl>
+
+   <dt>Effect on... <code id=other-link-types:the-a-element><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=other-link-types:the-area-element><a href=image-maps.html#the-area-element>area</a></code><dd>
+
+    <p>One of the following:</p>
+
+    <dl><dt>Not allowed<dd>The keyword must not be specified on <code id=other-link-types:the-a-element-2><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=other-link-types:the-area-element-2><a href=image-maps.html#the-area-element>area</a></code> elements.<dt>Hyperlink<dd>The keyword may be specified on <code id=other-link-types:the-a-element-3><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=other-link-types:the-area-element-3><a href=image-maps.html#the-area-element>area</a></code> elements; it creates a
+     <a href=#hyperlink id=other-link-types:hyperlink-2>hyperlink</a>.<dt>External Resource<dd>The keyword may be specified on <code id=other-link-types:the-a-element-4><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=other-link-types:the-area-element-4><a href=image-maps.html#the-area-element>area</a></code> elements; it creates
+     an <a href=#external-resource-link id=other-link-types:external-resource-link-2>external resource link</a>.<dt>Hyperlink Annotation<dd>The keyword may be specified on <code id=other-link-types:the-a-element-5><a href=text-level-semantics.html#the-a-element>a</a></code> and <code id=other-link-types:the-area-element-5><a href=image-maps.html#the-area-element>area</a></code> elements; it <a href=#hyperlink-annotation id=other-link-types:hyperlink-annotation>annotates</a> other <a href=#hyperlink id=other-link-types:hyperlink-3>hyperlinks</a>
+     created by the element.</dl>
+
+   <dt>Brief description<dd><p>A short non-normative description of what the keyword's meaning is.<dt>Specification<dd><p>A link to a more detailed description of the keyword's semantics and requirements. It
+   could be another page on the Wiki, or a link to an external page.<dt>Synonyms<dd><p>A list of other keyword values that have exactly the same processing requirements. Authors
+   should not use the values defined to be synonyms, they are only intended to allow user agents to
+   support legacy content. Anyone may remove synonyms that are not used in practice; only names that
+   need to be processed as synonyms for compatibility with legacy content are to be registered in
+   this way.<dt>Status<dd>
+
+    <p>One of the following:</p>
+
+    <dl><dt>Proposed<dd>The keyword has not received wide peer review and approval. Someone has proposed it and is,
+     or soon will be, using it.<dt>Ratified<dd>The keyword has received wide peer review and approval. It has a specification that
+     unambiguously defines how to handle pages that use the keyword, including when they use it in
+     incorrect ways.<dt>Discontinued<dd>The keyword has received wide peer review and it has been found wanting. Existing pages are
+     using this keyword, but new pages should avoid it. The "brief description" and "specification"
+     entries will give details of what authors should use instead, if anything.</dl>
+
+    <p>If a keyword is found to be redundant with existing values, it should be removed and listed
+    as a synonym for the existing value.</p>
+
+    <p>If a keyword is registered in the "proposed" state for a period of a month or more without
+    being used or specified, then it may be removed from the registry.</p>
+
+    <p>If a keyword is added with the "proposed" status and found to be redundant with existing
+    values, it should be removed and listed as a synonym for the existing value. If a keyword is
+    added with the "proposed" status and found to be harmful, then it should be changed to
+    "discontinued" status.</p>
+
+    <p>Anyone can change the status at any time, but should only do so in accordance with the
+    definitions above.</p>
+
+   </dl>
+
+  
+
+  <p>Types defined as extensions in the <a href=http://microformats.org/wiki/existing-rel-values#HTML5_link_type_extensions>microformats
+  wiki existing-rel-values page</a> with the status "proposed" or "ratified" may be used with the
+  <code>rel</code> attribute on <code id=other-link-types:the-link-element-5><a href=semantics.html#the-link-element>link</a></code>, <code id=other-link-types:the-a-element-6><a href=text-level-semantics.html#the-a-element>a</a></code>, and <code id=other-link-types:the-area-element-6><a href=image-maps.html#the-area-element>area</a></code>
+  elements in accordance to the "Effect on..." field. <a href=references.html#refsMFREL>[MFREL]</a></p>
+
+
+
+  <nav><a href=text-level-semantics.html>← 4.5 Text-level semantics</a> — <a href=./>Table of Contents</a> — <a href=edits.html>4.7 Edits →</a></nav>

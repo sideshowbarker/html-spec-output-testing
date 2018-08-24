@@ -1,0 +1,621 @@
+<!DOCTYPE html><html class=split lang=en-US-x-hixie><script src=/link-fixup.js defer=""></script><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard, Developer's Edition</title><meta content=#3c790a name=theme-color><link href=https://resources.whatwg.org/logo.svg rel=icon><script>
+   function toggleStatus(div) {
+     div.parentNode.classList.toggle('wrapped');
+   }
+  </script><style>
+   .status { min-height: 0.6em; font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; margin: -2em 0 0 0; border-collapse: initial; border-spacing: initial; }
+   .status:hover { z-index: 9; }
+   .status:focus-within { z-index: 9; }
+   .status.wrapped > :not(input) { display: none; }
+   .status > input { position: absolute; left: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+   .status > p { font-size: 0.6em; margin: 0; padding: 0; }
+   .status > p + p { padding-top: 0.5em; }
+   .status > p > strong { margin-left: 1.5em; }
+   .status > .support { display: block; }
+   .status > .support > span { padding: 0.2em 0; display: block; display: table; }
+   .status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+   .status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+   .status > .support > span.no::before { opacity: 0.5; }
+   .status > .support > span:first-of-type { padding-top: 0.5em; }
+   .status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+   .status > .support > span > span:first-child { width: 100%; }
+   .status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+   .status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+   .status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+   .status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+   .status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+   .status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+   .status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+   .status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+   .status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+   .status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+   .status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+   .status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+   .status > .caniuse { text-align: right; font-style: italic; width: 100%; }
+   .status > .caniuse + p { margin-top: 0.5em; border-top: 1px solid silver; }
+
+   @media (max-width: 767px) {
+     .status { right: -9em; }
+   }
+  </style><link rel=stylesheet href=styles.css><style>.mdn {  display: block;  font: 12px sans-serif;  position: absolute;   z-index: 9;  right: 0.3em;  background-color: #eee;  margin: -26px 0 0 0;  padding: 7px 5px 5px 6px;  min-width: 140px;  box-shadow: 0 0 3px #999;} .mdn input {   cursor: pointer;   position: absolute;   left: 0;   top: -2px;   height: 1em;   border: none;   color: #000;   background: transparent;   margin-left: -8px;   font-size: 10px;   line-height: 1em;} .mdn b {  color: #fff;  background-color: #000;  font-weight: normal;   font-family: zillaslab,Palatino,"Palatino Linotype",serif;  padding: 2px 3px 0px 3px;  line-height: 1.3em;  vertical-align: top;} .mdn details {  display: inline;  margin-top: 1px;} .mdn summary a {  margin-left: -4px;} .nosupportdata {  font-style: italic;  margin-top: 4px;  margin-left: 8px;  padding-bottom: 8px;} .mdnsupport {  display: table;  margin-top: 4px;} .mdnsupport > span {  display: table-row;  padding: 0.2em 0;  padding-top: 0.2em;  font-size: 9.6px;} .mdnsupport > span > span {  display: table-cell;  padding: 0 0.5em;  vertical-align: top;  line-height: 1.5em;} .mdnsupport > span > span:last-child {  text-align: right;  padding: 0;} .mdnsupport > span.no {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.unknown {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.no::before {  opacity:  0.5;} .mdnsupport > span.unknown::before {  opacity:  0.5;}.mdnsupport > span::before {    content: "";    display: table-cell;    min-width: 1.5em;    height: 1.5em;    background: no-repeat center center;        background-image: none;        background-size: auto auto;    background-size: contain;    text-align: right;    font-size: 0.75em;    font-weight: bold;} .mdnsupport > .chrome::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .chrome_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .edge::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .edge_mobile::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .firefox::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .firefox_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .ie::before {  background-image: url(https://resources.whatwg.org/browser-logos/ie.png);} .mdnsupport > .opera::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .opera_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .safari::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari.png);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .samsunginternet_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/samsung.png);} .mdnsupport > .webview_android::before {  background-image: url(https://cdnjs.loli.net/ajax/libs/browser-logos/41.0.0/android-webview-beta/android-webview-beta_32x32.png);} .mdn div:nth-child(n+3) > b {  color: #eee;  background-color: #eee;} p + .mdn { margin-top: -45px } .mdn.before { margin-top: 2px } h2 + .mdn { margin: -48px 0 0 0; } h3 + .mdn { margin: -46px 0 0 0; } h4 + .mdn { margin: -42px 0 0 0; } h5 + .mdn { margin: -40px 0 0 0; } h6 + .mdn { margin: -40px 0 0 0; } .mdn div { margin: 0; } .mdn :link { color: #0000EE; } .mdn :visited { color: #551A8B; } .mdn :link:active, :visited:active { color: #FF0000; } .mdn :link, :visited {   text-decoration: underline;   cursor: pointer;} .mdn.wrapped { min-width: 0px; } .mdn.wrapped details { display: none; } .mdn:hover { z-index: 11; } .mdn:focus-within { z-index: 11; }</style><body>
+  <script async="" src=search.js></script>
+  
+  
+  <header id=head class="head with-buttons">
+   <a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a>
+   
+   <hgroup><h1><a rel=home href=/dev/>HTML: The Living Standard</a></h1><h2 id=dev-edition-h2 class="no-num no-toc">Developer's Edition — Last Updated <span class=pubdate>21 October 2018</span></h2></hgroup>
+   
+
+   <div id=search>
+    <input placeholder="Search. Press '/'" autocomplete=off name=query id=query type=search>
+    <ol id=results></ol>
+   </div>
+  </header>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <nav><a href=images.html>← 4.8.4 Images</a> — <a href=./>Table of Contents</a> — <a href=media.html>4.8.9 The video element →</a></nav><ol class=toc><li><ol><li><ol><li><a href=iframe-embed-object.html#the-iframe-element><span class=secno>4.8.5</span> The
+  <code>iframe</code> element</a><li><a href=iframe-embed-object.html#the-embed-element><span class=secno>4.8.6</span> The <code>embed</code> element</a><li><a href=iframe-embed-object.html#the-object-element><span class=secno>4.8.7</span> The <code>object</code> element</a><li><a href=iframe-embed-object.html#the-param-element><span class=secno>4.8.8</span> The <code>param</code> element</a></ol></ol></ol><h4 id=the-iframe-element data-dfn-type=element data-lt=iframe><span class=secno>4.8.5</span> The
+  <dfn><code>iframe</code></dfn> element<a href=#the-iframe-element class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe title="The HTML Inline Frame element (iframe) represents a nested browsing context, effectively embedding another HTML page into the current page.">Element/iframe</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>1+</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside>
+
+  <dl class=element><dt><a href=dom.html#concept-element-categories id=the-iframe-element:concept-element-categories>Categories</a>:<dd><a id=the-iframe-element:flow-content-2 href=dom.html#flow-content-2>Flow content</a>.<dd><a id=the-iframe-element:phrasing-content-2 href=dom.html#phrasing-content-2>Phrasing content</a>.<dd><a id=the-iframe-element:embedded-content-category href=dom.html#embedded-content-category>Embedded content</a>.<dd><a id=the-iframe-element:interactive-content-2 href=dom.html#interactive-content-2>Interactive content</a>.<dd><a id=the-iframe-element:palpable-content-2 href=dom.html#palpable-content-2>Palpable content</a>.<dt><a href=dom.html#concept-element-contexts id=the-iframe-element:concept-element-contexts>Contexts in which this element can be used</a>:<dd>Where <a id=the-iframe-element:embedded-content-category-2 href=dom.html#embedded-content-category>embedded content</a> is expected.<dt><a href=dom.html#concept-element-content-model id=the-iframe-element:concept-element-content-model>Content model</a>:<dd><a href=dom.html#concept-content-nothing id=the-iframe-element:concept-content-nothing>Nothing</a>.<dt><a href=dom.html#concept-element-tag-omission id=the-iframe-element:concept-element-tag-omission>Tag omission in text/html</a>:<dd>Neither tag is omissible.<dt><a href=dom.html#concept-element-attributes id=the-iframe-element:concept-element-attributes>Content attributes</a>:<dd><a id=the-iframe-element:global-attributes href=dom.html#global-attributes>Global attributes</a><dd><code id=the-iframe-element:attr-iframe-src><a href=#attr-iframe-src>src</a></code> — Address of the resource<dd><code id=the-iframe-element:attr-iframe-srcdoc><a href=#attr-iframe-srcdoc>srcdoc</a></code> — A document to render in the <code id=the-iframe-element:the-iframe-element><a href=#the-iframe-element>iframe</a></code><dd><code id=the-iframe-element:attr-iframe-name><a href=#attr-iframe-name>name</a></code> — Name of <a id=the-iframe-element:nested-browsing-context href=browsers.html#nested-browsing-context>nested browsing context</a><dd><code id=the-iframe-element:attr-iframe-sandbox><a href=#attr-iframe-sandbox>sandbox</a></code> — Security rules for nested content<dd><code id=the-iframe-element:attr-iframe-allow><a href=#attr-iframe-allow>allow</a></code> — <a href=https://wicg.github.io/feature-policy/#feature-policy id=the-iframe-element:concept-feature-policy data-x-internal=concept-feature-policy>Feature policy</a> to be applied to the <code id=the-iframe-element:the-iframe-element-2><a href=#the-iframe-element>iframe</a></code>'s contents<dd><code id=the-iframe-element:attr-iframe-allowfullscreen><a href=#attr-iframe-allowfullscreen>allowfullscreen</a></code> — Whether to allow the <code id=the-iframe-element:the-iframe-element-3><a href=#the-iframe-element>iframe</a></code>'s contents to use <code id=the-iframe-element:dom-element-requestfullscreen><a data-x-internal=dom-element-requestfullscreen href=https://fullscreen.spec.whatwg.org/#dom-element-requestfullscreen>requestFullscreen()</a></code><dd><code id=the-iframe-element:attr-iframe-allowpaymentrequest><a href=#attr-iframe-allowpaymentrequest>allowpaymentrequest</a></code> — Whether the <code id=the-iframe-element:the-iframe-element-4><a href=#the-iframe-element>iframe</a></code>'s contents are allowed to use the <code id=the-iframe-element:paymentrequest><a data-x-internal=paymentrequest href=https://w3c.github.io/payment-request/#dom-paymentrequest>PaymentRequest</a></code> interface to make payment requests<dd><code id=the-iframe-element:attr-iframe-allowusermedia><a href=#attr-iframe-allowusermedia>allowusermedia</a></code> — Whether to allow the <code id=the-iframe-element:the-iframe-element-5><a href=#the-iframe-element>iframe</a></code>'s contents to use <code id=the-iframe-element:dom-mediadevices-getusermedia><a data-x-internal=dom-mediadevices-getusermedia href=https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia>getUserMedia()</a></code><dd><code id=the-iframe-element:attr-dim-width><a href=embedded-content-other.html#attr-dim-width>width</a></code> — Horizontal dimension<dd><code id=the-iframe-element:attr-dim-height><a href=embedded-content-other.html#attr-dim-height>height</a></code> — Vertical dimension<dd><code id=the-iframe-element:attr-iframe-referrerpolicy><a href=#attr-iframe-referrerpolicy>referrerpolicy</a></code> — <a id=the-iframe-element:referrer-policy href=https://w3c.github.io/webappsec-referrer-policy/#referrer-policy data-x-internal=referrer-policy>Referrer policy</a> for <a href=https://fetch.spec.whatwg.org/#concept-fetch id=the-iframe-element:concept-fetch data-x-internal=concept-fetch>fetches</a> initiated by the element<dt><a href=dom.html#concept-element-dom id=the-iframe-element:concept-element-dom>DOM interface</a>:<dd>Uses <code>HTMLIFrameElement</code>.</dl>
+
+  
+
+  <p>The <code id=the-iframe-element:the-iframe-element-6><a href=#the-iframe-element>iframe</a></code> element <a id=the-iframe-element:represents href=dom.html#represents>represents</a> a <a id=the-iframe-element:nested-browsing-context-2 href=browsers.html#nested-browsing-context>nested browsing
+  context</a>.</p>
+
+
+  
+
+  <p>The <dfn id=attr-iframe-src><code>src</code></dfn> attribute gives the <a id=the-iframe-element:url href=https://url.spec.whatwg.org/#concept-url data-x-internal=url>URL</a>
+  of a page that the <a id=the-iframe-element:nested-browsing-context-3 href=browsers.html#nested-browsing-context>nested browsing context</a> is to contain. The attribute, if present,
+  must be a <a id=the-iframe-element:valid-non-empty-url-potentially-surrounded-by-spaces href=urls-and-fetching.html#valid-non-empty-url-potentially-surrounded-by-spaces>valid non-empty URL potentially surrounded by spaces</a>. If the <code id=the-iframe-element:names:-the-itemprop-attribute><a href=microdata.html#names:-the-itemprop-attribute>itemprop</a></code> attribute is specified on an <code id=the-iframe-element:the-iframe-element-7><a href=#the-iframe-element>iframe</a></code> element,
+  then the <code id=the-iframe-element:attr-iframe-src-2><a href=#attr-iframe-src>src</a></code> attribute must also be specified.</p>
+
+  <p>The <dfn data-dfn-for=iframe id=attr-iframe-srcdoc data-dfn-type=element-attr data-export=""><code>srcdoc</code></dfn> attribute gives the content of the page that the
+  <a id=the-iframe-element:nested-browsing-context-4 href=browsers.html#nested-browsing-context>nested browsing context</a> is to contain. The value of the attribute is the source of
+  <dfn id=an-iframe-srcdoc-document data-export="">an <code>iframe</code> <code>srcdoc</code>
+  document</dfn>.<div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> iframe-srcdoc<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>20+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>6.0+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>25+</span></span><span class="ie no"><span>IE</span> <span>None</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>6+</span></span><span class="edge yes"><span>Edge</span> <span>18+</span></span><span class="opera yes"><span>Opera</span> <span>15+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>4.4+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=iframe-srcdoc">caniuse.com</a></div>
+
+  <p>The <code id=the-iframe-element:attr-iframe-srcdoc-2><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute, if present, must have a value
+  using <a id=the-iframe-element:syntax href=syntax.html#syntax>the HTML syntax</a> that consists of the following syntactic components, in the
+  given order:</p>
+
+  <ol><li>Any number of <a href=syntax.html#syntax-comments id=the-iframe-element:syntax-comments>comments</a> and <a id=the-iframe-element:space-characters href=https://infra.spec.whatwg.org/#ascii-whitespace data-x-internal=space-characters>ASCII
+   whitespace</a>.<li>Optionally, a <a href=syntax.html#syntax-doctype id=the-iframe-element:syntax-doctype>DOCTYPE</a>.
+
+   <li>Any number of <a href=syntax.html#syntax-comments id=the-iframe-element:syntax-comments-2>comments</a> and <a id=the-iframe-element:space-characters-2 href=https://infra.spec.whatwg.org/#ascii-whitespace data-x-internal=space-characters>ASCII
+   whitespace</a>.<li>The <a id=the-iframe-element:document-element href=https://dom.spec.whatwg.org/#document-element data-x-internal=document-element>document element</a>, in the form of an <code id=the-iframe-element:the-html-element><a href=semantics.html#the-html-element>html</a></code> <a href=syntax.html#syntax-elements id=the-iframe-element:syntax-elements>element</a>.<li>Any number of <a href=syntax.html#syntax-comments id=the-iframe-element:syntax-comments-3>comments</a> and <a id=the-iframe-element:space-characters-3 href=https://infra.spec.whatwg.org/#ascii-whitespace data-x-internal=space-characters>ASCII
+   whitespace</a>.</ol>
+
+  <p class=note>The above requirements apply in <a id=the-iframe-element:xml-documents href=https://dom.spec.whatwg.org/#xml-document data-x-internal=xml-documents>XML documents</a> as well.
+
+  <div class=example>
+
+   <p>Here a blog uses the <code id=the-iframe-element:attr-iframe-srcdoc-3><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute in conjunction
+   with the <code id=the-iframe-element:attr-iframe-sandbox-2><a href=#attr-iframe-sandbox>sandbox</a></code> attribute described below to provide
+   users of user agents that support this feature with an extra layer of protection from script
+   injection in the blog post comments:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>article</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>h1</c-><c- p>&gt;</c->I got my own magazine!<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->After much effort, I&apos;ve finally found a publisher, and so now I
+ have my own magazine! Isn&apos;t that awesome?! The first issue will come
+ out in September, and we have articles about getting food, and about
+ getting in boxes, it&apos;s going to be great!<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>footer</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->Written by <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/users/cap&quot;</c-><c- p>&gt;</c->cap<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->, 1 hour ago.
+ <c- p>&lt;/</c-><c- f>footer</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>article</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>footer</c-><c- p>&gt;</c-> Thirteen minutes ago, <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/users/ch&quot;</c-><c- p>&gt;</c->ch<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> wrote: <c- p>&lt;/</c-><c- f>footer</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>iframe</c-> <c- e>sandbox</c-> <c- e>srcdoc</c-><c- o>=</c-><c- s>&quot;&lt;p&gt;did you get a cover picture yet?&quot;</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>article</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>footer</c-><c- p>&gt;</c-> Nine minutes ago, <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/users/cap&quot;</c-><c- p>&gt;</c->cap<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> wrote: <c- p>&lt;/</c-><c- f>footer</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>iframe</c-> <c- e>sandbox</c-> <c- e>srcdoc</c-><c- o>=</c-><c- s>&quot;&lt;p&gt;Yeah, you can see it &lt;a href=&quot;</c->/<c- e>gallery</c->?<c- e>mode</c-><c- o>=</c-><c- s>cover&amp;amp;amp;page=1&quot;</c-><c- p>&gt;</c->in my gallery<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->.&quot;&gt;<c- p>&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>article</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>footer</c-><c- p>&gt;</c-> Five minutes ago, <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/users/ch&quot;</c-><c- p>&gt;</c->ch<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> wrote: <c- p>&lt;/</c-><c- f>footer</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>iframe</c-> <c- e>sandbox</c-> <c- e>srcdoc</c-><c- o>=</c-><c- s>&quot;&lt;p&gt;hey that&apos;s earl&apos;s table.</c->
+<c- s>&lt;p&gt;you should get earl&amp;amp;amp;me on the next cover.&quot;</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c-></code></pre>
+
+   <p>Notice the way that quotes have to be escaped (otherwise the <code id=the-iframe-element:attr-iframe-srcdoc-4><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute would end prematurely), and the way raw
+   ampersands (e.g. in URLs or in prose) mentioned in the sandboxed content have to be
+   <em>doubly</em> escaped — once so that the ampersand is preserved when originally parsing
+   the <code id=the-iframe-element:attr-iframe-srcdoc-5><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute, and once more to prevent the
+   ampersand from being misinterpreted when parsing the sandboxed content.</p>
+
+   <p>Furthermore, notice that since the <a href=syntax.html#syntax-doctype id=the-iframe-element:syntax-doctype-2>DOCTYPE</a> is optional in
+   <a href=#an-iframe-srcdoc-document id=the-iframe-element:an-iframe-srcdoc-document><code>iframe</code> <code>srcdoc</code> documents</a>, and the <code id=the-iframe-element:the-html-element-2><a href=semantics.html#the-html-element>html</a></code>,
+   <code id=the-iframe-element:the-head-element><a href=semantics.html#the-head-element>head</a></code>, and <code id=the-iframe-element:the-body-element><a href=sections.html#the-body-element>body</a></code> elements have <a href=syntax.html#syntax-tag-omission>optional
+   start and end tags</a>, and the <code id=the-iframe-element:the-title-element><a href=semantics.html#the-title-element>title</a></code> element is also optional in <a href=#an-iframe-srcdoc-document id=the-iframe-element:an-iframe-srcdoc-document-2><code>iframe</code> <code>srcdoc</code>
+   documents</a>, the markup in a <code id=the-iframe-element:attr-iframe-srcdoc-6><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute can be
+   relatively succinct despite representing an entire document, since only the contents of the
+   <code id=the-iframe-element:the-body-element-2><a href=sections.html#the-body-element>body</a></code> element need appear literally in the syntax. The other elements are still
+   present, but only by implication.</p>
+
+  </div>
+
+  <p class=note>In <a id=the-iframe-element:syntax-2 href=syntax.html#syntax>the HTML syntax</a>, authors need only remember to use U+0022
+  QUOTATION MARK characters (") to wrap the attribute contents and then to escape all U+0026
+  AMPERSAND (&amp;) and U+0022 QUOTATION MARK (") characters, and to specify the <code id=the-iframe-element:attr-iframe-sandbox-3><a href=#attr-iframe-sandbox>sandbox</a></code> attribute, to ensure safe embedding of content. (And
+  remember to escape ampersands before quotation marks, to ensure quotation marks become &amp;quot;
+  and not &amp;amp;quot;.)</p>
+
+  <p class=note>In XML the U+003C LESS-THAN SIGN character (&lt;) needs to be escaped as well. In
+  order to prevent <a href=https://www.w3.org/TR/xml/#AVNormalize>attribute-value
+  normalization</a>, some of XML's whitespace characters — specifically U+0009 CHARACTER
+  TABULATION (tab), U+000A LINE FEED (LF), and U+000D CARRIAGE RETURN (CR) — also need to be
+  escaped. <a href=references.html#refsXML>[XML]</a></p>
+
+  <p class=note>If the <code id=the-iframe-element:attr-iframe-src-3><a href=#attr-iframe-src>src</a></code> attribute and the <code id=the-iframe-element:attr-iframe-srcdoc-7><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute are both specified together, the <code id=the-iframe-element:attr-iframe-srcdoc-8><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute takes priority. This allows authors to provide
+  a fallback <a id=the-iframe-element:url-2 href=https://url.spec.whatwg.org/#concept-url data-x-internal=url>URL</a> for legacy user agents that do not support the <code id=the-iframe-element:attr-iframe-srcdoc-9><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute.</p>
+
+
+  
+
+  
+
+  <p class=note>If, when the element is created, the <code id=the-iframe-element:attr-iframe-srcdoc-10><a href=#attr-iframe-srcdoc>srcdoc</a></code> attribute is not set, and the <code id=the-iframe-element:attr-iframe-src-4><a href=#attr-iframe-src>src</a></code> attribute is either also not set or set but its value cannot be
+  <span>parsed</span>, the browsing context will remain at the initial
+  <code id=the-iframe-element:about:blank><a href=infrastructure.html#about:blank>about:blank</a></code> page.</p>
+
+  <p class=note>If the user <span>navigates</span> away from this page, the
+  <code id=the-iframe-element:the-iframe-element-8><a href=#the-iframe-element>iframe</a></code>'s corresponding <code>WindowProxy</code> object will proxy new
+  <code>Window</code> objects for new <code>Document</code> objects, but the <code id=the-iframe-element:attr-iframe-src-5><a href=#attr-iframe-src>src</a></code> attribute will not change.</p>
+
+
+  <hr> 
+
+  <p>The <dfn id=attr-iframe-name><code>name</code></dfn> attribute, if present, must be a
+  <a id=the-iframe-element:valid-browsing-context-name href=browsers.html#valid-browsing-context-name>valid browsing context name</a>. The given value is used to name the <a id=the-iframe-element:nested-browsing-context-5 href=browsers.html#nested-browsing-context>nested
+  browsing context</a>. </p>
+
+  
+
+
+  <hr> 
+
+  <p>The <dfn id=attr-iframe-sandbox><code>sandbox</code></dfn> attribute, when specified,
+  enables a set of extra restrictions on any content hosted by the <code id=the-iframe-element:the-iframe-element-9><a href=#the-iframe-element>iframe</a></code>. Its value
+  must be an <a id=the-iframe-element:unordered-set-of-unique-space-separated-tokens href=common-microsyntaxes.html#unordered-set-of-unique-space-separated-tokens>unordered set of unique space-separated tokens</a> that are <a id=the-iframe-element:ascii-case-insensitive href=https://infra.spec.whatwg.org/#ascii-case-insensitive data-x-internal=ascii-case-insensitive>ASCII
+  case-insensitive</a>. The allowed values are <code id=the-iframe-element:attr-iframe-sandbox-allow-forms><a href=origin.html#attr-iframe-sandbox-allow-forms>allow-forms</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-modals><a href=origin.html#attr-iframe-sandbox-allow-modals>allow-modals</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-orientation-lock><a href=origin.html#attr-iframe-sandbox-allow-orientation-lock>allow-orientation-lock</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-pointer-lock><a href=origin.html#attr-iframe-sandbox-allow-pointer-lock>allow-pointer-lock</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-popups><a href=origin.html#attr-iframe-sandbox-allow-popups>allow-popups</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-popups-to-escape-sandbox><a href=origin.html#attr-iframe-sandbox-allow-popups-to-escape-sandbox>allow-popups-to-escape-sandbox</a></code>,
+  <code id=the-iframe-element:attr-iframe-sandbox-allow-presentation><a href=origin.html#attr-iframe-sandbox-allow-presentation>allow-presentation</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-same-origin><a href=origin.html#attr-iframe-sandbox-allow-same-origin>allow-same-origin</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-scripts><a href=origin.html#attr-iframe-sandbox-allow-scripts>allow-scripts</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-top-navigation><a href=origin.html#attr-iframe-sandbox-allow-top-navigation>allow-top-navigation</a></code>, and <code id=the-iframe-element:attr-iframe-sandbox-allow-top-navigation-by-user-activation><a href=origin.html#attr-iframe-sandbox-allow-top-navigation-by-user-activation>allow-top-navigation-by-user-activation</a></code>.<div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> iframe-sandbox<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>4+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>4.2+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>28+</span></span><span class="ie yes"><span>IE</span> <span>10+</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>5+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>15+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>2.2+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=iframe-sandbox">caniuse.com</a></div>
+
+  <p>When the attribute is set, the content is treated as being from a unique <a id=the-iframe-element:concept-origin href=origin.html#concept-origin>origin</a>,
+  forms, scripts, and various potentially annoying APIs are disabled, links are prevented from
+  targeting other <a href=browsers.html#browsing-context id=the-iframe-element:browsing-context>browsing contexts</a>, and plugins are secured.
+  The <code id=the-iframe-element:attr-iframe-sandbox-allow-same-origin-2><a href=origin.html#attr-iframe-sandbox-allow-same-origin>allow-same-origin</a></code> keyword causes
+  the content to be treated as being from its real origin instead of forcing it into a unique
+  origin; the <code id=the-iframe-element:attr-iframe-sandbox-allow-top-navigation-2><a href=origin.html#attr-iframe-sandbox-allow-top-navigation>allow-top-navigation</a></code>
+  keyword allows the content to <span>navigate</span> its <a id=the-iframe-element:top-level-browsing-context href=browsers.html#top-level-browsing-context>top-level browsing context</a>;
+  the <code id=the-iframe-element:attr-iframe-sandbox-allow-top-navigation-by-user-activation-2><a href=origin.html#attr-iframe-sandbox-allow-top-navigation-by-user-activation>allow-top-navigation-by-user-activation</a></code>
+  keyword behaves similarly but only allows such <span>navigation</span> when
+  <span>triggered by user activation</span>; and the <code id=the-iframe-element:attr-iframe-sandbox-allow-forms-2><a href=origin.html#attr-iframe-sandbox-allow-forms>allow-forms</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-modals-2><a href=origin.html#attr-iframe-sandbox-allow-modals>allow-modals</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-orientation-lock-2><a href=origin.html#attr-iframe-sandbox-allow-orientation-lock>allow-orientation-lock</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-pointer-lock-2><a href=origin.html#attr-iframe-sandbox-allow-pointer-lock>allow-pointer-lock</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-popups-2><a href=origin.html#attr-iframe-sandbox-allow-popups>allow-popups</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-presentation-2><a href=origin.html#attr-iframe-sandbox-allow-presentation>allow-presentation</a></code>, <code id=the-iframe-element:attr-iframe-sandbox-allow-scripts-2><a href=origin.html#attr-iframe-sandbox-allow-scripts>allow-scripts</a></code>, and <code id=the-iframe-element:attr-iframe-sandbox-allow-popups-to-escape-sandbox-2><a href=origin.html#attr-iframe-sandbox-allow-popups-to-escape-sandbox>allow-popups-to-escape-sandbox</a></code>
+  keywords re-enable forms, modal dialogs, screen orientation lock, the pointer lock API, popups,
+  the presentation API, scripts, and the creation of unsandboxed <a href=browsers.html#auxiliary-browsing-context id=the-iframe-element:auxiliary-browsing-context>auxiliary browsing contexts</a> respectively. <a href=references.html#refsPOINTERLOCK>[POINTERLOCK]</a>
+  <a href=references.html#refsSCREENORIENTATION>[SCREENORIENTATION]</a> <a href=references.html#refsPRESENTATION>[PRESENTATION]</a></p>
+
+  <p>The <code id=the-iframe-element:attr-iframe-sandbox-allow-top-navigation-3><a href=origin.html#attr-iframe-sandbox-allow-top-navigation>allow-top-navigation</a></code> and <code id=the-iframe-element:attr-iframe-sandbox-allow-top-navigation-by-user-activation-3><a href=origin.html#attr-iframe-sandbox-allow-top-navigation-by-user-activation>allow-top-navigation-by-user-activation</a></code>
+  keywords must not both be specified, as doing so is redundant; only <code id=the-iframe-element:attr-iframe-sandbox-allow-top-navigation-4><a href=origin.html#attr-iframe-sandbox-allow-top-navigation>allow-top-navigation</a></code> will have an effect
+  in such non-conformant markup.</p>
+
+  <p class=warning>Setting both the <code id=the-iframe-element:attr-iframe-sandbox-allow-scripts-3><a href=origin.html#attr-iframe-sandbox-allow-scripts>allow-scripts</a></code> and <code id=the-iframe-element:attr-iframe-sandbox-allow-same-origin-3><a href=origin.html#attr-iframe-sandbox-allow-same-origin>allow-same-origin</a></code> keywords together when the
+  embedded page has the <span>same origin</span> as the page containing the <code id=the-iframe-element:the-iframe-element-10><a href=#the-iframe-element>iframe</a></code>
+  allows the embedded page to simply remove the <code id=the-iframe-element:attr-iframe-sandbox-4><a href=#attr-iframe-sandbox>sandbox</a></code>
+  attribute and then reload itself, effectively breaking out of the sandbox altogether.</p>
+
+  <p class=warning>These flags only take effect when the <a id=the-iframe-element:nested-browsing-context-6 href=browsers.html#nested-browsing-context>nested browsing context</a> of
+  the <code id=the-iframe-element:the-iframe-element-11><a href=#the-iframe-element>iframe</a></code> is <span>navigated</span>. Removing them, or removing the
+  entire <code id=the-iframe-element:attr-iframe-sandbox-5><a href=#attr-iframe-sandbox>sandbox</a></code> attribute, has no effect on an
+  already-loaded page.</p>
+
+  <p class=warning>Potentially hostile files should not be served from the same server as the file
+  containing the <code id=the-iframe-element:the-iframe-element-12><a href=#the-iframe-element>iframe</a></code> element. Sandboxing hostile content is of minimal help if an
+  attacker can convince the user to just visit the hostile content directly, rather than in the
+  <code id=the-iframe-element:the-iframe-element-13><a href=#the-iframe-element>iframe</a></code>. To limit the damage that can be caused by hostile HTML content, it should be
+  served from a separate dedicated domain. Using a different domain ensures that scripts in the
+  files are unable to attack the site, even if the user is tricked into visiting those pages
+  directly, without the protection of the <code id=the-iframe-element:attr-iframe-sandbox-6><a href=#attr-iframe-sandbox>sandbox</a></code>
+  attribute.</p>
+
+  
+
+  <div class=example>
+
+   <p>In this example, some completely-unknown, potentially hostile, user-provided HTML content is
+   embedded in a page. Because it is served from a separate domain, it is affected by all the normal
+   cross-site restrictions. In addition, the embedded page has scripting disabled, plugins disabled,
+   forms disabled, and it cannot navigate any frames or windows other than itself (or any frames or
+   windows it itself embeds).</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->We&apos;re not scared of you! Here is your content, unedited:<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>iframe</c-> <c- e>sandbox</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;https://usercontent.example.net/getusercontent.cgi?id=12193&quot;</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c-></code></pre>
+
+   <p class=warning>It is important to use a separate domain so that if the attacker convinces the
+   user to visit that page directly, the page doesn't run in the context of the site's origin, which
+   would make the user vulnerable to any attack found in the page.</p>
+
+  </div>
+
+  <div class=example>
+
+   <p>In this example, a gadget from another site is embedded. The gadget has scripting and forms
+   enabled, and the origin sandbox restrictions are lifted, allowing the gadget to communicate with
+   its originating server. The sandbox is still useful, however, as it disables plugins and popups,
+   thus reducing the risk of the user being exposed to malware and other annoyances.</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>iframe</c-> <c- e>sandbox</c-><c- o>=</c-><c- s>&quot;allow-same-origin allow-forms allow-scripts&quot;</c->
+        <c- e>src</c-><c- o>=</c-><c- s>&quot;https://maps.example.com/embedded.html&quot;</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>Suppose a file A contained the following fragment:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>iframe</c-> <c- e>sandbox</c-><c- o>=</c-><c- s>&quot;allow-same-origin allow-forms&quot;</c-> <c- e>src</c-><c- o>=</c-><c- s>B</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c-></code></pre>
+
+   <p>Suppose that file B contained an iframe also:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>iframe</c-> <c- e>sandbox</c-><c- o>=</c-><c- s>&quot;allow-scripts&quot;</c-> <c- e>src</c-><c- o>=</c-><c- s>C</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c-></code></pre>
+
+   <p>Further, suppose that file C contained a link:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>D</c-><c- p>&gt;</c->Link<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-></code></pre>
+
+   <p>For this example, suppose all the files were served as <code>text/html</code>.</p>
+
+   <p>Page C in this scenario has all the sandboxing flags set. Scripts are disabled, because the
+   <code id=the-iframe-element:the-iframe-element-14><a href=#the-iframe-element>iframe</a></code> in A has scripts disabled, and this overrides the <code id=the-iframe-element:attr-iframe-sandbox-allow-scripts-4><a href=origin.html#attr-iframe-sandbox-allow-scripts>allow-scripts</a></code> keyword set on the
+   <code id=the-iframe-element:the-iframe-element-15><a href=#the-iframe-element>iframe</a></code> in B. Forms are also disabled, because the inner <code id=the-iframe-element:the-iframe-element-16><a href=#the-iframe-element>iframe</a></code> (in B)
+   does not have the <code id=the-iframe-element:attr-iframe-sandbox-allow-forms-3><a href=origin.html#attr-iframe-sandbox-allow-forms>allow-forms</a></code> keyword
+   set.</p>
+
+   <p>Suppose now that a script in A removes all the <code id=the-iframe-element:attr-iframe-sandbox-7><a href=#attr-iframe-sandbox>sandbox</a></code> attributes in A  and B.
+   This would change nothing immediately. If the user clicked the link in C, loading page D into the
+   <code id=the-iframe-element:the-iframe-element-17><a href=#the-iframe-element>iframe</a></code> in B, page D would now act as if the <code id=the-iframe-element:the-iframe-element-18><a href=#the-iframe-element>iframe</a></code> in B had the <code id=the-iframe-element:attr-iframe-sandbox-allow-same-origin-4><a href=origin.html#attr-iframe-sandbox-allow-same-origin>allow-same-origin</a></code> and <code id=the-iframe-element:attr-iframe-sandbox-allow-forms-4><a href=origin.html#attr-iframe-sandbox-allow-forms>allow-forms</a></code> keywords set, because that was the
+   state of the <a id=the-iframe-element:nested-browsing-context-7 href=browsers.html#nested-browsing-context>nested browsing context</a> in the <code id=the-iframe-element:the-iframe-element-19><a href=#the-iframe-element>iframe</a></code> in A when page B was
+   loaded.</p>
+
+   <p>Generally speaking, dynamically removing or changing the <code id=the-iframe-element:attr-iframe-sandbox-8><a href=#attr-iframe-sandbox>sandbox</a></code> attribute is ill-advised, because it can make it quite
+   hard to reason about what will be allowed and what will not.</p>
+
+  </div>
+
+
+  <hr> 
+
+  <p>The <dfn id=attr-iframe-allow><code>allow</code></dfn> attribute, when specified,
+  determines the <a href=https://wicg.github.io/feature-policy/#container-policy id=the-iframe-element:concept-container-policy data-x-internal=concept-container-policy>container policy</a> that will be used
+  when the <a href=dom.html#concept-document-feature-policy id=the-iframe-element:concept-document-feature-policy>feature policy</a> for a
+  <span>Document</span> in the <code id=the-iframe-element:the-iframe-element-20><a href=#the-iframe-element>iframe</a></code>'s <a id=the-iframe-element:nested-browsing-context-8 href=browsers.html#nested-browsing-context>nested browsing context</a> is
+  initialized. Its value must be a <a href=https://wicg.github.io/feature-policy/#serialized-feature-policy id=the-iframe-element:concept-serialized-feature-policy data-x-internal=concept-serialized-feature-policy>serialized
+  feature policy</a>. <a href=references.html#refsFEATUREPOLICY>[FEATUREPOLICY]</a>
+
+  <div class=example>
+   <p>In this example, an <code id=the-iframe-element:the-iframe-element-21><a href=#the-iframe-element>iframe</a></code> is used to embed a map from an online navigation
+   service. The <code id=the-iframe-element:attr-iframe-allow-2><a href=#attr-iframe-allow>allow</a></code> attribute is used to enable the
+   Geolocation API within the nested context.</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>iframe</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;https://maps.example.com/&quot;</c-> <c- e>allow</c-><c- o>=</c-><c- s>&quot;geolocation&quot;</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c-></code></pre>
+  </div>
+
+  <p>The <dfn id=attr-iframe-allowfullscreen><code>allowfullscreen</code></dfn> attribute is a
+  <a id=the-iframe-element:boolean-attribute href=common-microsyntaxes.html#boolean-attribute>boolean attribute</a>. When specified, it indicates that <code>Document</code> objects in
+  the <code id=the-iframe-element:the-iframe-element-22><a href=#the-iframe-element>iframe</a></code> element's <a id=the-iframe-element:browsing-context-2 href=browsers.html#browsing-context>browsing context</a> will be initialized with a
+  <a href=dom.html#concept-document-feature-policy id=the-iframe-element:concept-document-feature-policy-2>feature policy</a> which allows the "<code>fullscreen</code>" feature to be used from any <a id=the-iframe-element:concept-origin-2 href=origin.html#concept-origin>origin</a>. This is enforced by
+  the <a href=https://wicg.github.io/feature-policy/#process-feature-policy-attributes id=the-iframe-element:process-feature-policy-attributes data-x-internal=process-feature-policy-attributes>Process feature policy attributes</a>
+  algorithm. <a href=references.html#refsFEATUREPOLICY>[FEATUREPOLICY]</a>
+
+  <div class=example>
+
+   <p>Here, an <code id=the-iframe-element:the-iframe-element-23><a href=#the-iframe-element>iframe</a></code> is used to embed a player from a video site. The <code id=the-iframe-element:attr-iframe-allowfullscreen-2><a href=#attr-iframe-allowfullscreen>allowfullscreen</a></code> attribute is needed to enable the
+   player to show its video fullscreen.</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>article</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>header</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>img</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;/usericons/1627591962735&quot;</c-><c- p>&gt;</c-> <c- p>&lt;</c-><c- f>b</c-><c- p>&gt;</c->Fred Flintstone<c- p>&lt;/</c-><c- f>b</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/posts/3095182851&quot;</c-> <c- e>rel</c-><c- o>=</c-><c- s>bookmark</c-><c- p>&gt;</c->12:44<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> — <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;#acl-3095182851&quot;</c-><c- p>&gt;</c->Private Post<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>header</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->Check out my new ride!<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+ <strong><c- p>&lt;</c-><c- f>iframe</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;https://video.example.com/embed?id=92469812&quot;</c-> <c- e>allowfullscreen</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c-></strong>
+<c- p>&lt;/</c-><c- f>article</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <p>The <dfn id=attr-iframe-allowpaymentrequest><code>allowpaymentrequest</code></dfn>
+  attribute is a <a id=the-iframe-element:boolean-attribute-2 href=common-microsyntaxes.html#boolean-attribute>boolean attribute</a>. When specified, it indicates that
+  <code>Document</code> objects in the <code id=the-iframe-element:the-iframe-element-24><a href=#the-iframe-element>iframe</a></code> element's <a id=the-iframe-element:browsing-context-3 href=browsers.html#browsing-context>browsing context</a>
+  will be initialized with a <a href=dom.html#concept-document-feature-policy id=the-iframe-element:concept-document-feature-policy-3>feature policy</a>
+  which allows the "<code>payment</code>" feature to be used to make payment requests from
+  any <a id=the-iframe-element:concept-origin-3 href=origin.html#concept-origin>origin</a>. This is enforced by the <a href=https://wicg.github.io/feature-policy/#process-feature-policy-attributes id=the-iframe-element:process-feature-policy-attributes-2 data-x-internal=process-feature-policy-attributes>Process feature policy attributes</a> algorithm.
+  <a href=references.html#refsFEATUREPOLICY>[FEATUREPOLICY]</a>
+
+  <p>The <dfn id=attr-iframe-allowusermedia><code>allowusermedia</code></dfn> attribute is a
+  <a id=the-iframe-element:boolean-attribute-3 href=common-microsyntaxes.html#boolean-attribute>boolean attribute</a>. When specified, it indicates that <code>Document</code> objects in
+  the <code id=the-iframe-element:the-iframe-element-25><a href=#the-iframe-element>iframe</a></code> element's <a id=the-iframe-element:browsing-context-4 href=browsers.html#browsing-context>browsing context</a> will be initialized with a <a href=dom.html#concept-document-feature-policy id=the-iframe-element:concept-document-feature-policy-4>feature policy</a> which allows the "<code>camera</code>" and "<code>microphone</code>" features to be used to call
+  <code id=the-iframe-element:dom-mediadevices-getusermedia-2><a data-x-internal=dom-mediadevices-getusermedia href=https://w3c.github.io/mediacapture-main/#dom-mediadevices-getusermedia>getUserMedia()</a></code> from any <a id=the-iframe-element:concept-origin-4 href=origin.html#concept-origin>origin</a>.
+  This is enforced by the <a href=https://wicg.github.io/feature-policy/#process-feature-policy-attributes id=the-iframe-element:process-feature-policy-attributes-3 data-x-internal=process-feature-policy-attributes>Process feature policy
+  attributes</a> algorithm. <a href=references.html#refsFEATUREPOLICY>[FEATUREPOLICY]</a>
+
+  <p class=note>None of these attributes, <code id=the-iframe-element:attr-iframe-allow-3><a href=#attr-iframe-allow>allow</a></code>,
+  <code id=the-iframe-element:attr-iframe-allowfullscreen-3><a href=#attr-iframe-allowfullscreen>allowfullscreen</a></code>, <code id=the-iframe-element:attr-iframe-allowpaymentrequest-2><a href=#attr-iframe-allowpaymentrequest>allowpaymentrequest</a></code> or <code id=the-iframe-element:attr-iframe-allowusermedia-2><a href=#attr-iframe-allowusermedia>allowusermedia</a></code>, can grant access to a feature in a
+  <a id=the-iframe-element:nested-browsing-context-9 href=browsers.html#nested-browsing-context>nested browsing context</a> if the <code id=the-iframe-element:the-iframe-element-26><a href=#the-iframe-element>iframe</a></code> element's <a id=the-iframe-element:node-document href=https://dom.spec.whatwg.org/#concept-node-document data-x-internal=node-document>node
+  document</a> is not already allowed to use that feature.</p>
+
+  
+
+  <p class=warning>Because they only influence the <a href=dom.html#concept-document-feature-policy id=the-iframe-element:concept-document-feature-policy-5>feature policy</a> of the <a id=the-iframe-element:nested-browsing-context-10 href=browsers.html#nested-browsing-context>nested browsing
+  context</a>'s <a id=the-iframe-element:active-document href=browsers.html#active-document>active document</a>, the <code id=the-iframe-element:attr-iframe-allow-4><a href=#attr-iframe-allow>allow</a></code>,
+  <code id=the-iframe-element:attr-iframe-allowfullscreen-4><a href=#attr-iframe-allowfullscreen>allowfullscreen</a></code>, <code id=the-iframe-element:attr-iframe-allowpaymentrequest-3><a href=#attr-iframe-allowpaymentrequest>allowpaymentrequest</a></code> and <code id=the-iframe-element:attr-iframe-allowusermedia-3><a href=#attr-iframe-allowusermedia>allowusermedia</a></code> attributes only take effect when the
+  <a id=the-iframe-element:nested-browsing-context-11 href=browsers.html#nested-browsing-context>nested browsing context</a> of the <code id=the-iframe-element:the-iframe-element-27><a href=#the-iframe-element>iframe</a></code> is <span>navigated</span>. Adding or removing them has no effect on an already-loaded
+  document.</p>
+
+
+  <hr> 
+
+  <p>The <code id=the-iframe-element:the-iframe-element-28><a href=#the-iframe-element>iframe</a></code> element supports <a id=the-iframe-element:dimension-attributes href=embedded-content-other.html#dimension-attributes>dimension attributes</a> for cases where the
+  embedded content has specific dimensions (e.g. ad units have well-defined dimensions).</p>
+
+  <p>An <code id=the-iframe-element:the-iframe-element-29><a href=#the-iframe-element>iframe</a></code> element never has <a id=the-iframe-element:fallback-content href=dom.html#fallback-content>fallback content</a>, as it will always
+  <span>create</span> a nested <a id=the-iframe-element:browsing-context-5 href=browsers.html#browsing-context>browsing context</a>, regardless of whether the specified initial
+  contents are successfully used.</p>
+
+  <hr> 
+
+  <p>The <dfn id=attr-iframe-referrerpolicy><code>referrerpolicy</code></dfn> attribute is a
+  <a id=the-iframe-element:referrer-policy-attribute href=urls-and-fetching.html#referrer-policy-attribute>referrer policy attribute</a>. Its purpose is to set the <a id=the-iframe-element:referrer-policy-2 href=https://w3c.github.io/webappsec-referrer-policy/#referrer-policy data-x-internal=referrer-policy>referrer policy</a>
+  used when <span>processing the <code id=the-iframe-element:the-iframe-element-30><a href=#the-iframe-element>iframe</a></code>
+  attributes</span>. <a href=references.html#refsREFERRERPOLICY>[REFERRERPOLICY]</a></p>
+
+  <hr> 
+
+  <p>Descendants of <code id=the-iframe-element:the-iframe-element-31><a href=#the-iframe-element>iframe</a></code> elements represent nothing. (In legacy user agents that do
+  not support <code id=the-iframe-element:the-iframe-element-32><a href=#the-iframe-element>iframe</a></code> elements, the contents would be parsed as markup that could act as
+  fallback content.)</p>
+
+  <p class=note>The <span>HTML parser</span> treats markup inside <code id=the-iframe-element:the-iframe-element-33><a href=#the-iframe-element>iframe</a></code> elements as
+  text.</p>
+
+
+  
+
+  <div class=example>
+
+   <p>Here is an example of a page using an <code id=the-iframe-element:the-iframe-element-34><a href=#the-iframe-element>iframe</a></code> to include advertising from an
+   advertising broker:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>iframe</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;https://ads.example.com/?customerid=923513721&amp;amp;format=banner&quot;</c->
+        <c- e>width</c-><c- o>=</c-><c- s>&quot;468&quot;</c-> <c- e>height</c-><c- o>=</c-><c- s>&quot;60&quot;</c-><c- p>&gt;&lt;/</c-><c- f>iframe</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+
+
+
+  <h4 id=the-embed-element data-dfn-type=element data-lt=embed><span class=secno>4.8.6</span> The <dfn><code>embed</code></dfn> element<a href=#the-embed-element class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed title="The HTML embed element embeds external content at the specified point in the document. This content is provided by an external application or other source of interactive content such as a browser plug-in.">Element/embed</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android unknown"><span>Chrome Android</span><span>?</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>1+</span></span><span class="firefox_android unknown"><span>Firefox Android</span><span>?</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android unknown"><span>WebView Android</span><span>?</span></span></details></div></aside>
+
+
+
+  <dl class=element><dt><a href=dom.html#concept-element-categories id=the-embed-element:concept-element-categories>Categories</a>:<dd><a id=the-embed-element:flow-content-2 href=dom.html#flow-content-2>Flow content</a>.<dd><a id=the-embed-element:phrasing-content-2 href=dom.html#phrasing-content-2>Phrasing content</a>.<dd><a id=the-embed-element:embedded-content-category href=dom.html#embedded-content-category>Embedded content</a>.<dd><a id=the-embed-element:interactive-content-2 href=dom.html#interactive-content-2>Interactive content</a>.<dd><a id=the-embed-element:palpable-content-2 href=dom.html#palpable-content-2>Palpable content</a>.<dt><a href=dom.html#concept-element-contexts id=the-embed-element:concept-element-contexts>Contexts in which this element can be used</a>:<dd>Where <a id=the-embed-element:embedded-content-category-2 href=dom.html#embedded-content-category>embedded content</a> is expected.<dt><a href=dom.html#concept-element-content-model id=the-embed-element:concept-element-content-model>Content model</a>:<dd><a href=dom.html#concept-content-nothing id=the-embed-element:concept-content-nothing>Nothing</a>.<dt><a href=dom.html#concept-element-tag-omission id=the-embed-element:concept-element-tag-omission>Tag omission in text/html</a>:<dd>No <a href=syntax.html#syntax-end-tag id=the-embed-element:syntax-end-tag>end tag</a>.<dt><a href=dom.html#concept-element-attributes id=the-embed-element:concept-element-attributes>Content attributes</a>:<dd><a id=the-embed-element:global-attributes href=dom.html#global-attributes>Global attributes</a><dd><code id=the-embed-element:attr-embed-src><a href=#attr-embed-src>src</a></code> — Address of the resource<dd><code id=the-embed-element:attr-embed-type><a href=#attr-embed-type>type</a></code> — Type of embedded resource<dd><code id=the-embed-element:attr-dim-width><a href=embedded-content-other.html#attr-dim-width>width</a></code> — Horizontal dimension<dd><code id=the-embed-element:attr-dim-height><a href=embedded-content-other.html#attr-dim-height>height</a></code> — Vertical dimension<dd>Any other attribute that has no namespace (see prose).<dt><a href=dom.html#concept-element-dom id=the-embed-element:concept-element-dom>DOM interface</a>:<dd>Uses <code>HTMLEmbedElement</code>.</dl>
+
+  <p>The <code id=the-embed-element:the-embed-element><a href=#the-embed-element>embed</a></code> element provides an integration point for an external (typically
+  non-HTML) application or interactive content.</p>
+
+  <p>The <dfn id=attr-embed-src><code>src</code></dfn> attribute gives the <a id=the-embed-element:url href=https://url.spec.whatwg.org/#concept-url data-x-internal=url>URL</a> of
+  the resource being embedded. The attribute, if present, must contain a <a id=the-embed-element:valid-non-empty-url-potentially-surrounded-by-spaces href=urls-and-fetching.html#valid-non-empty-url-potentially-surrounded-by-spaces>valid non-empty URL
+  potentially surrounded by spaces</a>.</p>
+
+  <p>If the <code id=the-embed-element:names:-the-itemprop-attribute><a href=microdata.html#names:-the-itemprop-attribute>itemprop</a></code> attribute is specified on an
+  <code id=the-embed-element:the-embed-element-2><a href=#the-embed-element>embed</a></code> element, then the <code id=the-embed-element:attr-embed-src-2><a href=#attr-embed-src>src</a></code> attribute must also
+  be specified.</p>
+
+  <p>The <dfn id=attr-embed-type><code>type</code></dfn> attribute, if present, gives the
+  <a id=the-embed-element:mime-type href=https://mimesniff.spec.whatwg.org/#mime-type data-x-internal=mime-type>MIME type</a> by which the plugin to instantiate is selected. The value must be a
+  <a id=the-embed-element:valid-mime-type-string href=https://mimesniff.spec.whatwg.org/#valid-mime-type data-x-internal=valid-mime-type-string>valid MIME type string</a>. If both the <code id=the-embed-element:attr-embed-type-2><a href=#attr-embed-type>type</a></code>
+  attribute and the <code id=the-embed-element:attr-embed-src-3><a href=#attr-embed-src>src</a></code> attribute are present, then the <code id=the-embed-element:attr-embed-type-3><a href=#attr-embed-type>type</a></code> attribute must specify the same type as the <span>explicit Content-Type metadata</span> of the resource given by the <code id=the-embed-element:attr-embed-src-4><a href=#attr-embed-src>src</a></code> attribute.</p>
+
+  
+
+  <p>Any namespace-less attribute other than <code id=the-embed-element:attr-embed-name><a href=obsolete.html#attr-embed-name>name</a></code>, <code id=the-embed-element:attr-embed-align><a href=obsolete.html#attr-embed-align>align</a></code>, <code id=the-embed-element:attr-embed-hspace><a href=obsolete.html#attr-embed-hspace>hspace</a></code>, and <code id=the-embed-element:attr-embed-vspace><a href=obsolete.html#attr-embed-vspace>vspace</a></code>  may be
+  specified on the <code id=the-embed-element:the-embed-element-3><a href=#the-embed-element>embed</a></code> element, so long as its name is <a id=the-embed-element:xml-compatible href=infrastructure.html#xml-compatible>XML-compatible</a>
+  and contains no <a href=https://infra.spec.whatwg.org/#ascii-upper-alpha id=the-embed-element:uppercase-ascii-letters data-x-internal=uppercase-ascii-letters>ASCII upper alphas</a>. These attributes are
+  then passed as parameters to the <a id=the-embed-element:plugin href=infrastructure.html#plugin>plugin</a>.</p>
+
+  <p class=note>All attributes in <a id=the-embed-element:html-documents href=https://dom.spec.whatwg.org/#html-document data-x-internal=html-documents>HTML documents</a> get lowercased automatically, so the
+  restriction on uppercase letters doesn't affect such documents.</p>
+
+  <p class=note>The four exceptions are to exclude legacy attributes that have side-effects beyond
+  just sending parameters to the <a id=the-embed-element:plugin-2 href=infrastructure.html#plugin>plugin</a>.</p>
+
+  
+
+  <p>The <code id=the-embed-element:the-embed-element-4><a href=#the-embed-element>embed</a></code> element supports <a id=the-embed-element:dimension-attributes href=embedded-content-other.html#dimension-attributes>dimension attributes</a>.</p>
+
+  
+
+  <div class=example>
+
+   <p>Here's a way to embed a resource that requires a proprietary plugin, like Flash:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>embed</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;catgame.swf&quot;</c-><c- p>&gt;</c-></code></pre>
+
+   <p>If the user does not have the plugin (for example if the plugin vendor doesn't support the
+   user's platform), then the user will be unable to use the resource.</p>
+
+   <p>To pass the plugin a parameter "quality" with the value "high", an attribute can be
+   specified:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>embed</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;catgame.swf&quot;</c-> <c- e>quality</c-><c- o>=</c-><c- s>&quot;high&quot;</c-><c- p>&gt;</c-></code></pre>
+
+   <p>This would be equivalent to the following, when using an <code id=the-embed-element:the-object-element><a href=#the-object-element>object</a></code> element
+   instead:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>object</c-> <c- e>data</c-><c- o>=</c-><c- s>&quot;catgame.swf&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>param</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;quality&quot;</c-> <c- e>value</c-><c- o>=</c-><c- s>&quot;high&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>object</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+
+
+
+  <h4 id=the-object-element data-dfn-type=element data-lt=object><span class=secno>4.8.7</span> The <dfn><code>object</code></dfn> element<a href=#the-object-element class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Element/object title="The HTML object element represents an external resource, which can be treated as an image, a nested browsing context, or a resource to be handled by a plugin.">Element/object</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>1+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside>
+
+  <dl class=element><dt><a href=dom.html#concept-element-categories id=the-object-element:concept-element-categories>Categories</a>:<dd><a id=the-object-element:flow-content-2 href=dom.html#flow-content-2>Flow content</a>.<dd><a id=the-object-element:phrasing-content-2 href=dom.html#phrasing-content-2>Phrasing content</a>.<dd><a id=the-object-element:embedded-content-category href=dom.html#embedded-content-category>Embedded content</a>.<dd>If the element has a <code id=the-object-element:attr-hyperlink-usemap><a href=image-maps.html#attr-hyperlink-usemap>usemap</a></code> attribute: <a id=the-object-element:interactive-content-2 href=dom.html#interactive-content-2>Interactive content</a>.<dd><a href=forms.html#category-listed id=the-object-element:category-listed>Listed</a> and <a href=forms.html#category-submit id=the-object-element:category-submit>submittable</a> <a id=the-object-element:form-associated-element href=forms.html#form-associated-element>form-associated element</a>.<dd><a id=the-object-element:palpable-content-2 href=dom.html#palpable-content-2>Palpable content</a>.<dt><a href=dom.html#concept-element-contexts id=the-object-element:concept-element-contexts>Contexts in which this element can be used</a>:<dd>Where <a id=the-object-element:embedded-content-category-2 href=dom.html#embedded-content-category>embedded content</a> is expected.<dt><a href=dom.html#concept-element-content-model id=the-object-element:concept-element-content-model>Content model</a>:<dd>Zero or more <code id=the-object-element:the-param-element><a href=#the-param-element>param</a></code> elements, then, <a id=the-object-element:transparent href=dom.html#transparent>transparent</a>.<dt><a href=dom.html#concept-element-tag-omission id=the-object-element:concept-element-tag-omission>Tag omission in text/html</a>:<dd>Neither tag is omissible.<dt><a href=dom.html#concept-element-attributes id=the-object-element:concept-element-attributes>Content attributes</a>:<dd><a id=the-object-element:global-attributes href=dom.html#global-attributes>Global attributes</a><dd><code id=the-object-element:attr-object-data><a href=#attr-object-data>data</a></code> — Address of the resource<dd><code id=the-object-element:attr-object-type><a href=#attr-object-type>type</a></code> — Type of embedded resource<dd><code id=the-object-element:attr-object-typemustmatch><a href=#attr-object-typemustmatch>typemustmatch</a></code> — Whether the <code id=the-object-element:attr-object-type-2><a href=#attr-object-type>type</a></code> attribute and the <span>Content-Type</span> value need to match for the resource to be used<dd><code id=the-object-element:attr-object-name><a href=#attr-object-name>name</a></code> — Name of <a id=the-object-element:nested-browsing-context href=browsers.html#nested-browsing-context>nested browsing context</a><dd><code id=the-object-element:attr-hyperlink-usemap-2><a href=image-maps.html#attr-hyperlink-usemap>usemap</a></code> — Name of <a id=the-object-element:image-map href=image-maps.html#image-map>image map</a> to use<dd><code id=the-object-element:attr-fae-form><a href=form-control-infrastructure.html#attr-fae-form>form</a></code> — Associates the element with a <code id=the-object-element:the-form-element><a href=forms.html#the-form-element>form</a></code> element<dd><code id=the-object-element:attr-dim-width><a href=embedded-content-other.html#attr-dim-width>width</a></code> — Horizontal dimension<dd><code id=the-object-element:attr-dim-height><a href=embedded-content-other.html#attr-dim-height>height</a></code> — Vertical dimension<dt><a href=dom.html#concept-element-dom id=the-object-element:concept-element-dom>DOM interface</a>:<dd>Uses <code>HTMLObjectElement</code>.</dl>
+
+  <p>The <code id=the-object-element:the-object-element><a href=#the-object-element>object</a></code> element can represent an external resource, which, depending on the
+  type of the resource, will either be treated as an image, as a <a id=the-object-element:nested-browsing-context-2 href=browsers.html#nested-browsing-context>nested browsing
+  context</a>, or as an external resource to be processed by a <a id=the-object-element:plugin href=infrastructure.html#plugin>plugin</a>.</p>
+
+  <p>The <dfn id=attr-object-data><code>data</code></dfn> attribute, if present, specifies the
+  <a id=the-object-element:url href=https://url.spec.whatwg.org/#concept-url data-x-internal=url>URL</a> of the resource. If present, the attribute must be a <a id=the-object-element:valid-non-empty-url-potentially-surrounded-by-spaces href=urls-and-fetching.html#valid-non-empty-url-potentially-surrounded-by-spaces>valid non-empty URL
+  potentially surrounded by spaces</a>.</p>
+
+  <p class=warning>Authors who reference resources from other <a href=origin.html#concept-origin id=the-object-element:concept-origin>origins</a>
+  that they do not trust are urged to use the <code id=the-object-element:attr-object-typemustmatch-2><a href=#attr-object-typemustmatch>typemustmatch</a></code> attribute defined below. Without that
+  attribute, it is possible in certain cases for an attacker on the remote host to use the plugin
+  mechanism to run arbitrary scripts, even if the author has used features such as the Flash
+  "allowScriptAccess" parameter.</p> 
+
+  <p>The <dfn id=attr-object-type><code>type</code></dfn> attribute, if present, specifies the
+  type of the resource. If present, the attribute must be a <a id=the-object-element:valid-mime-type-string href=https://mimesniff.spec.whatwg.org/#valid-mime-type data-x-internal=valid-mime-type-string>valid MIME type string</a>.</p>
+
+  <p>At least one of either the <code id=the-object-element:attr-object-data-2><a href=#attr-object-data>data</a></code> attribute or the <code id=the-object-element:attr-object-type-3><a href=#attr-object-type>type</a></code> attribute must be present.</p>
+
+  <p>If the <code id=the-object-element:names:-the-itemprop-attribute><a href=microdata.html#names:-the-itemprop-attribute>itemprop</a></code> attribute is specified on an <code id=the-object-element:the-object-element-2><a href=#the-object-element>object</a></code>
+  element, then the <code id=the-object-element:attr-object-data-3><a href=#attr-object-data>data</a></code> attribute must also be specified.</p>
+
+  <p>The <dfn id=attr-object-typemustmatch><code>typemustmatch</code></dfn> attribute is a
+  <a id=the-object-element:boolean-attribute href=common-microsyntaxes.html#boolean-attribute>boolean attribute</a> whose presence indicates that the resource specified by the <code id=the-object-element:attr-object-data-4><a href=#attr-object-data>data</a></code> attribute is only to be used if the value of the <code id=the-object-element:attr-object-type-4><a href=#attr-object-type>type</a></code> attribute and the <span>Content-Type</span> of the
+  aforementioned resource match.</p>
+
+  <p>The <code id=the-object-element:attr-object-typemustmatch-3><a href=#attr-object-typemustmatch>typemustmatch</a></code> attribute must not be
+  specified unless both the <code id=the-object-element:attr-object-data-5><a href=#attr-object-data>data</a></code> attribute and the <code id=the-object-element:attr-object-type-5><a href=#attr-object-type>type</a></code> attribute are present.</p>
+
+  <p>The <dfn id=attr-object-name><code>name</code></dfn> attribute, if present, must be a
+  <a id=the-object-element:valid-browsing-context-name href=browsers.html#valid-browsing-context-name>valid browsing context name</a>. The given value is used to name the <a id=the-object-element:nested-browsing-context-3 href=browsers.html#nested-browsing-context>nested
+  browsing context</a>, if applicable.</p>
+
+  
+
+  <p>The <code id=the-object-element:attr-hyperlink-usemap-3><a href=image-maps.html#attr-hyperlink-usemap>usemap</a></code> attribute, if present while the
+  <code id=the-object-element:the-object-element-3><a href=#the-object-element>object</a></code> element represents an image, can indicate that the object has an associated
+  <a id=the-object-element:image-map-2 href=image-maps.html#image-map>image map</a>. </p>
+
+  <p>The <code id=the-object-element:attr-fae-form-2><a href=form-control-infrastructure.html#attr-fae-form>form</a></code> attribute is used to explicitly associate the
+  <code id=the-object-element:the-object-element-4><a href=#the-object-element>object</a></code> element with its <a id=the-object-element:form-owner href=form-control-infrastructure.html#form-owner>form owner</a>.</p>
+
+  
+
+  <p>The <code id=the-object-element:the-object-element-5><a href=#the-object-element>object</a></code> element supports <a id=the-object-element:dimension-attributes href=embedded-content-other.html#dimension-attributes>dimension attributes</a>.</p>
+
+  
+
+  <div class=example>
+
+   <p>In this example, an HTML page is embedded in another using the <code id=the-object-element:the-object-element-6><a href=#the-object-element>object</a></code>
+   element.</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>figure</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>object</c-> <c- e>data</c-><c- o>=</c-><c- s>&quot;clock.html&quot;</c-><c- p>&gt;&lt;/</c-><c- f>object</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>figcaption</c-><c- p>&gt;</c->My HTML Clock<c- p>&lt;/</c-><c- f>figcaption</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>figure</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>The following example shows how a plugin can be used in HTML (in this case the Flash plugin,
+   to show a video file). Fallback is provided for users who do not have Flash enabled, in this case
+   using the <code id=the-object-element:the-video-element><a href=media.html#the-video-element>video</a></code> element to show the video for those using user agents that support
+   <code id=the-object-element:the-video-element-2><a href=media.html#the-video-element>video</a></code>, and finally providing a link to the video for those who have neither Flash
+   nor a <code id=the-object-element:the-video-element-3><a href=media.html#the-video-element>video</a></code>-capable browser.</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->Look at my video:
+ <c- p>&lt;</c-><c- f>object</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/x-shockwave-flash&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>param</c-> <c- e>name</c-><c- o>=</c-><c- s>movie</c-> <c- e>value</c-><c- o>=</c-><c- s>&quot;https://video.example.com/library/watch.swf&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>param</c-> <c- e>name</c-><c- o>=</c-><c- s>allowfullscreen</c-> <c- e>value</c-><c- o>=</c-><c- s>true</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>param</c-> <c- e>name</c-><c- o>=</c-><c- s>flashvars</c-> <c- e>value</c-><c- o>=</c-><c- s>&quot;https://video.example.com/vids/315981&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>video</c-> <c- e>controls</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;https://video.example.com/vids/315981&quot;</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>a</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;https://video.example.com/vids/315981&quot;</c-><c- p>&gt;</c->View video<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->.
+  <c- p>&lt;/</c-><c- f>video</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>object</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+
+
+  <h4 id=the-param-element><span class=secno>4.8.8</span> The <dfn><code>param</code></dfn> element<a href=#the-param-element class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Element/param title="The HTML param element defines parameters for an object element.">Element/param</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>1+</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>1+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside>
+
+  <dl class=element><dt><a href=dom.html#concept-element-categories id=the-param-element:concept-element-categories>Categories</a>:<dd>None.<dt><a href=dom.html#concept-element-contexts id=the-param-element:concept-element-contexts>Contexts in which this element can be used</a>:<dd>As a child of an <code id=the-param-element:the-object-element><a href=#the-object-element>object</a></code> element, before any <a id=the-param-element:flow-content-2 href=dom.html#flow-content-2>flow content</a>.<dt><a href=dom.html#concept-element-content-model id=the-param-element:concept-element-content-model>Content model</a>:<dd><a href=dom.html#concept-content-nothing id=the-param-element:concept-content-nothing>Nothing</a>.<dt><a href=dom.html#concept-element-tag-omission id=the-param-element:concept-element-tag-omission>Tag omission in text/html</a>:<dd>No <a href=syntax.html#syntax-end-tag id=the-param-element:syntax-end-tag>end tag</a>.<dt><a href=dom.html#concept-element-attributes id=the-param-element:concept-element-attributes>Content attributes</a>:<dd><a id=the-param-element:global-attributes href=dom.html#global-attributes>Global attributes</a><dd><code id=the-param-element:attr-param-name><a href=#attr-param-name>name</a></code> — Name of parameter<dd><code id=the-param-element:attr-param-value><a href=#attr-param-value>value</a></code> — Value of parameter<dt><a href=dom.html#concept-element-dom id=the-param-element:concept-element-dom>DOM interface</a>:<dd>Uses <code>HTMLParamElement</code>.</dl>
+
+  <p>The <code id=the-param-element:the-param-element><a href=#the-param-element>param</a></code> element defines parameters for plugins invoked by <code id=the-param-element:the-object-element-2><a href=#the-object-element>object</a></code>
+  elements. It does not <a href=dom.html#represents id=the-param-element:represents>represent</a> anything on its own.</p>
+
+  <p>The <dfn id=attr-param-name><code>name</code></dfn> attribute gives the name of the
+  parameter.</p>
+
+  <p>The <dfn id=attr-param-value><code>value</code></dfn> attribute gives the value of the
+  parameter.</p>
+
+  <p>Both attributes must be present. They may have any value.</p>
+
+  
+
+  <div class=example>
+
+   <p>The following example shows how the <code id=the-param-element:the-param-element-2><a href=#the-param-element>param</a></code> element can be used to pass a parameter
+   to a plugin, in this case the O3D plugin.</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->O3D Utah Teapot<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>object</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;application/vnd.o3d.auto&quot;</c-><c- p>&gt;</c->
+     <strong><c- p>&lt;</c-><c- f>param</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;o3d_features&quot;</c-> <c- e>value</c-><c- o>=</c-><c- s>&quot;FloatingPointTextures&quot;</c-><c- p>&gt;</c-></strong>
+     <c- p>&lt;</c-><c- f>img</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;o3d-teapot.png&quot;</c->
+          <c- e>title</c-><c- o>=</c-><c- s>&quot;3D Utah Teapot illustration rendered using O3D.&quot;</c->
+          <c- e>alt</c-><c- o>=</c-><c- s>&quot;When O3D renders the Utah Teapot, it appears as a squat</c->
+<c- s>          teapot with a shiny metallic finish on which the</c->
+<c- s>          surroundings are reflected, with a faint shadow caused by</c->
+<c- s>          the lighting.&quot;</c-><c- p>&gt;</c->
+     <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->To see the teapot actually rendered by O3D on your
+     computer, please download and install the <c- p>&lt;</c-><c- f>a</c->
+     <c- e>href</c-><c- o>=</c-><c- s>&quot;http://code.google.com/apis/o3d/docs/gettingstarted.html#install&quot;</c-><c- p>&gt;</c->O3D plugin<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+    <c- p>&lt;/</c-><c- f>object</c-><c- p>&gt;</c->
+    <c- p>&lt;</c-><c- f>script</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;o3d-teapot.js&quot;</c-><c- p>&gt;&lt;/</c-><c- f>script</c-><c- p>&gt;</c->
+   <c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+
+  <nav><a href=images.html>← 4.8.4 Images</a> — <a href=./>Table of Contents</a> — <a href=media.html>4.8.9 The video element →</a></nav>

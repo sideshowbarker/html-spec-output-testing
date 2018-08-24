@@ -1,0 +1,121 @@
+<!DOCTYPE html><html class=split lang=en-US-x-hixie><script src=/link-fixup.js defer=""></script><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard, Developer's Edition</title><meta content=#3c790a name=theme-color><link href=https://resources.whatwg.org/logo.svg rel=icon><script>
+   function toggleStatus(div) {
+     div.parentNode.classList.toggle('wrapped');
+   }
+  </script><style>
+   .status { min-height: 0.6em; font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; margin: -2em 0 0 0; border-collapse: initial; border-spacing: initial; }
+   .status:hover { z-index: 9; }
+   .status:focus-within { z-index: 9; }
+   .status.wrapped > :not(input) { display: none; }
+   .status > input { position: absolute; left: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+   .status > p { font-size: 0.6em; margin: 0; padding: 0; }
+   .status > p + p { padding-top: 0.5em; }
+   .status > p > strong { margin-left: 1.5em; }
+   .status > .support { display: block; }
+   .status > .support > span { padding: 0.2em 0; display: block; display: table; }
+   .status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+   .status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+   .status > .support > span.no::before { opacity: 0.5; }
+   .status > .support > span:first-of-type { padding-top: 0.5em; }
+   .status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+   .status > .support > span > span:first-child { width: 100%; }
+   .status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+   .status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+   .status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+   .status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+   .status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+   .status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+   .status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+   .status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+   .status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+   .status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+   .status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+   .status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+   .status > .caniuse { text-align: right; font-style: italic; width: 100%; }
+   .status > .caniuse + p { margin-top: 0.5em; border-top: 1px solid silver; }
+
+   @media (max-width: 767px) {
+     .status { right: -9em; }
+   }
+  </style><link rel=stylesheet href=styles.css><style>.mdn {  display: block;  font: 12px sans-serif;  position: absolute;   z-index: 9;  right: 0.3em;  background-color: #eee;  margin: -26px 0 0 0;  padding: 7px 5px 5px 6px;  min-width: 140px;  box-shadow: 0 0 3px #999;} .mdn input {   cursor: pointer;   position: absolute;   left: 0;   top: -2px;   height: 1em;   border: none;   color: #000;   background: transparent;   margin-left: -8px;   font-size: 10px;   line-height: 1em;} .mdn b {  color: #fff;  background-color: #000;  font-weight: normal;   font-family: zillaslab,Palatino,"Palatino Linotype",serif;  padding: 2px 3px 0px 3px;  line-height: 1.3em;  vertical-align: top;} .mdn details {  display: inline;  margin-top: 1px;} .mdn summary a {  margin-left: -4px;} .nosupportdata {  font-style: italic;  margin-top: 4px;  margin-left: 8px;  padding-bottom: 8px;} .mdnsupport {  display: table;  margin-top: 4px;} .mdnsupport > span {  display: table-row;  padding: 0.2em 0;  padding-top: 0.2em;  font-size: 9.6px;} .mdnsupport > span > span {  display: table-cell;  padding: 0 0.5em;  vertical-align: top;  line-height: 1.5em;} .mdnsupport > span > span:last-child {  text-align: right;  padding: 0;} .mdnsupport > span.no {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.unknown {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.no::before {  opacity:  0.5;} .mdnsupport > span.unknown::before {  opacity:  0.5;}.mdnsupport > span::before {    content: "";    display: table-cell;    min-width: 1.5em;    height: 1.5em;    background: no-repeat center center;        background-image: none;        background-size: auto auto;    background-size: contain;    text-align: right;    font-size: 0.75em;    font-weight: bold;} .mdnsupport > .chrome::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .chrome_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .edge::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .edge_mobile::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .firefox::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .firefox_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .ie::before {  background-image: url(https://resources.whatwg.org/browser-logos/ie.png);} .mdnsupport > .opera::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .opera_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .safari::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari.png);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .samsunginternet_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/samsung.png);} .mdnsupport > .webview_android::before {  background-image: url(https://cdnjs.loli.net/ajax/libs/browser-logos/41.0.0/android-webview-beta/android-webview-beta_32x32.png);} .mdn div:nth-child(n+3) > b {  color: #eee;  background-color: #eee;} p + .mdn { margin-top: -45px } .mdn.before { margin-top: 2px } h2 + .mdn { margin: -48px 0 0 0; } h3 + .mdn { margin: -46px 0 0 0; } h4 + .mdn { margin: -42px 0 0 0; } h5 + .mdn { margin: -40px 0 0 0; } h6 + .mdn { margin: -40px 0 0 0; } .mdn div { margin: 0; } .mdn :link { color: #0000EE; } .mdn :visited { color: #551A8B; } .mdn :link:active, :visited:active { color: #FF0000; } .mdn :link, :visited {   text-decoration: underline;   cursor: pointer;} .mdn.wrapped { min-width: 0px; } .mdn.wrapped details { display: none; } .mdn:hover { z-index: 11; } .mdn:focus-within { z-index: 11; }</style><body>
+  <script async="" src=search.js></script>
+  
+  
+  <header id=head class="head with-buttons">
+   <a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a>
+   
+   <hgroup><h1><a rel=home href=/dev/>HTML: The Living Standard</a></h1><h2 id=dev-edition-h2 class="no-num no-toc">Developer's Edition — Last Updated <span class=pubdate>21 October 2018</span></h2></hgroup>
+   
+
+   <div id=search>
+    <input placeholder="Search. Press '/'" autocomplete=off name=query id=query type=search>
+    <ol id=results></ol>
+   </div>
+  </header>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <nav><a href=imagebitmap-and-animations.html>← 8.9 Images</a> — <a href=./>Table of Contents</a> — <a href=server-sent-events.html>9.2 Server-sent events →</a></nav><ol class=toc><li><a href=comms.html#comms><span class=secno>9</span> Communication</a><ol><li><a href=comms.html#the-messageevent-interface><span class=secno>9.1</span> The <code>MessageEvent</code> interface</a></ol></ol><h2 id=comms><span class=secno>9</span> Communication<a href=#comms class=self-link></a></h2>
+
+  <h3 id=the-messageevent-interface><span class=secno>9.1</span> The <code>MessageEvent</code> interface<a href=#the-messageevent-interface class=self-link></a></h3>
+
+  <p>Messages in <a id=the-messageevent-interface:server-sent-events href=server-sent-events.html#server-sent-events>server-sent events</a>, <a id=the-messageevent-interface:network href=web-sockets.html#network>Web sockets</a>, <a id=the-messageevent-interface:web-messaging href=web-messaging.html#web-messaging>cross-document
+  messaging</a>, <a id=the-messageevent-interface:channel-messaging href=web-messaging.html#channel-messaging>channel messaging</a>, and <a id=the-messageevent-interface:broadcasting-to-other-browsing-contexts href=web-messaging.html#broadcasting-to-other-browsing-contexts>broadcast channels</a> use the
+  <code>MessageEvent</code> interface for their <code id=the-messageevent-interface:event-message><a href=indices.html#event-message>message</a></code>
+  events:</p>
+
+  
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/ports title="The ports read-only property of the MessageEvent interface is an array of MessagePort objects representing the ports associated with the channel the message is being sent through (where appropriate, e.g. in channel messaging or when sending a message to a shared worker).">MessageEvent/ports</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>1+</span></span><span class="chrome_android unknown"><span>Chrome Android</span><span>?</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>4+</span></span><span class="firefox_android unknown"><span>Firefox Android</span><span>?</span></span><span class="ie yes"><span>Internet Explorer</span><span>9+</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>10+</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>3+</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android unknown"><span>WebView Android</span><span>?</span></span></details></div></aside><dl class=domintro><dt><var>event</var> . <code id=dom-messageevent-data>data</code><dd>
+
+    <p>Returns the data of the message.</p>
+
+   <dt><var>event</var> . <code id=dom-messageevent-origin>origin</code><dd>
+
+    <p>Returns the origin of the message, for <a id=the-messageevent-interface:server-sent-events-2 href=server-sent-events.html#server-sent-events>server-sent events</a> and
+    <a id=the-messageevent-interface:web-messaging-2 href=web-messaging.html#web-messaging>cross-document messaging</a>.</p>
+
+   <dt><var>event</var> . <code id=dom-messageevent-lasteventid>lastEventId</code><dd>
+
+    <p>Returns the <span>last event ID string</span>, for
+    <a id=the-messageevent-interface:server-sent-events-3 href=server-sent-events.html#server-sent-events>server-sent events</a>.</p>
+
+   <dt><var>event</var> . <code id=dom-messageevent-source>source</code><dd>
+
+    <p>Returns the <code>WindowProxy</code> of the source window, for <a id=the-messageevent-interface:web-messaging-3 href=web-messaging.html#web-messaging>cross-document
+    messaging</a>, and the <code>MessagePort</code> being attached, in the <code id=the-messageevent-interface:event-workerglobalscope-connect><a href=indices.html#event-workerglobalscope-connect>connect</a></code> event fired at
+    <code id=the-messageevent-interface:sharedworkerglobalscope><a href=workers.html#sharedworkerglobalscope>SharedWorkerGlobalScope</a></code> objects.</p>
+
+   <dt><var>event</var> . <code id=dom-messageevent-ports>ports</code><dd>
+
+    <p>Returns the <code>MessagePort</code> array sent with the message, for <a id=the-messageevent-interface:web-messaging-4 href=web-messaging.html#web-messaging>cross-document
+    messaging</a> and <a id=the-messageevent-interface:channel-messaging-2 href=web-messaging.html#channel-messaging>channel messaging</a>.</p>
+
+   </dl>
+
+  
+
+  <p class=note>Various APIs (e.g., <code>WebSocket</code>, <code>EventSource</code>) use the
+  <code>MessageEvent</code> interface for their <code id=the-messageevent-interface:event-message-2><a href=indices.html#event-message>message</a></code> event
+  without using the <code>MessagePort</code> API.</p>
+
+
+  <nav><a href=imagebitmap-and-animations.html>← 8.9 Images</a> — <a href=./>Table of Contents</a> — <a href=server-sent-events.html>9.2 Server-sent events →</a></nav>

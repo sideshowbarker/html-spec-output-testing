@@ -1,0 +1,209 @@
+<!DOCTYPE html><html class=split lang=en-US-x-hixie><script src=/link-fixup.js defer=""></script><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard, Developer's Edition</title><meta content=#3c790a name=theme-color><link href=https://resources.whatwg.org/logo.svg rel=icon><script>
+   function toggleStatus(div) {
+     div.parentNode.classList.toggle('wrapped');
+   }
+  </script><style>
+   .status { min-height: 0.6em; font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; margin: -2em 0 0 0; border-collapse: initial; border-spacing: initial; }
+   .status:hover { z-index: 9; }
+   .status:focus-within { z-index: 9; }
+   .status.wrapped > :not(input) { display: none; }
+   .status > input { position: absolute; left: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+   .status > p { font-size: 0.6em; margin: 0; padding: 0; }
+   .status > p + p { padding-top: 0.5em; }
+   .status > p > strong { margin-left: 1.5em; }
+   .status > .support { display: block; }
+   .status > .support > span { padding: 0.2em 0; display: block; display: table; }
+   .status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+   .status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+   .status > .support > span.no::before { opacity: 0.5; }
+   .status > .support > span:first-of-type { padding-top: 0.5em; }
+   .status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+   .status > .support > span > span:first-child { width: 100%; }
+   .status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+   .status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+   .status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+   .status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+   .status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+   .status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+   .status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+   .status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+   .status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+   .status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+   .status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+   .status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+   .status > .caniuse { text-align: right; font-style: italic; width: 100%; }
+   .status > .caniuse + p { margin-top: 0.5em; border-top: 1px solid silver; }
+
+   @media (max-width: 767px) {
+     .status { right: -9em; }
+   }
+  </style><link rel=stylesheet href=styles.css><style>.mdn {  display: block;  font: 12px sans-serif;  position: absolute;   z-index: 9;  right: 0.3em;  background-color: #eee;  margin: -26px 0 0 0;  padding: 7px 5px 5px 6px;  min-width: 140px;  box-shadow: 0 0 3px #999;} .mdn input {   cursor: pointer;   position: absolute;   left: 0;   top: -2px;   height: 1em;   border: none;   color: #000;   background: transparent;   margin-left: -8px;   font-size: 10px;   line-height: 1em;} .mdn b {  color: #fff;  background-color: #000;  font-weight: normal;   font-family: zillaslab,Palatino,"Palatino Linotype",serif;  padding: 2px 3px 0px 3px;  line-height: 1.3em;  vertical-align: top;} .mdn details {  display: inline;  margin-top: 1px;} .mdn summary a {  margin-left: -4px;} .nosupportdata {  font-style: italic;  margin-top: 4px;  margin-left: 8px;  padding-bottom: 8px;} .mdnsupport {  display: table;  margin-top: 4px;} .mdnsupport > span {  display: table-row;  padding: 0.2em 0;  padding-top: 0.2em;  font-size: 9.6px;} .mdnsupport > span > span {  display: table-cell;  padding: 0 0.5em;  vertical-align: top;  line-height: 1.5em;} .mdnsupport > span > span:last-child {  text-align: right;  padding: 0;} .mdnsupport > span.no {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.unknown {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.no::before {  opacity:  0.5;} .mdnsupport > span.unknown::before {  opacity:  0.5;}.mdnsupport > span::before {    content: "";    display: table-cell;    min-width: 1.5em;    height: 1.5em;    background: no-repeat center center;        background-image: none;        background-size: auto auto;    background-size: contain;    text-align: right;    font-size: 0.75em;    font-weight: bold;} .mdnsupport > .chrome::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .chrome_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .edge::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .edge_mobile::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .firefox::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .firefox_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .ie::before {  background-image: url(https://resources.whatwg.org/browser-logos/ie.png);} .mdnsupport > .opera::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .opera_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .safari::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari.png);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .samsunginternet_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/samsung.png);} .mdnsupport > .webview_android::before {  background-image: url(https://cdnjs.loli.net/ajax/libs/browser-logos/41.0.0/android-webview-beta/android-webview-beta_32x32.png);} .mdn div:nth-child(n+3) > b {  color: #eee;  background-color: #eee;} p + .mdn { margin-top: -45px } .mdn.before { margin-top: 2px } h2 + .mdn { margin: -48px 0 0 0; } h3 + .mdn { margin: -46px 0 0 0; } h4 + .mdn { margin: -42px 0 0 0; } h5 + .mdn { margin: -40px 0 0 0; } h6 + .mdn { margin: -40px 0 0 0; } .mdn div { margin: 0; } .mdn :link { color: #0000EE; } .mdn :visited { color: #551A8B; } .mdn :link:active, :visited:active { color: #FF0000; } .mdn :link, :visited {   text-decoration: underline;   cursor: pointer;} .mdn.wrapped { min-width: 0px; } .mdn.wrapped details { display: none; } .mdn:hover { z-index: 11; } .mdn:focus-within { z-index: 11; }</style><body>
+  <script async="" src=search.js></script>
+  
+  
+  <header id=head class="head with-buttons">
+   <a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a>
+   
+   <hgroup><h1><a rel=home href=/dev/>HTML: The Living Standard</a></h1><h2 id=dev-edition-h2 class="no-num no-toc">Developer's Edition — Last Updated <span class=pubdate>21 October 2018</span></h2></hgroup>
+   
+
+   <div id=search>
+    <input placeholder="Search. Press '/'" autocomplete=off name=query id=query type=search>
+    <ol id=results></ol>
+   </div>
+  </header>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <nav><a href=browsers.html>← 7 Loading Web pages</a> — <a href=./>Table of Contents</a> — <a href=origin.html>7.3 Origin →</a></nav><ol class=toc><li><ol><li><a href=window-object.html#the-window-object><span class=secno>7.2</span> The <code>Window</code> object</a><ol><li><a href=window-object.html#apis-for-creating-and-navigating-browsing-contexts-by-name><span class=secno>7.2.1</span> APIs for creating and navigating browsing contexts by name</a><li><a href=window-object.html#accessing-other-browsing-contexts><span class=secno>7.2.2</span> Accessing other browsing contexts</a><li><a href=window-object.html#named-access-on-the-window-object><span class=secno>7.2.3</span> Named access on the <code>Window</code> object</a><li><a href=window-object.html#closing-browsing-contexts><span class=secno>7.2.4</span> Closing browsing contexts</a><li><a href=window-object.html#browser-interface-elements><span class=secno>7.2.5</span> Browser interface elements</a></ol></ol></ol><h3 id=the-window-object><span class=secno>7.2</span> The <code>Window</code> object<a href=#the-window-object class=self-link></a></h3>
+
+  
+
+
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/window title="The window property of a window object points to the window object itself.">Window/window</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/frames title="Returns the window itself, which is an array-like object, listing the direct sub-frames of the current window.">Window/frames</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/self title="The Window.self read-only property returns the window itself, as a WindowProxy. It can be used with dot notation on a window object (that is, window.self) or standalone (self). The advantage of the standalone notation is that a similar notation exists for non-window contexts, such as in Web Workers. By using self, you can refer to the global scope in a way that will work not only in a window context (self will resolve to window.self) but also in a worker context (self will then resolve to WorkerGlobalScope.self).">Window/self</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/document title="window.document returns a reference to the document contained in the window.">Window/document</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Document/defaultView title="In browsers, document.defaultView returns the window object associated with a document, or null if none is available.">Document/defaultView</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>9+</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><dl class=domintro><dt><var>window</var> . <code id=dom-window>window</code><dt><var>window</var> . <code id=dom-frames>frames</code><dt><var>window</var> . <code id=dom-self>self</code><dd>
+
+    <p>These attributes all return <var>window</var>.</p>
+
+   <dt><var>window</var> . <code id=dom-document-2>document</code><dd>
+
+    <p>Returns the <code>Document</code> associated with <var>window</var>.</p>
+
+   <dt><var>document</var> . <code id=dom-document-defaultview>defaultView</code><dd>
+
+    <p>Returns the <code>Window</code> object of the <a id=the-window-object:active-document href=browsers.html#active-document>active document</a>.</p>
+
+   </dl>
+
+  
+
+
+  <h4 id=apis-for-creating-and-navigating-browsing-contexts-by-name><span class=secno>7.2.1</span> APIs for creating and navigating browsing contexts by name<a href=#apis-for-creating-and-navigating-browsing-contexts-by-name class=self-link></a></h4>
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/open title="The Window interface's open() method loads the specified resource into the browsing context (window, iframe or tab) with the specified name. If the name doesn't exist, then a new window is opened and the specified resource is loaded into its browsing context.">Window/open</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/name title="Gets/sets the name of the window.">Window/name</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/close title="The Window.close() method closes the current window, or the window on which it was called.">Window/close</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/stop title="This method stops window loading.">Window/stop</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie no"><span>Internet Explorer</span><span>No</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><dl class=domintro><dt><var>window</var> = <var>window</var> . <code id=dom-open>open</code>( [ <var>url</var> [, <var>target</var> [, <var>features</var> ] ] ] )<dd>
+
+    <p>Opens a window to show <var>url</var> (defaults to <code id=apis-for-creating-and-navigating-browsing-contexts-by-name:about:blank><a href=infrastructure.html#about:blank>about:blank</a></code>), and returns it.
+    The <var>target</var> argument gives the name of the new window. If a window exists with that
+    name already, it is reused. The <var>features</var> argument can be used to influence the
+    rendering of the new window.</p>
+
+   <dt><var>window</var> . <code id=dom-name>name</code> [ = <var>value</var> ]<dd>
+
+    <p>Returns the name of the window.</p>
+
+    <p>Can be set, to change the name.</p>
+
+   <dt><var>window</var> . <code id=dom-window-close>close</code>()<dd>
+
+    <p>Closes the window.</p>
+
+   <dt><var>window</var> . <code id=dom-window-closed>closed</code><dd>
+
+    <p>Returns true if the window has been closed, false otherwise.</p>
+
+   <dt><var>window</var> . <code id=dom-window-stop>stop</code>()<dd>
+
+    <p>Cancels the document load.</p>
+
+   </dl>
+
+  
+
+
+  <h4 id=accessing-other-browsing-contexts><span class=secno>7.2.2</span> Accessing other browsing contexts<a href=#accessing-other-browsing-contexts class=self-link></a></h4>
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/length title="Returns the number of frames (either frame or iframe elements) in the window.">Window/length</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><dl class=domintro><dt><var>window</var> . <code id=dom-length>length</code><dd>
+
+    <p>Returns the number of <a href=browsers.html#document-tree-child-browsing-context id=accessing-other-browsing-contexts:document-tree-child-browsing-context>document-tree child browsing contexts</a>.</p>
+
+   <dt><var>window</var>[<var>index</var>]<dd>
+
+    <p>Returns the indicated <a id=accessing-other-browsing-contexts:document-tree-child-browsing-context-2 href=browsers.html#document-tree-child-browsing-context>document-tree child browsing context</a>.</p>
+
+   </dl>
+
+  
+
+
+
+  <h4 id=named-access-on-the-window-object><span class=secno>7.2.3</span> Named access on the <code>Window</code> object<a href=#named-access-on-the-window-object class=self-link></a></h4>
+
+  <dl class=domintro><dt><var>window</var>[<var>name</var>]<dd>
+
+    <p>Returns the indicated element or collection of elements.</p>
+
+    <p>As a general rule, relying on this will lead to brittle code. Which IDs end up mapping to
+    this API can vary over time, as new features are added to the Web platform, for example. Instead
+    of this, use <code>document.getElementById()</code> or <code>document.querySelector()</code>.</p>
+
+   </dl>
+
+  
+
+
+  
+
+
+  <h4 id=closing-browsing-contexts><span class=secno>7.2.4</span> Closing browsing contexts<a href=#closing-browsing-contexts class=self-link></a></h4>
+
+  <p>To <dfn id=close-a-browsing-context>close a browsing context</dfn> <var>browsingContext</var>, run these steps:</p>
+
+  <ol><li><p><span>Prompt to unload</span> <var>browsingContext</var>'s <a id=closing-browsing-contexts:active-document href=browsers.html#active-document>active document</a>.
+   If the user <span>refused to allow the document to be unloaded</span>, then return.<li><p><span>Unload</span> <var>browsingContext</var>'s <a id=closing-browsing-contexts:active-document-2 href=browsers.html#active-document>active
+   document</a>.<li><p>Remove <var>browsingContext</var> from the user interface (e.g., close or hide its tab in
+   a tabbed browser).<li><p><span>Discard</span>
+   <var>browsingContext</var>.</ol>
+
+  <p>User agents should offer users the ability to arbitrarily <a href=#close-a-browsing-context id=closing-browsing-contexts:close-a-browsing-context>close</a> any <a id=closing-browsing-contexts:top-level-browsing-context href=browsers.html#top-level-browsing-context>top-level browsing context</a>.</p>
+
+
+
+  <h4 id=browser-interface-elements><span class=secno>7.2.5</span> Browser interface elements<a href=#browser-interface-elements class=self-link></a></h4>
+
+  <p>To allow Web pages to integrate with Web browsers, certain Web browser interface elements are
+  exposed in a limited way to scripts in Web pages.</p>
+
+  <p>Each interface element is represented by a <code>BarProp</code> object:</p>
+
+  
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/locationbar title="Returns the locationbar object, whose visibility can be checked.">Window/locationbar</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox unknown"><span>Firefox</span><span>?</span></span><span class="firefox_android unknown"><span>Firefox Android</span><span>?</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/menubar title="Returns the menubar object, whose visibility can be checked.">Window/menubar</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/personalbar title="Returns the personalbar object, whose visibility can be toggled in the window.">Window/personalbar</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollbars title="Returns the scrollbars object, whose visibility can be checked.">Window/scrollbars</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/statusbar title="Returns the statusbar object, whose visibility can be toggled in the window.">Window/statusbar</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/toolbar title="Returns the toolbar object, whose visibility can be toggled in the window.">Window/toolbar</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><dl class=domintro><dt><var>window</var> . <code id=dom-window-locationbar>locationbar</code> . <code id=dom-barprop-visible>visible</code><dd>
+    <p>Returns true if the location bar is visible; otherwise, returns false.</p>
+   <dt><var>window</var> . <code id=dom-window-menubar>menubar</code> . <code id=browser-interface-elements:dom-barprop-visible><a href=#dom-barprop-visible>visible</a></code><dd>
+    <p>Returns true if the menu bar is visible; otherwise, returns false.</p>
+   <dt><var>window</var> . <code id=dom-window-personalbar>personalbar</code> . <code id=browser-interface-elements:dom-barprop-visible-2><a href=#dom-barprop-visible>visible</a></code><dd>
+    <p>Returns true if the personal bar is visible; otherwise, returns false.</p>
+   <dt><var>window</var> . <code id=dom-window-scrollbars>scrollbars</code> . <code id=browser-interface-elements:dom-barprop-visible-3><a href=#dom-barprop-visible>visible</a></code><dd>
+    <p>Returns true if the scroll bars are visible; otherwise, returns false.</p>
+   <dt><var>window</var> . <code id=dom-window-statusbar>statusbar</code> . <code id=browser-interface-elements:dom-barprop-visible-4><a href=#dom-barprop-visible>visible</a></code><dd>
+    <p>Returns true if the status bar is visible; otherwise, returns false.</p>
+   <dt><var>window</var> . <code id=dom-window-toolbar>toolbar</code> . <code id=browser-interface-elements:dom-barprop-visible-5><a href=#dom-barprop-visible>visible</a></code><dd>
+    <p>Returns true if the toolbar is visible; otherwise, returns false.</p>
+   </dl>
+
+  
+
+
+  
+
+
+
+  <nav><a href=browsers.html>← 7 Loading Web pages</a> — <a href=./>Table of Contents</a> — <a href=origin.html>7.3 Origin →</a></nav>

@@ -1,0 +1,953 @@
+<!DOCTYPE html><html class=split lang=en-US-x-hixie><script src=/link-fixup.js defer=""></script><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard, Developer's Edition</title><meta content=#3c790a name=theme-color><link href=https://resources.whatwg.org/logo.svg rel=icon><script>
+   function toggleStatus(div) {
+     div.parentNode.classList.toggle('wrapped');
+   }
+  </script><style>
+   .status { min-height: 0.6em; font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; margin: -2em 0 0 0; border-collapse: initial; border-spacing: initial; }
+   .status:hover { z-index: 9; }
+   .status:focus-within { z-index: 9; }
+   .status.wrapped > :not(input) { display: none; }
+   .status > input { position: absolute; left: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+   .status > p { font-size: 0.6em; margin: 0; padding: 0; }
+   .status > p + p { padding-top: 0.5em; }
+   .status > p > strong { margin-left: 1.5em; }
+   .status > .support { display: block; }
+   .status > .support > span { padding: 0.2em 0; display: block; display: table; }
+   .status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+   .status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+   .status > .support > span.no::before { opacity: 0.5; }
+   .status > .support > span:first-of-type { padding-top: 0.5em; }
+   .status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+   .status > .support > span > span:first-child { width: 100%; }
+   .status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+   .status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+   .status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+   .status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+   .status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+   .status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+   .status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+   .status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+   .status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+   .status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+   .status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+   .status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+   .status > .caniuse { text-align: right; font-style: italic; width: 100%; }
+   .status > .caniuse + p { margin-top: 0.5em; border-top: 1px solid silver; }
+
+   @media (max-width: 767px) {
+     .status { right: -9em; }
+   }
+  </style><link rel=stylesheet href=styles.css><style>.mdn {  display: block;  font: 12px sans-serif;  position: absolute;   z-index: 9;  right: 0.3em;  background-color: #eee;  margin: -26px 0 0 0;  padding: 7px 5px 5px 6px;  min-width: 140px;  box-shadow: 0 0 3px #999;} .mdn input {   cursor: pointer;   position: absolute;   left: 0;   top: -2px;   height: 1em;   border: none;   color: #000;   background: transparent;   margin-left: -8px;   font-size: 10px;   line-height: 1em;} .mdn b {  color: #fff;  background-color: #000;  font-weight: normal;   font-family: zillaslab,Palatino,"Palatino Linotype",serif;  padding: 2px 3px 0px 3px;  line-height: 1.3em;  vertical-align: top;} .mdn details {  display: inline;  margin-top: 1px;} .mdn summary a {  margin-left: -4px;} .nosupportdata {  font-style: italic;  margin-top: 4px;  margin-left: 8px;  padding-bottom: 8px;} .mdnsupport {  display: table;  margin-top: 4px;} .mdnsupport > span {  display: table-row;  padding: 0.2em 0;  padding-top: 0.2em;  font-size: 9.6px;} .mdnsupport > span > span {  display: table-cell;  padding: 0 0.5em;  vertical-align: top;  line-height: 1.5em;} .mdnsupport > span > span:last-child {  text-align: right;  padding: 0;} .mdnsupport > span.no {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.unknown {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.no::before {  opacity:  0.5;} .mdnsupport > span.unknown::before {  opacity:  0.5;}.mdnsupport > span::before {    content: "";    display: table-cell;    min-width: 1.5em;    height: 1.5em;    background: no-repeat center center;        background-image: none;        background-size: auto auto;    background-size: contain;    text-align: right;    font-size: 0.75em;    font-weight: bold;} .mdnsupport > .chrome::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .chrome_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .edge::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .edge_mobile::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .firefox::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .firefox_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .ie::before {  background-image: url(https://resources.whatwg.org/browser-logos/ie.png);} .mdnsupport > .opera::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .opera_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .safari::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari.png);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .samsunginternet_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/samsung.png);} .mdnsupport > .webview_android::before {  background-image: url(https://cdnjs.loli.net/ajax/libs/browser-logos/41.0.0/android-webview-beta/android-webview-beta_32x32.png);} .mdn div:nth-child(n+3) > b {  color: #eee;  background-color: #eee;} p + .mdn { margin-top: -45px } .mdn.before { margin-top: 2px } h2 + .mdn { margin: -48px 0 0 0; } h3 + .mdn { margin: -46px 0 0 0; } h4 + .mdn { margin: -42px 0 0 0; } h5 + .mdn { margin: -40px 0 0 0; } h6 + .mdn { margin: -40px 0 0 0; } .mdn div { margin: 0; } .mdn :link { color: #0000EE; } .mdn :visited { color: #551A8B; } .mdn :link:active, :visited:active { color: #FF0000; } .mdn :link, :visited {   text-decoration: underline;   cursor: pointer;} .mdn.wrapped { min-width: 0px; } .mdn.wrapped details { display: none; } .mdn:hover { z-index: 11; } .mdn:focus-within { z-index: 11; }</style><body>
+  <script async="" src=search.js></script>
+  
+  
+  <header id=head class="head with-buttons">
+   <a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a>
+   
+   <hgroup><h1><a rel=home href=/dev/>HTML: The Living Standard</a></h1><h2 id=dev-edition-h2 class="no-num no-toc">Developer's Edition — Last Updated <span class=pubdate>21 October 2018</span></h2></hgroup>
+   
+
+   <div id=search>
+    <input placeholder="Search. Press '/'" autocomplete=off name=query id=query type=search>
+    <ol id=results></ol>
+   </div>
+  </header>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <nav><a href=microdata.html>← 5 Microdata</a> — <a href=./>Table of Contents</a> — <a href=dnd.html>6.7 Drag and drop →</a></nav><ol class=toc><li><a href=interaction.html#editing><span class=secno>6</span> User interaction</a><ol><li><a href=interaction.html#the-hidden-attribute><span class=secno>6.1</span> The <code>hidden</code> attribute</a><li><a href=interaction.html#inert-subtrees><span class=secno>6.2</span> Inert subtrees</a><li><a href=interaction.html#activation><span class=secno>6.3</span> Activation</a><li><a href=interaction.html#focus><span class=secno>6.4</span> Focus</a><ol><li><a href=interaction.html#introduction-7><span class=secno>6.4.1</span> Introduction</a><li><a href=interaction.html#data-model><span class=secno>6.4.2</span> Data model</a><li><a href=interaction.html#the-tabindex-attribute><span class=secno>6.4.3</span> The <code>tabindex</code> attribute</a><li><a href=interaction.html#focus-management-apis><span class=secno>6.4.4</span> Focus management APIs</a></ol><li><a href=interaction.html#assigning-keyboard-shortcuts><span class=secno>6.5</span> Assigning keyboard shortcuts</a><ol><li><a href=interaction.html#introduction-8><span class=secno>6.5.1</span> Introduction</a><li><a href=interaction.html#the-accesskey-attribute><span class=secno>6.5.2</span> The <code>accesskey</code> attribute</a></ol><li><a href=interaction.html#editing-2><span class=secno>6.6</span> Editing</a><ol><li><a href=interaction.html#contenteditable><span class=secno>6.6.1</span> Making document regions editable: The <code>contenteditable</code> content attribute</a><li><a href=interaction.html#making-entire-documents-editable:-the-designmode-idl-attribute><span class=secno>6.6.2</span> Making entire documents editable: the <code>designMode</code>
+  IDL attribute</a><li><a href=interaction.html#best-practices-for-in-page-editors><span class=secno>6.6.3</span> Best practices for in-page editors</a><li><a href=interaction.html#spelling-and-grammar-checking><span class=secno>6.6.4</span> Spelling and grammar checking</a><li><a href=interaction.html#autocapitalization><span class=secno>6.6.5</span> Autocapitalization</a><li><a href=interaction.html#input-modalities:-the-inputmode-attribute><span class=secno>6.6.6</span> Input modalities: the <code>inputmode</code> attribute</a><li><a href=interaction.html#input-modalities:-the-enterkeyhint-attribute><span class=secno>6.6.7</span> Input modalities: the <code>enterkeyhint</code>
+  attribute</a></ol></ol></ol><h2 id=editing><span class=secno>6</span> <dfn>User interaction</dfn><a href=#editing class=self-link></a></h2>
+
+
+  <h3 id=the-hidden-attribute><span class=secno>6.1</span> The <dfn><code>hidden</code></dfn> attribute<a href=#the-hidden-attribute class=self-link></a></h3><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> hidden<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>6+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>5.0+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>4+</span></span><span class="ie yes"><span>IE</span> <span>11+</span></span><span class="op_mini yes"><span>Opera Mini</span> <span>all+</span></span><span class="safari yes"><span>Safari</span> <span>5.1+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>11.1+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>4+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=hidden">caniuse.com</a></div><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/hidden title="The hidden global attribute is a Boolean attribute indicating that the element is not yet, or is no longer, relevant. For example, it can be used to hide elements of the page that can't be used until the login process has been completed.">Global_attributes/hidden</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>11+</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>4+</span></span></details></div></aside>
+
+  <p>All <a id=the-hidden-attribute:html-elements href=infrastructure.html#html-elements>HTML elements</a> may have the <code id=the-hidden-attribute:the-hidden-attribute><a href=#the-hidden-attribute>hidden</a></code> content
+  attribute set. The <code id=the-hidden-attribute:the-hidden-attribute-2><a href=#the-hidden-attribute>hidden</a></code> attribute is a <a id=the-hidden-attribute:boolean-attribute href=common-microsyntaxes.html#boolean-attribute>boolean
+  attribute</a>. When specified on an element, it indicates that the element is not yet, or is no
+  longer, directly relevant to the page's current state, or that it is being used to declare content
+  to be reused by other parts of the page as opposed to being directly accessed by the user. </p>
+
+  <p class=note>Because this attribute is typically implemented using CSS, it's also possible to
+  override it using CSS. For instance, a rule that applies 'display: block' to all elements will
+  cancel the effects of the <code id=the-hidden-attribute:the-hidden-attribute-3><a href=#the-hidden-attribute>hidden</a></code> attribute. Authors therefore
+  have to take care when writing their style sheets to make sure that the attribute is still styled
+  as expected.</p>
+
+  <div class=example>
+
+   <p>In the following skeletal example, the attribute is used to hide the Web game's main screen
+   until the user logs in:</p>
+
+   <pre><code class='html'>  <c- p>&lt;</c-><c- f>h1</c-><c- p>&gt;</c->The Example Game<c- p>&lt;/</c-><c- f>h1</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>section</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;login&quot;</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>h2</c-><c- p>&gt;</c->Login<c- p>&lt;/</c-><c- f>h2</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>form</c-><c- p>&gt;</c->
+    ...
+    <c- c>&lt;!-- calls login() once the user&apos;s credentials have been checked --&gt;</c->
+   <c- p>&lt;/</c-><c- f>form</c-><c- p>&gt;</c->
+   <c- p>&lt;</c-><c- f>script</c-><c- p>&gt;</c->
+    <c- a>function</c-> login<c- p>()</c-> <c- p>{</c->
+      <c- c1>// switch screens</c->
+      document<c- p>.</c->getElementById<c- p>(</c-><c- t>&apos;login&apos;</c-><c- p>).</c->hidden <c- o>=</c-> <c- kc>true</c-><c- p>;</c->
+      document<c- p>.</c->getElementById<c- p>(</c-><c- t>&apos;game&apos;</c-><c- p>).</c->hidden <c- o>=</c-> <c- kc>false</c-><c- p>;</c->
+    <c- p>}</c->
+   <c- p>&lt;/</c-><c- f>script</c-><c- p>&gt;</c->
+  <c- p>&lt;/</c-><c- f>section</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>section</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;game&quot;</c-> <c- e>hidden</c-><c- p>&gt;</c->
+   ...
+  <c- p>&lt;/</c-><c- f>section</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <p>The <code id=the-hidden-attribute:the-hidden-attribute-4><a href=#the-hidden-attribute>hidden</a></code> attribute must not be used to hide content that
+  could legitimately be shown in another presentation. For example, it is incorrect to use <code id=the-hidden-attribute:the-hidden-attribute-5><a href=#the-hidden-attribute>hidden</a></code> to hide panels in a tabbed dialog, because the tabbed interface
+  is merely a kind of overflow presentation — one could equally well just show all the form
+  controls in one big page with a scrollbar. It is similarly incorrect to use this attribute to hide
+  content just from one presentation — if something is marked <code id=the-hidden-attribute:the-hidden-attribute-6><a href=#the-hidden-attribute>hidden</a></code>, it is hidden from all presentations, including, for instance,
+  screen readers.</p>
+
+  
+  
+
+  <p>Elements that are not themselves <code id=the-hidden-attribute:the-hidden-attribute-7><a href=#the-hidden-attribute>hidden</a></code> must not
+  <a id=the-hidden-attribute:hyperlink href=links.html#hyperlink>hyperlink</a> to elements that are <code id=the-hidden-attribute:the-hidden-attribute-8><a href=#the-hidden-attribute>hidden</a></code>. The <code>for</code> attributes of <code id=the-hidden-attribute:the-label-element><a href=forms.html#the-label-element>label</a></code> and <code id=the-hidden-attribute:the-output-element><a href=form-elements.html#the-output-element>output</a></code> elements that are not
+  themselves <code id=the-hidden-attribute:the-hidden-attribute-9><a href=#the-hidden-attribute>hidden</a></code> must similarly not refer to elements that are
+  <code id=the-hidden-attribute:the-hidden-attribute-10><a href=#the-hidden-attribute>hidden</a></code>. In both cases, such references would cause user
+  confusion.</p>
+
+  <p>Elements and scripts may, however, refer to elements that are <code id=the-hidden-attribute:the-hidden-attribute-11><a href=#the-hidden-attribute>hidden</a></code> in other contexts.</p>
+
+  <div class=example>
+
+   <p>For example, it would be incorrect to use the <code id=the-hidden-attribute:attr-hyperlink-href><a href=links.html#attr-hyperlink-href>href</a></code>
+   attribute to link to a section marked with the <code id=the-hidden-attribute:the-hidden-attribute-12><a href=#the-hidden-attribute>hidden</a></code> attribute.
+   If the content is not applicable or relevant, then there is no reason to link to it.</p>
+
+   <p>It would be fine, however, to use the ARIA <code id=the-hidden-attribute:attr-aria-describedby><a data-x-internal=attr-aria-describedby href=https://w3c.github.io/aria/aria/aria.html#aria-describedby>aria-describedby</a></code> attribute to refer to descriptions that are
+   themselves <code id=the-hidden-attribute:the-hidden-attribute-13><a href=#the-hidden-attribute>hidden</a></code>. While hiding the descriptions implies that
+   they are not useful alone, they could be written in such a way that they are useful in the
+   specific context of being referenced from the images that they describe.</p>
+
+   <p>Similarly, a <code id=the-hidden-attribute:the-canvas-element><a href=canvas.html#the-canvas-element>canvas</a></code> element with the <code id=the-hidden-attribute:the-hidden-attribute-14><a href=#the-hidden-attribute>hidden</a></code>
+   attribute could be used by a scripted graphics engine as an off-screen buffer, and a form control
+   could refer to a hidden <code id=the-hidden-attribute:the-form-element><a href=forms.html#the-form-element>form</a></code> element using its <code id=the-hidden-attribute:attr-fae-form><a href=form-control-infrastructure.html#attr-fae-form>form</a></code> attribute.</p>
+
+  </div>
+
+  <p>Elements in a section hidden by the <code id=the-hidden-attribute:the-hidden-attribute-15><a href=#the-hidden-attribute>hidden</a></code> attribute are still
+  active, e.g. scripts and form controls in such sections still execute and submit respectively.
+  Only their presentation to the user changes.</p>
+
+  
+
+
+
+  <h3 id=inert-subtrees><span class=secno>6.2</span> Inert subtrees<a href=#inert-subtrees class=self-link></a></h3>
+
+  <p class=note>This section <strong>does not</strong> define or create any content attribute
+  named "inert". This section merely defines an abstract <em>concept</em> of
+  <a href=#inert id=inert-subtrees:inert>inertness</a>.</p>
+
+  <p>A node (in particular elements and text nodes) can be marked as <dfn id=inert>inert</dfn>. When a node
+  is <a href=#inert id=inert-subtrees:inert-2>inert</a>, then the user agent must act as if the node was absent for the purposes of
+  targeting user interaction events, may ignore the node for the purposes of text search user
+  interfaces (commonly known as "find in page"), and may prevent the user from selecting text in
+  that node. User agents should allow the user to override the restrictions on search and text
+  selection, however.</p>
+
+  <p class=example>For example, consider a page that consists of just a single <a href=#inert id=inert-subtrees:inert-3>inert</a>
+  paragraph positioned in the middle of a <code id=inert-subtrees:the-body-element><a href=sections.html#the-body-element>body</a></code>. If a user moves their pointing device
+  from the <code id=inert-subtrees:the-body-element-2><a href=sections.html#the-body-element>body</a></code> over to the <a href=#inert id=inert-subtrees:inert-4>inert</a> paragraph and clicks on the paragraph,
+  no <code id=inert-subtrees:event-mouseover><a data-x-internal=event-mouseover href=https://w3c.github.io/uievents/#event-type-mouseover>mouseover</a></code> event would be fired, and the <code id=inert-subtrees:event-mousemove><a data-x-internal=event-mousemove href=https://w3c.github.io/uievents/#event-type-mousemove>mousemove</a></code> and <code id=inert-subtrees:event-click><a data-x-internal=event-click href=https://w3c.github.io/uievents/#event-type-click>click</a></code> events would
+  be fired on the <code id=inert-subtrees:the-body-element-3><a href=sections.html#the-body-element>body</a></code> element rather than the paragraph.</p>
+
+  <p class=note>When a node is inert, it generally cannot be focused. Inert nodes that are <a href=interactive-elements.html#concept-command id=inert-subtrees:concept-command>commands</a> will also get disabled.</p>
+
+  <p>While a <a id=inert-subtrees:browsing-context-container href=browsers.html#browsing-context-container>browsing context container</a> is marked as <a href=#inert id=inert-subtrees:inert-5>inert</a>, its
+  <a id=inert-subtrees:nested-browsing-context href=browsers.html#nested-browsing-context>nested browsing context</a>'s <a id=inert-subtrees:active-document href=browsers.html#active-document>active document</a>, and all nodes in that
+  <code>Document</code>, must be marked as <a href=#inert id=inert-subtrees:inert-6>inert</a>.</p>
+
+  <p><span id=expressly-inert-control></span><span id=expressly-inert-dialog></span>An element
+  is <dfn id=expressly-inert>expressly inert</dfn> if it is <a href=#inert id=inert-subtrees:inert-7>inert</a> and its <a id=inert-subtrees:node-document href=https://dom.spec.whatwg.org/#concept-node-document data-x-internal=node-document>node document</a> is
+  not <a href=#inert id=inert-subtrees:inert-8>inert</a>.</p>
+
+  <p>A <code>Document</code> <var>document</var> is <dfn id=blocked-by-a-modal-dialog>blocked by a modal dialog</dfn>
+  <var>subject</var> if <var>subject</var> is the topmost <code id=inert-subtrees:the-dialog-element><a href=interactive-elements.html#the-dialog-element>dialog</a></code> element in
+  <var>document</var>'s <a id=inert-subtrees:top-layer href=https://fullscreen.spec.whatwg.org/#top-layer data-x-internal=top-layer>top layer</a>. While <var>document</var> is so blocked, every node
+  that is <a id=inert-subtrees:connected href=https://dom.spec.whatwg.org/#connected data-x-internal=connected>connected</a> to <var>document</var>, with the exception of the
+  <var>subject</var> element and its <a href=https://dom.spec.whatwg.org/#concept-shadow-including-descendant id=inert-subtrees:shadow-including-descendant data-x-internal=shadow-including-descendant>shadow-including
+  descendants</a>, must be marked <a href=#inert id=inert-subtrees:inert-9>inert</a>. (The elements excepted by this paragraph
+  can additionally be marked <a href=#inert id=inert-subtrees:inert-10>inert</a> through other means; being part of a modal dialog
+  does not "protect" a node from being marked <a href=#inert id=inert-subtrees:inert-11>inert</a>.)</p>
+
+  <p class=note>The <code id=inert-subtrees:the-dialog-element-2><a href=interactive-elements.html#the-dialog-element>dialog</a></code> element's <code id=inert-subtrees:dom-dialog-showmodal><a href=interactive-elements.html#dom-dialog-showmodal>showModal()</a></code> method causes this mechanism to trigger, by <a href=https://fullscreen.spec.whatwg.org/#top-layer-add id=inert-subtrees:top-layer-add data-x-internal=top-layer-add>adding</a> the <code id=inert-subtrees:the-dialog-element-3><a href=interactive-elements.html#the-dialog-element>dialog</a></code> element to its <a id=inert-subtrees:node-document-2 href=https://dom.spec.whatwg.org/#concept-node-document data-x-internal=node-document>node
+  document</a>'s <a id=inert-subtrees:top-layer-2 href=https://fullscreen.spec.whatwg.org/#top-layer data-x-internal=top-layer>top layer</a>.</p>
+
+
+
+
+  <h3 id=activation><span class=secno>6.3</span> Activation<a href=#activation class=self-link></a></h3>
+
+  <p>Certain elements in HTML have an <a id=activation:activation-behaviour href=https://dom.spec.whatwg.org/#eventtarget-activation-behavior data-x-internal=activation-behaviour>activation behavior</a>, which means that the user
+  can activate them. This is always caused by a <code id=activation:event-click><a data-x-internal=event-click href=https://w3c.github.io/uievents/#event-type-click>click</a></code> event.</p>
+
+  
+
+
+  
+
+  <dl class=domintro><dt><var>element</var> . <code id=dom-click>click</code>()<dd>
+
+    <p>Acts as if the element was clicked.</p>
+
+   </dl>
+
+  
+
+
+
+  <h3 id=focus><span class=secno>6.4</span> Focus<a href=#focus class=self-link></a></h3>
+
+  
+  
+  
+  
+
+  
+
+  <h4 id=introduction-7><span class=secno>6.4.1</span> Introduction<a href=#introduction-7 class=self-link></a></h4>
+
+  
+
+  <p>An HTML user interface typically consists of multiple interactive widgets, such as form
+  controls, scrollable regions, links, dialog boxes, browser tabs, and so forth. These widgets form
+  a hierarchy, with some (e.g. browser tabs, dialog boxes) containing others (e.g. links, form
+  controls).</p>
+
+  <p>When interacting with an interface using a keyboard, key input is channeled from the system,
+  through the hierarchy of interactive widgets, to an active widget, which is said to be
+  <a href=#focused id=introduction-7:focused>focused</a>.</p>
+
+  <div class=example>
+
+   <p>Consider an HTML application running in a browser tab running in a graphical environment.
+   Suppose this application had a page with some text controls and links, and was currently showing
+   a modal dialog, which itself had a text control and a button.</p>
+
+   <p>The hierarchy of focusable widgets, in this scenario, would include the browser window, which
+   would have, amongst its children, the browser tab containing the HTML application. The tab itself
+   would have as its children the various links and text controls, as well as the dialog. The dialog
+   itself would have as its children the text control and the button.</p>
+
+   <p><img alt="" src=/images/focus-tree.png width=800 height=450> 
+
+   <p>If the widget with <a href=#focused id=introduction-7:focused-2>focus</a> in this example was the text control in
+   the dialog box, then key input would be channeled from the graphical system to ① the Web
+   browser, then to ② the tab, then to ③ the dialog, and finally to ④ the text
+   control.</p>
+
+  </div>
+
+  <p>Keyboard <em>events</em> are always targeted at this <a href=#focused id=introduction-7:focused-3>focused</a> element.</p>
+
+
+  <h4 id=data-model><span class=secno>6.4.2</span> Data model<a href=#data-model class=self-link></a></h4>
+
+  <p>The term <dfn id=focusable-area>focusable area</dfn> is used to refer to regions of the interface that can become
+  the target of keyboard input. Focusable areas can be elements, parts of elements, or other regions
+  managed by the user agent.</p>
+
+  <p>Each <a href=#focusable-area id=data-model:focusable-area>focusable area</a> has a <dfn id=dom-anchor>DOM anchor</dfn>, which is a <code id=data-model:node><a data-x-internal=node href=https://dom.spec.whatwg.org/#interface-node>Node</a></code> object
+  that represents the position of the <a href=#focusable-area id=data-model:focusable-area-2>focusable area</a> in the DOM. (When the <a href=#focusable-area id=data-model:focusable-area-3>focusable
+  area</a> is itself a <code id=data-model:node-2><a data-x-internal=node href=https://dom.spec.whatwg.org/#interface-node>Node</a></code>, it is its own <a href=#dom-anchor id=data-model:dom-anchor>DOM anchor</a>.) The <a href=#dom-anchor id=data-model:dom-anchor-2>DOM anchor</a> is
+  used in some APIs as a substitute for the <a href=#focusable-area id=data-model:focusable-area-4>focusable area</a> when there is no other DOM object
+  to represent the <a href=#focusable-area id=data-model:focusable-area-5>focusable area</a>.</p>
+
+  <p>The following table describes what objects can be <a href=#focusable-area id=data-model:focusable-area-6>focusable
+  areas</a>. The cells in the left column describe objects that can be <a href=#focusable-area id=data-model:focusable-area-7>focusable areas</a>; the cells in the right column describe the <a href=#dom-anchor id=data-model:dom-anchor-3>DOM
+  anchors</a> for those elements. (The cells that span both columns are non-normative examples.)</p>
+
+  <table id=table-fa><thead><tr><th id=th-fa-area><a href=#focusable-area id=data-model:focusable-area-8>Focusable area</a>
+     <th id=th-fa-dom-rep><a href=#dom-anchor id=data-model:dom-anchor-4>DOM anchor</a>
+    <tr><th colspan=2 id=th-fa-examples>Examples
+
+   <tbody><tr><th headers=th-fa-area id=td-fa-1 class=data-header>
+     Elements that have their <span>tabindex focus flag</span> set, that are not <a href=semantics-other.html#concept-element-disabled id=data-model:concept-element-disabled>actually disabled</a>, that are not <a href=#expressly-inert id=data-model:expressly-inert>expressly
+     inert</a>, and that are either <span>being rendered</span> or <a id=data-model:being-used-as-relevant-canvas-fallback-content href=canvas.html#being-used-as-relevant-canvas-fallback-content>being used as relevant
+     canvas fallback content</a>. 
+     <td headers="td-fa-1 th-fa-dom-rep">
+     The element itself.
+    <tr><td headers="td-fa-1 th-fa-examples" colspan=2>
+     <p class=example><code id=data-model:the-iframe-element><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code>, <code id="data-model:text-(type=text)-state-and-search-state-(type=search)"><a href="input.html#text-(type=text)-state-and-search-state-(type=search)">&lt;input
+     type=text></a></code>, sometimes <code id=data-model:the-a-element><a href=text-level-semantics.html#the-a-element>&lt;a href=""></a></code> (depending on platform
+     conventions).
+
+   <tbody><tr><th headers=th-fa-area id=td-fa-2 class=data-header>
+     The shapes of <code id=data-model:the-area-element><a href=image-maps.html#the-area-element>area</a></code> elements in an <a id=data-model:image-map href=image-maps.html#image-map>image map</a> associated with an
+     <code id=data-model:the-img-element><a href=embedded-content.html#the-img-element>img</a></code> element that is <span>being rendered</span> and is not <a href=#expressly-inert id=data-model:expressly-inert-2>expressly
+     inert</a>.
+     <td headers="td-fa-2 th-fa-dom-rep">
+     The <code id=data-model:the-img-element-2><a href=embedded-content.html#the-img-element>img</a></code> element.
+    <tr><td headers="td-fa-2 th-fa-examples" colspan=2>
+     <div class=example>
+      <p>In the following example, the <code id=data-model:the-area-element-2><a href=image-maps.html#the-area-element>area</a></code> element creates two shapes, one on each
+      image. The <a href=#dom-anchor id=data-model:dom-anchor-5>DOM anchor</a> of the first shape is the first <code id=data-model:the-img-element-3><a href=embedded-content.html#the-img-element>img</a></code> element, and the
+      <a href=#dom-anchor id=data-model:dom-anchor-6>DOM anchor</a> of the second shape is the second <code id=data-model:the-img-element-4><a href=embedded-content.html#the-img-element>img</a></code> element.</p>
+      <pre><code class='html'><c- p>&lt;</c-><c- f>map</c-> <c- e>id</c-><c- o>=</c-><c- s>wallmap</c-><c- p>&gt;&lt;</c-><c- f>area</c-> <c- e>alt</c-><c- o>=</c-><c- s>&quot;Enter Door&quot;</c-> <c- e>coords</c-><c- o>=</c-><c- s>&quot;10,10,100,200&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;door.html&quot;</c-><c- p>&gt;&lt;/</c-><c- f>map</c-><c- p>&gt;</c->
+...
+<c- p>&lt;</c-><c- f>img</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;images/innerwall.jpeg&quot;</c-> <c- e>alt</c-><c- o>=</c-><c- s>&quot;There is a white wall here, with a door.&quot;</c-> <c- e>usemap</c-><c- o>=</c-><c- s>&quot;#wallmap&quot;</c-><c- p>&gt;</c->
+...
+<c- p>&lt;</c-><c- f>img</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;images/outerwall.jpeg&quot;</c-> <c- e>alt</c-><c- o>=</c-><c- s>&quot;There is a red wall here, with a door.&quot;</c-> <c- e>usemap</c-><c- o>=</c-><c- s>&quot;#wallmap&quot;</c-><c- p>&gt;</c-></code></pre>
+     </div>
+
+   <tbody><tr><th headers=th-fa-area id=td-fa-3 class=data-header>
+     The user-agent provided subwidgets of elements that are <span>being rendered</span> and are not
+     <a href=semantics-other.html#concept-element-disabled id=data-model:concept-element-disabled-2>actually disabled</a> or <a href=#expressly-inert id=data-model:expressly-inert-3>expressly
+     inert</a>.
+     <td headers="td-fa-3 th-fa-dom-rep">
+     The element for which the <a href=#focusable-area id=data-model:focusable-area-9>focusable area</a> is a subwidget.
+    <tr><td headers="td-fa-3 th-fa-examples" colspan=2>
+     <p class=example>The <span>controls in the user
+     interface that is exposed to the user</span> for a <code id=data-model:the-video-element><a href=media.html#the-video-element>video</a></code> element, the up and down
+     buttons in a spin-control version of <code id="data-model:number-state-(type=number)"><a href="input.html#number-state-(type=number)">&lt;input
+     type=number></a></code>, the two range control widgets in a <code id="data-model:range-state-(type=range)"><a href="input.html#range-state-(type=range)">&lt;input type=range multiple></a></code>, the part of a
+     <code id=data-model:the-details-element><a href=interactive-elements.html#the-details-element>details</a></code> element's rendering that enabled the element to be opened or closed using
+     keyboard input.</p>
+
+   <tbody><tr><th headers=th-fa-area id=td-fa-4 class=data-header>
+     The scrollable regions of elements that are <span>being rendered</span> and are not
+     <a href=#expressly-inert id=data-model:expressly-inert-4>expressly inert</a>. 
+     <td headers="td-fa-4 th-fa-dom-rep">
+     The element for which the box that the scrollable region scrolls was created.
+    <tr><td headers="td-fa-4 th-fa-examples" colspan=2>
+     <p class=example>The CSS <a id="data-model:'overflow'" href=https://drafts.csswg.org/css-overflow/#propdef-overflow data-x-internal="'overflow'">'overflow'</a> property's 'scroll' value typically creates
+     a scrollable region.</p>
+
+   <tbody><tr><th headers=th-fa-area id=td-fa-5 class=data-header>
+     The <a id=data-model:viewport href=https://drafts.csswg.org/css2/visuren.html#viewport data-x-internal=viewport>viewport</a> of a <code>Document</code> that has a <a href=browsers.html#concept-document-bc id=data-model:concept-document-bc>browsing context</a> and is not <a href=#inert id=data-model:inert>inert</a>.
+     <td headers="td-fa-5 th-fa-dom-rep">
+     The <code>Document</code> for which the <a id=data-model:viewport-2 href=https://drafts.csswg.org/css2/visuren.html#viewport data-x-internal=viewport>viewport</a> was created.
+    <tr><td headers="td-fa-5 th-fa-examples" colspan=2>
+     <p class=example>The contents of an <code id=data-model:the-iframe-element-2><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code>.</p>
+
+   <tbody><tr><th headers=th-fa-area id=td-fa-6 class=data-header>
+     Any other element or part of an element, especially to aid with accessibility or to better
+     match platform conventions.
+     <td headers="td-fa-6 th-fa-dom-rep">
+     The element.
+    <tr><td headers="td-fa-6 th-fa-examples" colspan=2>
+     <p class=example>A user agent could make all list item bullets focusable, so that a user can
+     more easily navigate lists.</p>
+     <p class=example>Similarly, a user agent could make all elements with <code id=data-model:attr-title><a href=dom.html#attr-title>title</a></code> attributes focusable, so that their advisory information can
+     be accessed.</p>
+
+  </table>
+
+  <p id=bc-focus-ergo-bcc-focus class=note>A <a id=data-model:browsing-context-container href=browsers.html#browsing-context-container>browsing context container</a> (e.g. an
+  <code id=data-model:the-iframe-element-3><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code>) is a <a href=#focusable-area id=data-model:focusable-area-10>focusable area</a>, but key events routed to a <a id=data-model:browsing-context-container-2 href=browsers.html#browsing-context-container>browsing context
+  container</a> get immediately routed to the <a id=data-model:nested-browsing-context href=browsers.html#nested-browsing-context>nested browsing context</a>'s <a id=data-model:active-document href=browsers.html#active-document>active
+  document</a>. Similarly, in sequential focus navigation a <a id=data-model:browsing-context-container-3 href=browsers.html#browsing-context-container>browsing context
+  container</a> essentially acts merely as a placeholder for its <a id=data-model:nested-browsing-context-2 href=browsers.html#nested-browsing-context>nested browsing
+  context</a>'s <a id=data-model:active-document-2 href=browsers.html#active-document>active document</a>.</p>
+
+  <hr>
+
+  <p>One <a href=#focusable-area id=data-model:focusable-area-11>focusable area</a> in each <code>Document</code> is designated the <dfn id=focused-area-of-the-document>focused
+  area of the document</dfn>. Which control is so designated changes over time, based on algorithms
+  in this specification.</p>
+  
+
+  <p><a href=#focusable-area id=data-model:focusable-area-12>Focusable areas</a> in a <code>Document</code>
+  are ordered relative to the <a id=data-model:tree-order href=https://dom.spec.whatwg.org/#concept-tree-order data-x-internal=tree-order>tree order</a> of their <a href=#dom-anchor id=data-model:dom-anchor-7>DOM
+  anchors</a>. <a href=#focusable-area id=data-model:focusable-area-13>Focusable areas</a> with the same <a href=#dom-anchor id=data-model:dom-anchor-8>DOM
+  anchor</a> in a <code>Document</code> are ordered relative to their CSS boxes' relative
+  positions in a pre-order, depth-first traversal of the box tree. <a href=references.html#refsCSS>[CSS]</a></p>
+
+  <hr>
+
+  <p>The <dfn id=currently-focused-area-of-a-top-level-browsing-context>currently focused area of a top-level browsing context</dfn> at any particular time is
+  the <a href=#focusable-area id=data-model:focusable-area-14>focusable area</a> returned by this algorithm:</p>
+
+  <ol><li><p>Let <var>candidate</var> be the <code>Document</code> of the <a id=data-model:top-level-browsing-context href=browsers.html#top-level-browsing-context>top-level
+   browsing context</a>.<li><p>If the designated <a href=#focused-area-of-the-document id=data-model:focused-area-of-the-document>focused area of the document</a> is a <a id=data-model:browsing-context-container-4 href=browsers.html#browsing-context-container>browsing context
+   container</a> with a non-null <a id=data-model:nested-browsing-context-3 href=browsers.html#nested-browsing-context>nested browsing context</a>, then let
+   <var>candidate</var> be the <a id=data-model:active-document-3 href=browsers.html#active-document>active document</a> of that <a id=data-model:browsing-context-container-5 href=browsers.html#browsing-context-container>browsing context
+   container</a>'s <a id=data-model:nested-browsing-context-4 href=browsers.html#nested-browsing-context>nested browsing context</a>, and redo this step.<li><p>If <var>candidate</var> has a <a href=#focused-area-of-the-document id=data-model:focused-area-of-the-document-2>focused
+   area</a>, set <var>candidate</var> to <var>candidate</var>'s <a href=#focused-area-of-the-document id=data-model:focused-area-of-the-document-3>focused area</a>.<li><p>Return <var>candidate</var>.</ol>
+
+  <p>An element that is the <a href=#dom-anchor id=data-model:dom-anchor-9>DOM anchor</a> of a <a href=#focusable-area id=data-model:focusable-area-15>focusable area</a> is said to <dfn id=gains-focus>gain focus</dfn> when that <a href=#focusable-area id=data-model:focusable-area-16>focusable area</a> becomes the <a href=#currently-focused-area-of-a-top-level-browsing-context id=data-model:currently-focused-area-of-a-top-level-browsing-context>currently
+  focused area of a top-level browsing context</a>. When an element is the <a href=#dom-anchor id=data-model:dom-anchor-10>DOM anchor</a> of a
+  <a href=#focusable-area id=data-model:focusable-area-17>focusable area</a> of the <a href=#currently-focused-area-of-a-top-level-browsing-context id=data-model:currently-focused-area-of-a-top-level-browsing-context-2>currently focused area of a top-level browsing context</a>,
+  it is <dfn id=focused>focused</dfn>.</p>
+
+  
+
+
+  <h4 id=the-tabindex-attribute><span class=secno>6.4.3</span> The <code id=the-tabindex-attribute:attr-tabindex><a href=#attr-tabindex>tabindex</a></code> attribute<a href=#the-tabindex-attribute class=self-link></a></h4>
+
+  <p>The <dfn id=attr-tabindex><code>tabindex</code></dfn> content attribute allows authors to
+  indicate that an element is supposed to be <a href=#focusable-area id=the-tabindex-attribute:focusable-area>focusable</a>, and
+  whether it is supposed to be reachable using <span>sequential focus navigation</span> and, if so,
+  what is to be the relative order of the element for the purposes of sequential focus navigation.
+  The name "tab index" comes from the common use of the "tab" key to navigate through the focusable
+  elements. The term "tabbing" refers to moving forward through the focusable elements that can be
+  reached using sequential focus navigation.<aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex title="The tabindex global attribute indicates if its element can be focused, and if/where it participates in sequential keyboard navigation (usually with the Tab key, hence the name).">Global_attributes/tabindex</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> tabindex-attr<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>15+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>3.2+</span></span><span class="firefox yes"><span>Firefox</span> <span>4+</span></span><span class="ie yes"><span>IE</span> <span>7+</span></span><span class="safari yes"><span>Safari</span> <span>5.1+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>9.5+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=tabindex-attr">caniuse.com</a></div>
+
+  <p>When the attribute is omitted, the user agent applies defaults. (There is no way to make an
+  element that is <span>being rendered</span> be not focusable at all without <a href=semantics-other.html#concept-element-disabled id=the-tabindex-attribute:concept-element-disabled>disabling</a> it or making it <a href=#inert id=the-tabindex-attribute:inert>inert</a>.)</p>
+
+  <p>The <code id=the-tabindex-attribute:attr-tabindex-2><a href=#attr-tabindex>tabindex</a></code> attribute, if specified, must have a value
+  that is a <a id=the-tabindex-attribute:valid-integer href=common-microsyntaxes.html#valid-integer>valid integer</a>. Positive numbers specify the relative position of the
+  element's <a href=#focusable-area id=the-tabindex-attribute:focusable-area-2>focusable areas</a> in the <span>sequential focus
+  navigation order</span>, and negative numbers indicate that the control is to be unreachable by
+  <span>sequential focus navigation</span>.</p>
+
+  <p>Developers should use caution when using values other than 0 or −1 for their <code id=the-tabindex-attribute:attr-tabindex-3><a href=#attr-tabindex>tabindex</a></code> attributes as this is complicated to do correctly.</p>
+
+  
+
+
+  
+
+
+  <h4 id=focus-management-apis><span class=secno>6.4.4</span> Focus management APIs<a href=#focus-management-apis class=self-link></a></h4>
+
+  
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/DocumentOrShadowRoot/activeElement title="The activeElement read-only property of the Document and ShadowRoot interfaces returns the Element within the DOM or shadow DOM tree that currently has focus.">DocumentOrShadowRoot/activeElement</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>53+</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>53+</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>40+</span></span><span class="opera_android yes"><span>Opera Android</span><span>40+</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>6.0+</span></span><span class="webview_android yes"><span>WebView Android</span><span>53+</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Document/hasFocus title="false if the active element in the document has no focus; true if the active element in the document has focus.">Document/hasFocus</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>30+</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>3+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie yes"><span>Internet Explorer</span><span>6+</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Window/focus title="Makes a request to bring the window to the front. It may fail due to user settings and the window isn't guaranteed to be frontmost before this method returns.">Window/focus</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus title="The HTMLElement.focus() method sets focus on the specified element, if it can be focused.">HTMLElement/focus</a></summary><p class=mdnsupport><span class="chrome unknown"><span>Chrome</span><span>?</span></span><span class="chrome_android unknown"><span>Chrome Android</span><span>?</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>5+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>5+</span></span><span class="ie yes"><span>Internet Explorer</span><span>9+</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android unknown"><span>WebView Android</span><span>?</span></span></details></div><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/blur title="The HTMLElement.blur() method removes keyboard focus from the current element.">HTMLElement/blur</a></summary><p class=mdnsupport><span class="chrome unknown"><span>Chrome</span><span>?</span></span><span class="chrome_android unknown"><span>Chrome Android</span><span>?</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>5+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>5+</span></span><span class="ie yes"><span>Internet Explorer</span><span>9+</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android unknown"><span>WebView Android</span><span>?</span></span></details></div></aside><dl class=domintro><dt><var>document</var> . <code id=dom-document-activeelement>activeElement</code><dd>
+
+    <p>Returns the deepest element in the document through which or to which key events are being
+    routed. This is, roughly speaking, the focused element in the document.</p>
+
+    <p>For the purposes of this API, when a <a id=focus-management-apis:child-browsing-context href=browsers.html#child-browsing-context>child browsing context</a> is focused, its
+    <a id=focus-management-apis:browsing-context-container href=browsers.html#browsing-context-container>browsing context container</a> is <a href=#bc-focus-ergo-bcc-focus>focused</a> in the
+    <a id=focus-management-apis:parent-browsing-context href=browsers.html#parent-browsing-context>parent browsing context</a>. For example, if the user moves the focus to a text control
+    in an <code id=focus-management-apis:the-iframe-element><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code>, the <code id=focus-management-apis:the-iframe-element-2><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code> is the element returned by the <code id=focus-management-apis:dom-document-activeelement><a href=#dom-document-activeelement>activeElement</a></code> API in the <code id=focus-management-apis:the-iframe-element-3><a href=iframe-embed-object.html#the-iframe-element>iframe</a></code>'s
+    <a id=focus-management-apis:node-document href=https://dom.spec.whatwg.org/#concept-node-document data-x-internal=node-document>node document</a>.</p>
+
+   <dt><var>document</var> . <code id=dom-document-hasfocus>hasFocus</code>()<dd>
+
+    <p>Returns true if key events are being routed through or to the document; otherwise, returns
+    false. Roughly speaking, this corresponds to the document, or a document nested inside this
+    one, being focused.</p>
+
+   <dt><var>window</var> . <code id=dom-window-focus>focus</code>()<dd>
+
+    
+
+    <p>Moves the focus to the window's <a id=focus-management-apis:browsing-context href=browsers.html#browsing-context>browsing context</a>, if any.</p>
+
+   <dt><var>element</var> . <code id=dom-focus>focus</code>([ { <code>preventScroll</code>: true } ])<dd>
+
+    <p>Moves the focus to the element.</p>
+
+    <p>If the element is a <a id=focus-management-apis:browsing-context-container-2 href=browsers.html#browsing-context-container>browsing context container</a>, moves the focus to the
+    <a id=focus-management-apis:nested-browsing-context href=browsers.html#nested-browsing-context>nested browsing context</a> instead.</p>
+
+    <p>By default, this method also scrolls the element into view. Providing the <code>preventScroll</code> option and setting it to true
+    prevents this behavior.</p>
+
+   <dt><var>element</var> . <code id=dom-blur>blur</code>()<dd>
+
+    <p>Moves the focus to the <a id=focus-management-apis:viewport href=https://drafts.csswg.org/css2/visuren.html#viewport data-x-internal=viewport>viewport</a>. Use of this method is discouraged; if you want
+    to focus the <a id=focus-management-apis:viewport-2 href=https://drafts.csswg.org/css2/visuren.html#viewport data-x-internal=viewport>viewport</a>, call the <code id=focus-management-apis:dom-focus><a href=#dom-focus>focus()</a></code> method on
+    the <code>Document</code>'s <a id=focus-management-apis:document-element href=https://dom.spec.whatwg.org/#document-element data-x-internal=document-element>document element</a>.</p>
+
+    <p>Do not use this method to hide the focus ring if you find the focus ring unsightly. Instead,
+    use a CSS rule to override the <a id="focus-management-apis:'outline'" href=https://drafts.csswg.org/css-ui/#outline data-x-internal="'outline'">'outline'</a> property, and provide a different way to
+    show what element is focused. Be aware that if an alternative focusing style isn't made
+    available, the page will be significantly less usable for people who primarily navigate pages
+    using a keyboard, or those with reduced vision who use focus outlines to help them navigate the
+    page.</p>
+
+    
+
+    <div class=example>
+
+     <p>For example, to hide the outline from links and instead use a yellow background to indicate
+     focus, you could use:</p>
+
+     <pre><code class='css'><c- f>:link:focus, :visited:focus </c-><c- p>{</c-> <c- k>outline</c-><c- p>:</c-> none<c- p>;</c-> <c- k>background</c-><c- p>:</c-> yellow<c- p>;</c-> <c- k>color</c-><c- p>:</c-> black<c- p>;</c-> <c- p>}</c-></code></pre>
+
+    </div>
+
+   </dl>
+
+  
+
+
+
+
+  <h3 id=assigning-keyboard-shortcuts><span class=secno>6.5</span> Assigning keyboard shortcuts<a href=#assigning-keyboard-shortcuts class=self-link></a></h3>
+
+  <h4 id=introduction-8><span class=secno>6.5.1</span> Introduction<a href=#introduction-8 class=self-link></a></h4>
+
+  
+
+  <p>Each element that can be activated or focused can be assigned a single key combination to
+  activate it, using the <code id=introduction-8:the-accesskey-attribute><a href=#the-accesskey-attribute>accesskey</a></code> attribute.</p>
+
+  <p>The exact shortcut is determined by the user agent, based on information about the user's
+  keyboard, what keyboard shortcuts already exist on the platform, and what other shortcuts have
+  been specified on the page, using the information provided in the <code id=introduction-8:the-accesskey-attribute-2><a href=#the-accesskey-attribute>accesskey</a></code> attribute as a guide.</p>
+
+  <p>In order to ensure that a relevant keyboard shortcut is available on a wide variety of input
+  devices, the author can provide a number of alternatives in the <code id=introduction-8:the-accesskey-attribute-3><a href=#the-accesskey-attribute>accesskey</a></code> attribute.</p>
+
+  <p>Each alternative consists of a single character, such as a letter or digit.</p>
+
+  <p>User agents can provide users with a list of the keyboard shortcuts, but authors are encouraged
+  to do so also. The <code>accessKeyLabel</code> IDL attribute returns a
+  string representing the actual key combination assigned by the user agent.</p>
+
+  <div class=example>
+
+   <p>In this example, an author has provided a button that can be invoked using a shortcut key. To
+   support full keyboards, the author has provided "C" as a possible key. To support devices
+   equipped only with numeric keypads, the author has provided "1" as another possibly key.</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>input</c-> <c- e>type</c-><c- o>=</c-><c- s>button</c-> <c- e>value</c-><c- o>=</c-><c- s>Collect</c-> <c- e>onclick</c-><c- o>=</c-><c- s>&quot;collect()&quot;</c->
+       <strong><c- e>accesskey</c-><c- o>=</c-><c- s>&quot;C 1&quot;</c-></strong> <c- e>id</c-><c- o>=</c-><c- s>c</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>To tell the user what the shortcut key is, the author has this script here opted to explicitly
+   add the key combination to the button's label:</p>
+
+   <pre><code class='js'><c- a>function</c-> addShortcutKeyLabel<c- p>(</c->button<c- p>)</c-> <c- p>{</c->
+<strong>  <c- k>if</c-> <c- p>(</c->button<c- p>.</c->accessKeyLabel <c- o>!=</c-> <c- t>&apos;&apos;</c-><c- p>)</c->
+    button<c- p>.</c->value <c- o>+=</c-> <c- t>&apos; (&apos;</c-> <c- o>+</c-> button<c- p>.</c->accessKeyLabel <c- o>+</c-> <c- t>&apos;)&apos;</c-><c- p>;</c-></strong>
+<c- p>}</c->
+addShortcutKeyLabel<c- p>(</c->document<c- p>.</c->getElementById<c- p>(</c-><c- t>&apos;c&apos;</c-><c- p>));</c-></code></pre>
+
+   <p>Browsers on different platforms will show different labels, even for the same key combination,
+   based on the convention prevalent on that platform. For example, if the key combination is the
+   Control key, the Shift key, and the letter C, a Windows browser might display
+   "<samp>Ctrl+Shift+C</samp>", whereas a Mac browser might display "<samp>^⇧C</samp>", while
+   an Emacs browser might just display "<samp>C-C</samp>". Similarly, if the key combination is the
+   Alt key and the Escape key, Windows might use "<samp>Alt+Esc</samp>", Mac might use
+   "<samp>⌥⎋</samp>", and an Emacs browser might use "<samp>M-ESC</samp>" or
+   "<samp>ESC ESC</samp>".</p>
+
+   <p>In general, therefore, it is unwise to attempt to parse the value returned from the <code>accessKeyLabel</code> IDL attribute.</p>
+
+  </div>
+
+
+  <h4 id=the-accesskey-attribute><span class=secno>6.5.2</span> The <dfn><code>accesskey</code></dfn> attribute<a href=#the-accesskey-attribute class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/accesskey title="The accesskey global attribute provides a hint for generating a keyboard shortcut for the current element. The attribute value must consist of a single printable character (which includes accented and other characters that can be generated by the keyboard).">Global_attributes/accesskey</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>Yes</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>Yes</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside>
+
+  <p>All <a id=the-accesskey-attribute:html-elements href=infrastructure.html#html-elements>HTML elements</a> may have the <code id=the-accesskey-attribute:the-accesskey-attribute><a href=#the-accesskey-attribute>accesskey</a></code>
+  content attribute set. The <code id=the-accesskey-attribute:the-accesskey-attribute-2><a href=#the-accesskey-attribute>accesskey</a></code> attribute's value is used
+  by the user agent as a guide for creating a keyboard shortcut that activates or focuses the
+  element.</p>
+
+  <p>If specified, the value must be an <a id=the-accesskey-attribute:ordered-set-of-unique-space-separated-tokens href=common-microsyntaxes.html#ordered-set-of-unique-space-separated-tokens>ordered set of unique space-separated tokens</a>
+  that are <a id=the-accesskey-attribute:case-sensitive href=infrastructure.html#case-sensitive>case-sensitive</a>, each of which must be exactly one code point in length.</p>
+
+  <div class=example>
+
+   <p>In the following example, a variety of links are given with access keys so that keyboard users
+   familiar with the site can more quickly navigate to the relevant pages:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>nav</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>a</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Consortium Activities&quot;</c-> <c- e>accesskey</c-><c- o>=</c-><c- s>&quot;A&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/Consortium/activities&quot;</c-><c- p>&gt;</c->Activities<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> |
+  <c- p>&lt;</c-><c- f>a</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Technical Reports and Recommendations&quot;</c-> <c- e>accesskey</c-><c- o>=</c-><c- s>&quot;T&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/TR/&quot;</c-><c- p>&gt;</c->Technical Reports<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> |
+  <c- p>&lt;</c-><c- f>a</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Alphabetical Site Index&quot;</c-> <c- e>accesskey</c-><c- o>=</c-><c- s>&quot;S&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/Consortium/siteindex&quot;</c-><c- p>&gt;</c->Site Index<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> |
+  <c- p>&lt;</c-><c- f>a</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;About This Site&quot;</c-> <c- e>accesskey</c-><c- o>=</c-><c- s>&quot;B&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/Consortium/&quot;</c-><c- p>&gt;</c->About Consortium<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c-> |
+  <c- p>&lt;</c-><c- f>a</c-> <c- e>title</c-><c- o>=</c-><c- s>&quot;Contact Consortium&quot;</c-> <c- e>accesskey</c-><c- o>=</c-><c- s>&quot;C&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;/Consortium/contact&quot;</c-><c- p>&gt;</c->Contact<c- p>&lt;/</c-><c- f>a</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>nav</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>In the following example, the search field is given two possible access keys, "s" and "0" (in
+   that order). A user agent on a device with a full keyboard might pick <kbd><kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd></kbd> as the shortcut key,
+   while a user agent on a small device with just a numeric keypad might pick just the plain
+   unadorned key <kbd><kbd>0</kbd></kbd>:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>form</c-> <c- e>action</c-><c- o>=</c-><c- s>&quot;/search&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>label</c-><c- p>&gt;</c->Search: <c- p>&lt;</c-><c- f>input</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;search&quot;</c-> <c- e>name</c-><c- o>=</c-><c- s>&quot;q&quot;</c-> <c- e>accesskey</c-><c- o>=</c-><c- s>&quot;s 0&quot;</c-><c- p>&gt;&lt;/</c-><c- f>label</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>input</c-> <c- e>type</c-><c- o>=</c-><c- s>&quot;submit&quot;</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>form</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>In the following example, a button has possible access keys described. A script then tries to
+   update the button's label to advertise the key combination the user agent selected.</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>input</c-> <c- e>type</c-><c- o>=</c-><c- s>submit</c-> <c- e>accesskey</c-><c- o>=</c-><c- s>&quot;N @ 1&quot;</c-> <c- e>value</c-><c- o>=</c-><c- s>&quot;Compose&quot;</c-><c- p>&gt;</c->
+...
+<c- p>&lt;</c-><c- f>script</c-><c- p>&gt;</c->
+ <c- a>function</c-> labelButton<c- p>(</c->button<c- p>)</c-> <c- p>{</c->
+   <c- k>if</c-> <c- p>(</c->button<c- p>.</c->accessKeyLabel<c- p>)</c->
+     button<c- p>.</c->value <c- o>+=</c-> <c- t>&apos; (&apos;</c-> <c- o>+</c-> button<c- p>.</c->accessKeyLabel <c- o>+</c-> <c- t>&apos;)&apos;</c-><c- p>;</c->
+ <c- p>}</c->
+ <c- a>var</c-> inputs <c- o>=</c-> document<c- p>.</c->getElementsByTagName<c- p>(</c-><c- t>&apos;input&apos;</c-><c- p>);</c->
+ <c- k>for</c-> <c- p>(</c-><c- a>var</c-> i <c- o>=</c-> <c- mi>0</c-><c- p>;</c-> i <c- o>&lt;</c-> inputs<c- p>.</c->length<c- p>;</c-> i <c- o>+=</c-> <c- mi>1</c-><c- p>)</c-> <c- p>{</c->
+   <c- k>if</c-> <c- p>(</c->inputs<c- p>[</c->i<c- p>].</c->type <c- o>==</c-> <c- u>&quot;submit&quot;</c-><c- p>)</c->
+     labelButton<c- p>(</c->inputs<c- p>[</c->i<c- p>]);</c->
+ <c- p>}</c->
+<c- p>&lt;/</c-><c- f>script</c-><c- p>&gt;</c-></code></pre>
+
+   <p>On one user agent, the button's label might become "<samp>Compose (⌘N)</samp>". On
+   another, it might become "<samp>Compose (Alt+⇧+1)</samp>". If the user agent doesn't
+   assign a key, it will be just "<samp>Compose</samp>". The exact string depends on what the
+   <span>assigned access key</span> is, and on how the user agent represents that key
+   combination.</p>
+
+  </div>
+
+
+  
+
+
+
+  <h3 id=editing-2><span class=secno>6.6</span> Editing<a href=#editing-2 class=self-link></a></h3>
+
+  <h4 id=contenteditable><span class=secno>6.6.1</span> Making document regions editable: The <code id=contenteditable:attr-contenteditable><a href=#attr-contenteditable>contenteditable</a></code> content attribute<a href=#contenteditable class=self-link></a></h4><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> contenteditable<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>4+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>5.0+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>3.5+</span></span><span class="ie yes"><span>IE</span> <span>5.5+</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>3.1+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>9+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>3+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=contenteditable">caniuse.com</a></div><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/contentEditable title="The HTMLElement.contentEditable property is used to indicate whether or not the element is editable.">HTMLElement/contentEditable</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>3+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie yes"><span>Internet Explorer</span><span>5.5+</span></span><span class="opera yes"><span>Opera</span><span>9+</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside>
+
+  
+
+  <p>The <dfn id=attr-contenteditable><code>contenteditable</code></dfn> content attribute is an
+  <a id=contenteditable:enumerated-attribute href=common-microsyntaxes.html#enumerated-attribute>enumerated attribute</a> whose keywords are the empty string, <code>true</code>,
+  and <code>false</code>. The empty string and the <code>true</code> keyword map
+  to the <i>true</i> state. The <code>false</code> keyword maps to the <i>false</i> state.
+  In addition, there is a third state, the <i>inherit</i> state, which is the <i id=contenteditable:missing-value-default><a href=common-microsyntaxes.html#missing-value-default>missing value default</a></i> and the <i id=contenteditable:invalid-value-default><a href=common-microsyntaxes.html#invalid-value-default>invalid value default</a></i>.<aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/contenteditable title="The contenteditable global attribute is an enumerated attribute indicating if the element should be editable by the user. If so, the browser modifies its widget to allow editing.">Global_attributes/contenteditable</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>3+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie yes"><span>Internet Explorer</span><span>5.5+</span></span><span class="opera yes"><span>Opera</span><span>9+</span></span><span class="opera_android yes"><span>Opera Android</span><span>Yes</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside>
+
+  <p>The <i>true</i> state indicates that the element is editable. The <i>inherit</i> state
+  indicates that the element is editable if its parent is. The <i>false</i> state indicates that the
+  element is not editable.</p>
+
+  <div class=example>
+   <p>For example, consider a page that has a <code id=contenteditable:the-form-element><a href=forms.html#the-form-element>form</a></code> and a <code id=contenteditable:the-textarea-element><a href=form-elements.html#the-textarea-element>textarea</a></code> to
+   publish a new article, where the user is expected to write the article using HTML:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>form</c-> <c- e>method</c-><c- o>=</c-><c- s>POST</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>fieldset</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>legend</c-><c- p>&gt;</c->New article<c- p>&lt;/</c-><c- f>legend</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>textarea</c-> <c- e>name</c-><c- o>=</c-><c- s>article</c-><c- p>&gt;&lt;</c-><c- f>p</c-><c- p>&gt;</c->Hello world.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;&lt;/</c-><c- f>textarea</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>fieldset</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>button</c-><c- p>&gt;</c->Publish<c- p>&lt;/</c-><c- f>button</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>form</c-><c- p>&gt;</c-></code></pre>
+
+   <p>When scripting is enabled, the <code id=contenteditable:the-textarea-element-2><a href=form-elements.html#the-textarea-element>textarea</a></code> element could be replaced with a rich
+   text control instead, using the <code id=contenteditable:attr-contenteditable-2><a href=#attr-contenteditable>contenteditable</a></code>
+   attribute:</p>
+
+   <pre><code class='html'><c- p>&lt;</c-><c- f>form</c-> <c- e>method</c-><c- o>=</c-><c- s>POST</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>fieldset</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>legend</c-><c- p>&gt;</c->New article<c- p>&lt;/</c-><c- f>legend</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>textarea</c-> <c- e>id</c-><c- o>=</c-><c- s>textarea</c-> <c- e>name</c-><c- o>=</c-><c- s>article</c-><c- p>&gt;&lt;</c-><c- f>p</c-><c- p>&gt;</c->Hello world.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;&lt;/</c-><c- f>textarea</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>div</c-> <c- e>id</c-><c- o>=</c-><c- s>div</c-> <c- e>style</c-><c- o>=</c-><c- s>&quot;white-space: pre-wrap&quot;</c-> <c- e>hidden</c-><c- p>&gt;&lt;</c-><c- f>p</c-><c- p>&gt;</c->Hello world.<c- p>&lt;/</c-><c- f>p</c-><c- p>&gt;&lt;/</c-><c- f>div</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>script</c-><c- p>&gt;</c->
+   <c- a>let</c-> textarea <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>&quot;textarea&quot;</c-><c- p>);</c->
+   <c- a>let</c-> div <c- o>=</c-> document<c- p>.</c->getElementById<c- p>(</c-><c- u>&quot;div&quot;</c-><c- p>);</c->
+   textarea<c- p>.</c->hidden <c- o>=</c-> <c- kc>true</c-><c- p>;</c->
+   div<c- p>.</c->hidden <c- o>=</c-> <c- kc>false</c-><c- p>;</c->
+   div<c- p>.</c->contentEditable <c- o>=</c-> <c- u>&quot;true&quot;</c-><c- p>;</c->
+   div<c- p>.</c->oninput <c- o>=</c-> <c- p>(</c->e<c- p>)</c-> <c- p>=&gt;</c-> <c- p>{</c->
+     textarea<c- p>.</c->value <c- o>=</c-> div<c- p>.</c->innerHTML<c- p>;</c->
+   <c- p>};</c->
+  <c- p>&lt;/</c-><c- f>script</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>fieldset</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;&lt;</c-><c- f>button</c-><c- p>&gt;</c->Publish<c- p>&lt;/</c-><c- f>button</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>form</c-><c- p>&gt;</c-></code></pre>
+
+   <p>Features to enable, e.g., inserting links, can be implemented using the <code>document.execCommand()</code> API, or using
+   <code id=contenteditable:selection><a data-x-internal=selection href=https://w3c.github.io/selection-api/#selection-interface>Selection</a></code> APIs and other DOM APIs. <a href=references.html#refsEXECCOMMAND>[EXECCOMMAND]</a> <a href=references.html#refsSELECTION>[SELECTION]</a> <a href=references.html#refsDOM>[DOM]</a></p>
+  </div>
+
+  <div class=example>
+   <p>The <code id=contenteditable:attr-contenteditable-3><a href=#attr-contenteditable>contenteditable</a></code> attribute can also be used to
+   great effect:</p>
+
+   <pre><code class='html'><c- cp>&lt;!doctype html&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>en</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Live CSS editing!<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+<c- p>&lt;</c-><c- f>style</c-> <c- e>style</c-><c- o>=</c-><c- s>white-space:pre</c-> <c- e>contenteditable</c-><c- p>&gt;</c->
+<c- f>html</c-> <c- p>{</c-> <c- k>margin</c-><c- p>:</c-><c- mf>.2</c-><c- b>em</c-><c- p>;</c-> <c- k>font-size</c-><c- p>:</c-><c- mi>2</c-><c- b>em</c-><c- p>;</c-> <c- k>color</c-><c- p>:</c-><c- kc>lime</c-><c- p>;</c-> <c- k>background</c-><c- p>:</c-><c- kc>purple</c-> <c- p>}</c->
+<c- f>head</c-><c- o>,</c-> <c- f>title</c-><c- o>,</c-> <c- f>style</c-> <c- p>{</c-> <c- k>display</c-><c- p>:</c-><c- kc>block</c-> <c- p>}</c->
+<c- f>body</c-> <c- p>{</c-> <c- k>display</c-><c- p>:</c-><c- kc>none</c-> <c- p>}</c->
+<c- p>&lt;/</c-><c- f>style</c-><c- p>&gt;</c-></code></pre>
+  </div>
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/isContentEditable title="The HTMLElement.isContentEditable read-only property returns a Boolean that is true if the contents of the element are editable; otherwise it returns false.">HTMLElement/isContentEditable</a></summary><p class=mdnsupport><span class="chrome unknown"><span>Chrome</span><span>?</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>1+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><dl class=domintro><dt><var>element</var> . <code id=dom-contenteditable>contentEditable</code> [ = <var>value</var> ]<dd>
+
+    <p>Returns "<code>true</code>", "<code>false</code>", or "<code>inherit</code>", based on the state of the <code id=contenteditable:attr-contenteditable-4><a href=#attr-contenteditable>contenteditable</a></code> attribute.</p>
+
+    <p>Can be set, to change that state.</p>
+
+    <p>Throws a <a id=contenteditable:syntaxerror href=https://heycam.github.io/webidl/#syntaxerror data-x-internal=syntaxerror>"<code>SyntaxError</code>"</a> <code id=contenteditable:domexception><a data-x-internal=domexception href=https://heycam.github.io/webidl/#dfn-DOMException>DOMException</a></code> if the new value
+    isn't one of those strings.</p>
+
+   <dt><var>element</var> . <code id=dom-iscontenteditable>isContentEditable</code><dd>
+
+    <p>Returns true if the element is editable; otherwise, returns false.</p>
+
+   </dl>
+
+  
+
+
+
+  <h4 id=making-entire-documents-editable:-the-designmode-idl-attribute><span class=secno>6.6.2</span> Making entire documents editable: the <code id=making-entire-documents-editable:-the-designmode-idl-attribute:dom-document-designmode><a href=#dom-document-designmode>designMode</a></code>
+  IDL attribute<a href=#making-entire-documents-editable:-the-designmode-idl-attribute class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/Document/designMode title="document.designMode controls whether the entire document is editable. Valid values are &quot;on&quot; and &quot;off&quot;. According to the specification, this property is meant to default to &quot;off&quot;. Firefox follows this standard. The earlier versions of Chrome and IE default to &quot;inherit&quot;. Starting in Chrome 43, the default is &quot;off&quot; and &quot;inherit&quot; is no longer supported. In IE6-10, the value is capitalized.">Document/designMode</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android unknown"><span>Firefox Android</span><span>?</span></span><span class="ie yes"><span>Internet Explorer</span><span>Yes</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside>
+
+  
+
+  <dl class=domintro><dt><var>document</var> . <code id=dom-document-designmode>designMode</code> [ = <var>value</var> ]<dd>
+
+    <p>Returns "<code>on</code>" if the document is editable, and "<code>off</code>" if it isn't.</p>
+
+    <p>Can be set, to change the document's current state. This focuses the document and resets the
+    selection in that document.</p>
+
+   </dl>
+
+  
+
+
+  <h4 id=best-practices-for-in-page-editors><span class=secno>6.6.3</span> Best practices for in-page editors<a href=#best-practices-for-in-page-editors class=self-link></a></h4>
+
+  <p>Authors are encouraged to set the <a id="best-practices-for-in-page-editors:'white-space'" href=https://drafts.csswg.org/css-text/#white-space-property data-x-internal="'white-space'">'white-space'</a> property on <span>editing hosts</span> and on markup that was originally created through these editing
+  mechanisms to the value 'pre-wrap'. Default HTML whitespace handling is not well suited to WYSIWYG
+  editing, and line wrapping will not work correctly in some corner cases if
+  <a id="best-practices-for-in-page-editors:'white-space'-2" href=https://drafts.csswg.org/css-text/#white-space-property data-x-internal="'white-space'">'white-space'</a> is left at its default value.</p>
+
+  <div class=example>
+
+   <p>As an example of problems that occur if the default 'normal' value is used instead, consider
+   the case of the user typing "<kbd>yellow␣␣ball</kbd>", with two spaces (here
+   represented by "␣") between the words. With the editing rules in place for the default
+   value of <a id="best-practices-for-in-page-editors:'white-space'-3" href=https://drafts.csswg.org/css-text/#white-space-property data-x-internal="'white-space'">'white-space'</a> ('normal'), the resulting markup will either consist of
+   "<samp>yellow&amp;nbsp; ball</samp>" or "<samp>yellow &amp;nbsp;ball</samp>"; i.e.,
+   there will be a non-breaking space between the two words in addition to the regular space. This
+   is necessary because the 'normal' value for <a id="best-practices-for-in-page-editors:'white-space'-4" href=https://drafts.csswg.org/css-text/#white-space-property data-x-internal="'white-space'">'white-space'</a> requires adjacent regular
+   spaces to be collapsed together.</p>
+
+   <p>In the former case, "<samp>yellow⍽</samp>" might wrap to the next line ("⍽"
+   being used here to represent a non-breaking space) even though "<samp>yellow</samp>" alone might
+   fit at the end of the line; in the latter case, "<samp>⍽ball</samp>", if wrapped to the
+   start of the line, would have visible indentation from the non-breaking space.</p>
+
+   <p>When <a id="best-practices-for-in-page-editors:'white-space'-5" href=https://drafts.csswg.org/css-text/#white-space-property data-x-internal="'white-space'">'white-space'</a> is set to 'pre-wrap', however, the editing rules will instead
+   simply put two regular spaces between the words, and should the two words be split at the end of
+   a line, the spaces would be neatly removed from the rendering.</p>
+
+  </div>
+
+  
+
+  <h4 id=spelling-and-grammar-checking><span class=secno>6.6.4</span> Spelling and grammar checking<a href=#spelling-and-grammar-checking class=self-link></a></h4><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> spellcheck-attribute<span class="and_chr partial"><span>Chrome for Android (limited)</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>9+</span></span><span class="ios_saf partial"><span>iOS Safari (limited)</span> <span>3.2+</span></span><span class="and_uc partial"><span>UC Browser for Android (limited)</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>2+</span></span><span class="ie yes"><span>IE</span> <span>10+</span></span><span class="op_mini partial"><span>Opera Mini (limited)</span> <span>all+</span></span><span class="safari yes"><span>Safari</span> <span>5.1+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>10.5+</span></span><span class="samsung partial"><span>Samsung Internet (limited)</span> <span>4+</span></span><span class="android partial"><span>Android Browser (limited)</span> <span>2.1+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=spellcheck-attribute">caniuse.com</a></div><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck title="The spellcheck global attribute is an enumerated attribute defines whether the element may be checked for spelling errors.">Global_attributes/spellcheck</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>9+</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>47+</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>Yes</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>57+</span></span><span class="ie yes"><span>Internet Explorer</span><span>11+</span></span><span class="opera yes"><span>Opera</span><span>Yes</span></span><span class="opera_android yes"><span>Opera Android</span><span>37+</span></span><span class="safari yes"><span>Safari</span><span>Yes</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>9.3+</span></span><span class="samsunginternet_android yes"><span>Samsung Internet</span><span>5.0+</span></span><span class="webview_android yes"><span>WebView Android</span><span>47+</span></span></details></div></aside>
+
+  
+
+  <p>The <dfn id=attr-spellcheck><code>spellcheck</code></dfn> attribute is an <a id=spelling-and-grammar-checking:enumerated-attribute href=common-microsyntaxes.html#enumerated-attribute>enumerated
+  attribute</a> whose keywords are the empty string, <code>true</code> and <code>false</code>. The empty string and the <code>true</code> keyword map to the
+  <i>true</i> state. The <code>false</code> keyword maps to the <i>false</i> state. In
+  addition, there is a third state, the <i>default</i> state, which is the <i id=spelling-and-grammar-checking:missing-value-default><a href=common-microsyntaxes.html#missing-value-default>missing value default</a></i> and the <i id=spelling-and-grammar-checking:invalid-value-default><a href=common-microsyntaxes.html#invalid-value-default>invalid value default</a></i>.</p>
+
+  <p class=note>The <i>true</i> state indicates that the element is to have its spelling and
+  grammar checked. The <i>default</i> state indicates that the element is to act according to a
+  default behavior, possibly based on the parent element's own <code id=spelling-and-grammar-checking:attr-spellcheck><a href=#attr-spellcheck>spellcheck</a></code> state, as defined below. The <i>false</i> state
+  indicates that the element is not to be checked.</p>
+
+  
+
+  <dl class=domintro><dt><var>element</var> . <code id=dom-spellcheck>spellcheck</code> [ = <var>value</var> ]<dd>
+
+    <p>Returns true if the element is to have its spelling and grammar checked; otherwise, returns
+    false.</p>
+
+    <p>Can be set, to override the default and set the <code id=spelling-and-grammar-checking:attr-spellcheck-2><a href=#attr-spellcheck>spellcheck</a></code> content attribute.</p>
+
+   </dl>
+
+  
+
+  <p class=note>This specification does not define the user interface for spelling and grammar
+  checkers. A user agent could offer on-demand checking, could perform continuous checking while the
+  checking is enabled, or could use other interfaces.</p>
+
+  <h4 id=autocapitalization><span class=secno>6.6.5</span> Autocapitalization<a href=#autocapitalization class=self-link></a></h4><aside class=mdn><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autocapitalize title="The autocapitalize global attribute is an enumerated attribute that controls whether and how text input is automatically capitalized as it is entered/edited by the user.">Global_attributes/autocapitalize</a></summary><p class=mdnsupport><span class="chrome unknown"><span>Chrome</span><span>?</span></span><span class="chrome_android unknown"><span>Chrome Android</span><span>?</span></span><span class="edge unknown"><span>Edge</span><span>?</span></span><span class="edge_mobile unknown"><span>Edge Mobile</span><span>?</span></span><span class="firefox unknown"><span>Firefox</span><span>?</span></span><span class="firefox_android unknown"><span>Firefox Android</span><span>?</span></span><span class="ie unknown"><span>Internet Explorer</span><span>?</span></span><span class="opera unknown"><span>Opera</span><span>?</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari unknown"><span>Safari</span><span>?</span></span><span class="safari_ios unknown"><span>Safari iOS</span><span>?</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android unknown"><span>WebView Android</span><span>?</span></span></details></div></aside>
+
+  <p>Some methods of entering text, for example virtual keyboards on mobile devices, and also voice
+  input, often assist users by automatically capitalizing the first letter of sentences (when
+  composing text in a language with this convention). A virtual keyboard that implements
+  autocapitalization might automatically switch to showing uppercase letters (but allow the user to
+  toggle it back to lowercase) when a letter that should be autocapitalized is about to be typed.
+  Other types of input, for example voice input, may perform autocapitalization in a way that does
+  not give users an option to intervene first. The <code id=autocapitalization:attr-autocapitalize><a href=#attr-autocapitalize>autocapitalize</a></code> attribute allows authors to control such
+  behavior.</p>
+
+  <p>The <code id=autocapitalization:attr-autocapitalize-2><a href=#attr-autocapitalize>autocapitalize</a></code> attribute, as typically
+  implemented, does not affect behavior when typing on a physical keyboard. (For this reason, as
+  well as the ability for users to override the autocapitalization behavior in some cases or edit
+  the text after initial input, the attribute must not be relied on for any sort of input
+  validation.)</p>
+
+  <p>The <code id=autocapitalization:attr-autocapitalize-3><a href=#attr-autocapitalize>autocapitalize</a></code> attribute can be used on an <span>editing host</span> to control autocapitalization behavior for the hosted
+  editable region, on an <code id=autocapitalization:the-input-element><a href=input.html#the-input-element>input</a></code> or <code id=autocapitalization:the-textarea-element><a href=form-elements.html#the-textarea-element>textarea</a></code> element to control the behavior
+  for inputting text into that element, or on a <code id=autocapitalization:the-form-element><a href=forms.html#the-form-element>form</a></code> element to control the default
+  behavior for all <a href=forms.html#category-autocapitalize id=autocapitalization:category-autocapitalize>autocapitalize-inheriting elements</a>
+  associated with the <code id=autocapitalization:the-form-element-2><a href=forms.html#the-form-element>form</a></code> element.
+
+  <p>The <code id=autocapitalization:attr-autocapitalize-4><a href=#attr-autocapitalize>autocapitalize</a></code> attribute never causes
+  autocapitalization to be enabled for <code id=autocapitalization:the-input-element-2><a href=input.html#the-input-element>input</a></code> elements whose <code id=autocapitalization:attr-input-type><a href=input.html#attr-input-type>type</a></code> attribute is in one of the <a href="input.html#url-state-(type=url)" id="autocapitalization:url-state-(type=url)">URL</a>, <a href="input.html#e-mail-state-(type=email)" id="autocapitalization:e-mail-state-(type=email)">E-mail</a>, or <a href="input.html#password-state-(type=password)" id="autocapitalization:password-state-(type=password)">Password</a> states.</p>
+
+  <p>The autocapitalization processing model is based on selecting among five
+  <dfn id=autocapitalization-hint>autocapitalization hints</dfn>, defined as follows:</p>
+
+  <dl><dt><dfn id=autocap-hint-default>default</dfn><dd><p>The user agent and input method should use make their own determination of whether or not
+   to enable autocapitalization.<dt><dfn id=autocap-hint-none>none</dfn><dd><p>No autocapitalization should be applied (all letters should default to
+   lowercase).<dt><dfn id=autocap-hint-sentences>sentences</dfn><dd><p>The first letter of each sentence should default to a capital letter; all other letters
+   should default to lowercase.<dt><dfn id=autocap-hint-words>words</dfn><dd><p>The first letter of each word should default to a capital letter; all other letters should
+   default to lowercase.<dt><dfn id=autocap-hint-characters>characters</dfn><dd><p>All letters should default to uppercase.</dl>
+
+  <p>The <dfn id=attr-autocapitalize><code>autocapitalize</code></dfn> attribute is an
+  <a id=autocapitalization:enumerated-attribute href=common-microsyntaxes.html#enumerated-attribute>enumerated attribute</a> whose states are the possible <a href=#autocapitalization-hint id=autocapitalization:autocapitalization-hint>autocapitalization hints</a>. The <a href=#autocapitalization-hint id=autocapitalization:autocapitalization-hint-2>autocapitalization hint</a> specified by the
+  attribute's state combines with other considerations to form the <span>used autocapitalization
+  hint</span>, which informs the behavior of the user agent. The keywords for this attribute and
+  their state mappings are as follows:</p>
+
+  <table><thead><tr><th> Keyword
+     <th> State
+   <tbody><tr><td><dfn id=attr-autocapitalize-off><code>off</code></dfn>
+     <td rowspan=2><a href=#autocap-hint-none id=autocapitalization:autocap-hint-none>none</a>
+    <tr><td><dfn id=attr-autocapitalize-none><code>none</code></dfn>
+    <tr><td><dfn id=attr-autocapitalize-on><code>on</code></dfn>
+     <td rowspan=2><a href=#autocap-hint-sentences id=autocapitalization:autocap-hint-sentences>sentences</a>
+    <tr><td><dfn id=attr-autocapitalize-sentences><code>sentences</code></dfn>
+    <tr><td><dfn id=attr-autocapitalize-words><code>words</code></dfn>
+     <td><a href=#autocap-hint-words id=autocapitalization:autocap-hint-words>words</a>
+    <tr><td><dfn id=attr-autocapitalize-characters><code>characters</code></dfn>
+     <td><a href=#autocap-hint-characters id=autocapitalization:autocap-hint-characters>characters</a>
+  </table>
+
+  <p>The <i id=autocapitalization:invalid-value-default><a href=common-microsyntaxes.html#invalid-value-default>invalid value default</a></i> is the <a href=#autocap-hint-sentences id=autocapitalization:autocap-hint-sentences-2>sentences</a> state. The <i id=autocapitalization:missing-value-default><a href=common-microsyntaxes.html#missing-value-default>missing value default</a></i> is the <a href=#autocap-hint-default id=autocapitalization:autocap-hint-default>default</a>
+  state.</p>
+
+  <dl class=domintro><dt><var>element</var> . <code id=dom-autocapitalize>autocapitalize</code> [ = <var>value</var> ]<dd>
+    <p>Returns the current autocapitalization state for the element, or an empty string if it hasn't
+    been set. Note that for <code id=autocapitalization:the-input-element-3><a href=input.html#the-input-element>input</a></code> and <code id=autocapitalization:the-textarea-element-2><a href=form-elements.html#the-textarea-element>textarea</a></code> elements that inherit their
+    state from a <code id=autocapitalization:the-form-element-3><a href=forms.html#the-form-element>form</a></code> element, this will return the autocapitalization state of the
+    <code id=autocapitalization:the-form-element-4><a href=forms.html#the-form-element>form</a></code> element, but for an element in an editable region, this will not return the
+    autocapitalization state of the editing host (unless this element is, in fact, the <span>editing
+    host</span>).</p>
+
+    <p>Can be set, to set the <code id=autocapitalization:attr-autocapitalize-5><a href=#attr-autocapitalize>autocapitalize</a></code> content
+    attribute (and thereby change the autocapitalization behavior for the element).</p>
+   </dl>
+
+  
+
+
+  <h4 id=input-modalities:-the-inputmode-attribute><span class=secno>6.6.6</span> Input modalities: the <code id=input-modalities:-the-inputmode-attribute:attr-inputmode><a href=#attr-inputmode>inputmode</a></code> attribute<a href=#input-modalities:-the-inputmode-attribute class=self-link></a></h4><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> input-inputmode<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>66+</span></span><span class="ios_saf no"><span>iOS Safari</span> <span>None</span></span><span class="and_uc no"><span>UC Browser for Android</span> <span>None</span></span><span class="firefox no"><span>Firefox</span> <span>None</span></span><span class="ie no"><span>IE</span> <span>None</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari no"><span>Safari</span> <span>None</span></span><span class="edge no"><span>Edge</span> <span>None</span></span><span class="opera yes"><span>Opera</span> <span>53+</span></span><span class="samsung no"><span>Samsung Internet</span> <span>None</span></span><span class="android yes"><span>Android Browser</span> <span>67+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=input-inputmode">caniuse.com</a></div>
+
+  <p>User agents can support the <code id=input-modalities:-the-inputmode-attribute:attr-inputmode-2><a href=#attr-inputmode>inputmode</a></code> attribute on form
+  controls (such as the value of <code id=input-modalities:-the-inputmode-attribute:the-textarea-element><a href=form-elements.html#the-textarea-element>textarea</a></code> elements), or in elements in an <span>editing
+  host</span> (e.g., using <code id=input-modalities:-the-inputmode-attribute:attr-contenteditable><a href=#attr-contenteditable>contenteditable</a></code>).</p>
+
+  <p>The <dfn id=attr-inputmode><code>inputmode</code></dfn> content attribute is an
+  <a id=input-modalities:-the-inputmode-attribute:enumerated-attribute href=common-microsyntaxes.html#enumerated-attribute>enumerated attribute</a> that specifies what kind of input mechanism would be most
+  helpful for users entering content.</p>
+
+  <table><thead><tr><th> Keyword
+     <th> Description
+   <tbody><tr><td><dfn id=attr-inputmode-keyword-none><code>none</code></dfn>
+     <td>The user agent should not display a virtual keyboard. This keyword is useful for content
+     that renders its own keyboard control.
+    <tr><td><dfn id=attr-inputmode-keyword-text><code>text</code></dfn>
+     <td>The user agent should display a virtual keyboard capable of text input in the user's locale.
+    <tr><td><dfn id=attr-inputmode-keyword-tel><code>tel</code></dfn>
+     <td> The user agent should display a virtual keyboard capable of telephone number input. This
+     should including keys for the digits 0 to 9, the "#" character, and the "*" character. In some
+     locales, this can also include alphabetic mnemonic labels (e.g., in the US, the key labeled
+     "2" is historically also labeled with the letters A, B, and C).
+    <tr><td><dfn id=attr-inputmode-keyword-url><code>url</code></dfn>
+     <td>The user agent should display a virtual keyboard capable of text input in the user's locale,
+     with keys for aiding in the input of <a href=https://url.spec.whatwg.org/#concept-url id=input-modalities:-the-inputmode-attribute:url data-x-internal=url>URLs</a>, such as that for the "/"
+     and "." characters and for quick input of strings commonly found in domain names such as
+     "www." or ".com".
+    <tr><td><dfn id=attr-inputmode-keyword-email><code>email</code></dfn>
+     <td>The user agent should display a virtual keyboard capable of text input in the user's locale,
+     with keys for aiding in the input of e-mail addresses, such as that for the "@" character
+     and the "." character.
+    <tr><td><dfn id=attr-inputmode-keyword-numeric><code>numeric</code></dfn>
+     <td> The user agent should display a virtual keyboard capable of numeric input. This keyword
+     is useful for PIN entry.
+    <tr><td><dfn id=attr-inputmode-keyword-decimal><code>decimal</code></dfn>
+     <td> The user agent should display a virtual keyboard capable of fractional numeric input.
+     Numeric keys and the format separator for the locale should be shown.
+    <tr><td><dfn id=attr-inputmode-keyword-search><code>search</code></dfn>
+     <td>The user agent should display a virtual keyboard optimized for search.
+  </table>
+
+  
+
+  <h4 id=input-modalities:-the-enterkeyhint-attribute><span class=secno>6.6.7</span> Input modalities: the <code id=input-modalities:-the-enterkeyhint-attribute:attr-enterkeyhint><a href=#attr-enterkeyhint>enterkeyhint</a></code>
+  attribute<a href=#input-modalities:-the-enterkeyhint-attribute class=self-link></a></h4>
+
+  <p>User agents can support the <code id=input-modalities:-the-enterkeyhint-attribute:attr-enterkeyhint-2><a href=#attr-enterkeyhint>enterkeyhint</a></code>
+  attribute on form controls (such as the value of <code id=input-modalities:-the-enterkeyhint-attribute:the-textarea-element><a href=form-elements.html#the-textarea-element>textarea</a></code> elements), or in elements
+  in an <span>editing host</span> (e.g., using <code id=input-modalities:-the-enterkeyhint-attribute:attr-contenteditable><a href=#attr-contenteditable>contenteditable</a></code>).</p>
+
+  <p>The <dfn id=attr-enterkeyhint><code>enterkeyhint</code></dfn> content attribute is an
+  <a id=input-modalities:-the-enterkeyhint-attribute:enumerated-attribute href=common-microsyntaxes.html#enumerated-attribute>enumerated attribute</a> that specifies what action label (or icon) to present for the
+  enter key on virtual keyboards. This allows authors to customize the presentation of the enter key
+  in order to make it more helpful for users.</p>
+
+  <table><thead><tr><th> Keyword
+     <th> Description
+   <tbody><tr><td><dfn id=attr-enterkeyhint-keyword-enter><code>enter</code></dfn>
+     <td>The user agent should present a cue for the operation 'enter', typically
+     inserting a new line.
+    <tr><td><dfn id=attr-enterkeyhint-keyword-done><code>done</code></dfn>
+     <td>The user agent should present a cue for the operation 'done', typically
+     meaning there is nothing more to input and the IME will be closed.
+    <tr><td><dfn id=attr-enterkeyhint-keyword-go><code>go</code></dfn>
+     <td> The user agent should present a cue for the operation 'go', typically
+     meaning to take the user to the target of the text they typed.
+    <tr><td><dfn id=attr-enterkeyhint-keyword-next><code>next</code></dfn>
+     <td>The user agent should present a cue for the operation 'next', typically
+     taking the user to the next field that will accept text.
+    <tr><td><dfn id=attr-enterkeyhint-keyword-previous><code>previous</code></dfn>
+     <td>The user agent should present a cue for the operation 'previous', typically
+     taking the user to the previous field that will accept text.
+    <tr><td><dfn id=attr-enterkeyhint-keyword-search><code>search</code></dfn>
+     <td>The user agent should present a cue for the operation 'search', typically
+     taking the user to the results of searching for the text they have typed.
+    <tr><td><dfn id=attr-enterkeyhint-keyword-send><code>send</code></dfn>
+     <td> The user agent should present a cue for the operation 'send', typically
+     delivering the text to its target.
+  </table>
+
+  
+
+  <nav><a href=microdata.html>← 5 Microdata</a> — <a href=./>Table of Contents</a> — <a href=dnd.html>6.7 Drag and drop →</a></nav>

@@ -1,0 +1,688 @@
+<!DOCTYPE html><html class=split lang=en-US-x-hixie><script src=/link-fixup.js defer=""></script><meta charset=utf-8><meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name=viewport><title>HTML Standard, Developer's Edition</title><meta content=#3c790a name=theme-color><link href=https://resources.whatwg.org/logo.svg rel=icon><script>
+   function toggleStatus(div) {
+     div.parentNode.classList.toggle('wrapped');
+   }
+  </script><style>
+   .status { min-height: 0.6em; font: 1em sans-serif; width: 9em; padding: 0.3em; position: absolute; z-index: 8; right: 0.3em; background: #EEE; color: black; box-shadow: 0 0 3px #999; overflow: hidden; margin: -2em 0 0 0; border-collapse: initial; border-spacing: initial; }
+   .status:hover { z-index: 9; }
+   .status:focus-within { z-index: 9; }
+   .status.wrapped > :not(input) { display: none; }
+   .status > input { position: absolute; left: 0; top: 0; width: 1em; height: 1em; border: none; background: transparent; padding: 0; margin: 0; }
+   .status > p { font-size: 0.6em; margin: 0; padding: 0; }
+   .status > p + p { padding-top: 0.5em; }
+   .status > p > strong { margin-left: 1.5em; }
+   .status > .support { display: block; }
+   .status > .support > span { padding: 0.2em 0; display: block; display: table; }
+   .status > .support > span.partial { color: #666666; filter: grayscale(50%); }
+   .status > .support > span.no { color: #CCCCCC; filter: grayscale(100%); }
+   .status > .support > span.no::before { opacity: 0.5; }
+   .status > .support > span:first-of-type { padding-top: 0.5em; }
+   .status > .support > span > span { padding: 0 0.5em; display: table-cell; vertical-align: top; }
+   .status > .support > span > span:first-child { width: 100%; }
+   .status > .support > span > span:last-child { width: 100%; white-space: pre; padding: 0; }
+   .status > .support > span::before { content: ' '; display: table-cell; min-width: 1.5em; height: 1.5em; background: no-repeat center center; background-size: contain; text-align: right; font-size: 0.75em; font-weight: bold; }
+   .status > .support > .and_chr::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .and_ff::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .and_uc::before { background-image: url(https://resources.whatwg.org/browser-logos/uc.png); } /* UC Browser for Android */
+   .status > .support > .android::before { background-image: url(https://resources.whatwg.org/browser-logos/android.svg); }
+   .status > .support > .bb::before { background-image: url(https://resources.whatwg.org/browser-logos/bb.jpg); } /* Blackberry Browser */
+   .status > .support > .chrome::before { background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg); }
+   .status > .support > .edge::before { background-image: url(https://resources.whatwg.org/browser-logos/edge.svg); }
+   .status > .support > .firefox::before { background-image: url(https://resources.whatwg.org/browser-logos/firefox.png); }
+   .status > .support > .ie::before { background-image: url(https://resources.whatwg.org/browser-logos/ie.png); }
+   .status > .support > .ie_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/ie-mobile.svg); }
+   .status > .support > .ios_saf::before { background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg); }
+   .status > .support > .op_mini::before { background-image: url(https://resources.whatwg.org/browser-logos/opera-mini.png); }
+   .status > .support > .op_mob::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .opera::before { background-image: url(https://resources.whatwg.org/browser-logos/opera.png); }
+   .status > .support > .safari::before { background-image: url(https://resources.whatwg.org/browser-logos/safari.png); }
+   .status > .support > .samsung::before { background-image: url(https://resources.whatwg.org/browser-logos/samsung.png); }
+   .status > .caniuse { text-align: right; font-style: italic; width: 100%; }
+   .status > .caniuse + p { margin-top: 0.5em; border-top: 1px solid silver; }
+
+   @media (max-width: 767px) {
+     .status { right: -9em; }
+   }
+  </style><link rel=stylesheet href=styles.css><style>.mdn {  display: block;  font: 12px sans-serif;  position: absolute;   z-index: 9;  right: 0.3em;  background-color: #eee;  margin: -26px 0 0 0;  padding: 7px 5px 5px 6px;  min-width: 140px;  box-shadow: 0 0 3px #999;} .mdn input {   cursor: pointer;   position: absolute;   left: 0;   top: -2px;   height: 1em;   border: none;   color: #000;   background: transparent;   margin-left: -8px;   font-size: 10px;   line-height: 1em;} .mdn b {  color: #fff;  background-color: #000;  font-weight: normal;   font-family: zillaslab,Palatino,"Palatino Linotype",serif;  padding: 2px 3px 0px 3px;  line-height: 1.3em;  vertical-align: top;} .mdn details {  display: inline;  margin-top: 1px;} .mdn summary a {  margin-left: -4px;} .nosupportdata {  font-style: italic;  margin-top: 4px;  margin-left: 8px;  padding-bottom: 8px;} .mdnsupport {  display: table;  margin-top: 4px;} .mdnsupport > span {  display: table-row;  padding: 0.2em 0;  padding-top: 0.2em;  font-size: 9.6px;} .mdnsupport > span > span {  display: table-cell;  padding: 0 0.5em;  vertical-align: top;  line-height: 1.5em;} .mdnsupport > span > span:last-child {  text-align: right;  padding: 0;} .mdnsupport > span.no {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.unknown {  color: #CCCCCC;  filter: grayscale(100%);} .mdnsupport > span.no::before {  opacity:  0.5;} .mdnsupport > span.unknown::before {  opacity:  0.5;}.mdnsupport > span::before {    content: "";    display: table-cell;    min-width: 1.5em;    height: 1.5em;    background: no-repeat center center;        background-image: none;        background-size: auto auto;    background-size: contain;    text-align: right;    font-size: 0.75em;    font-weight: bold;} .mdnsupport > .chrome::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .chrome_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);} .mdnsupport > .edge::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .edge_mobile::before {  background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);} .mdnsupport > .firefox::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .firefox_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);} .mdnsupport > .ie::before {  background-image: url(https://resources.whatwg.org/browser-logos/ie.png);} .mdnsupport > .opera::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .opera_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/opera.png);} .mdnsupport > .safari::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari.png);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .safari_ios::before {  background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);} .mdnsupport > .samsunginternet_android::before {  background-image: url(https://resources.whatwg.org/browser-logos/samsung.png);} .mdnsupport > .webview_android::before {  background-image: url(https://cdnjs.loli.net/ajax/libs/browser-logos/41.0.0/android-webview-beta/android-webview-beta_32x32.png);} .mdn div:nth-child(n+3) > b {  color: #eee;  background-color: #eee;} p + .mdn { margin-top: -45px } .mdn.before { margin-top: 2px } h2 + .mdn { margin: -48px 0 0 0; } h3 + .mdn { margin: -46px 0 0 0; } h4 + .mdn { margin: -42px 0 0 0; } h5 + .mdn { margin: -40px 0 0 0; } h6 + .mdn { margin: -40px 0 0 0; } .mdn div { margin: 0; } .mdn :link { color: #0000EE; } .mdn :visited { color: #551A8B; } .mdn :link:active, :visited:active { color: #FF0000; } .mdn :link, :visited {   text-decoration: underline;   cursor: pointer;} .mdn.wrapped { min-width: 0px; } .mdn.wrapped details { display: none; } .mdn:hover { z-index: 11; } .mdn:focus-within { z-index: 11; }</style><body>
+  <script async="" src=search.js></script>
+  
+  
+  <header id=head class="head with-buttons">
+   <a href=https://whatwg.org/ class=logo><img alt=WHATWG src=https://resources.whatwg.org/logo.svg width=100 height=100></a>
+   
+   <hgroup><h1><a rel=home href=/dev/>HTML: The Living Standard</a></h1><h2 id=dev-edition-h2 class="no-num no-toc">Developer's Edition — Last Updated <span class=pubdate>21 October 2018</span></h2></hgroup>
+   
+
+   <div id=search>
+    <input placeholder="Search. Press '/'" autocomplete=off name=query id=query type=search>
+    <ol id=results></ol>
+   </div>
+  </header>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  <nav><a href=browsing-the-web.html>← 7.6 Browsing the Web</a> — <a href=./>Table of Contents</a> — <a href=webappapis.html>8 Web application APIs →</a></nav><ol class=toc><li><ol><li><a href=offline.html#offline><span class=secno>7.7</span> Offline Web applications</a><ol><li><a href=offline.html#introduction-9><span class=secno>7.7.1</span> Introduction</a><ol><li><a href=offline.html#supporting-offline-caching-for-legacy-applications><span class=secno>7.7.1.1</span> Supporting offline caching for legacy applications</a><li><a href=offline.html#appcacheevents><span class=secno>7.7.1.2</span> Events summary</a></ol><li><a href=offline.html#manifests><span class=secno>7.7.2</span> The cache manifest syntax</a><ol><li><a href=offline.html#some-sample-manifests><span class=secno>7.7.2.1</span> Some sample manifests</a><li><a href=offline.html#writing-cache-manifests><span class=secno>7.7.2.2</span> Writing cache manifests</a></ol><li><a href=offline.html#security-concerns-with-offline-applications-caches><span class=secno>7.7.3</span> Security concerns with offline applications caches</a><li><a href=offline.html#application-cache-api><span class=secno>7.7.4</span> Application cache API</a><li><a href=offline.html#navigator.online><span class=secno>7.7.5</span> Browser state</a></ol></ol></ol><h3 id=offline><span class=secno>7.7</span> Offline Web applications<a href=#offline class=self-link></a></h3><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> offline-apps<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>4+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>3.2+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>3.5+</span></span><span class="ie yes"><span>IE</span> <span>10+</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>4+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>10.6+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>2.1+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=offline-apps">caniuse.com</a></div> 
+
+  <p class=critical>This feature is in the process of being removed from the Web platform. (This
+  is a long process that takes many years.) Using any of the offline Web application features at
+  this time is highly discouraged. Use service workers instead. <a href=references.html#refsSW>[SW]</a></p>
+
+  
+
+  <h4 id=introduction-9><span class=secno>7.7.1</span> Introduction<a href=#introduction-9 class=self-link></a></h4>
+
+  
+
+  <p>In order to enable users to continue interacting with Web applications and documents even when
+  their network connection is unavailable — for instance, because they are traveling outside
+  of their ISP's coverage area — authors can provide a manifest which lists the files that are
+  needed for the Web application to work offline and which causes the user's browser to keep a copy
+  of the files for use offline.</p>
+
+  <p>To illustrate this, consider a simple clock applet consisting of an HTML page "<code>clock1.html</code>", a CSS style sheet "<code>clock.css</code>", and a
+  JavaScript script "<code>clock.js</code>".</p>
+
+  <p>Before adding the manifest, these three files might look like this:</p>
+
+  <pre><code class='html'><c- c>&lt;!-- clock1.html --&gt;</c->
+<c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>meta</c-> <c- e>charset</c-><c- o>=</c-><c- s>&quot;utf-8&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Clock<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>script</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;clock.js&quot;</c-><c- p>&gt;&lt;/</c-><c- f>script</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;clock.css&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->The time is: <c- p>&lt;</c-><c- f>output</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;clock&quot;</c-><c- p>&gt;&lt;/</c-><c- f>output</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c->
+</code></pre>
+  <pre><code class='css'><c- c>/* clock.css */</c->
+<c- f>output </c-><c- p>{</c-> <c- k>font</c-><c- p>:</c-> <c- m>2</c-><c- l>em</c-> sans-serif<c- p>;</c-> <c- p>}</c->
+</code></pre>
+  <pre><code class='js'><c- d>/* clock.js */</c->
+setInterval<c- p>(</c-><c- a>function</c-> <c- p>()</c-> <c- p>{</c->
+    document<c- p>.</c->getElementById<c- p>(</c-><c- t>&apos;clock&apos;</c-><c- p>).</c->value <c- o>=</c-> <c- k>new</c-> Date<c- p>();</c->
+<c- p>},</c-> <c- mi>1000</c-><c- p>);</c->
+</code></pre>
+
+  <p>If the user tries to open the "<code>clock1.html</code>" page while offline, though,
+  the user agent (unless it happens to have it still in the local cache) will fail with an
+  error.</p>
+
+  <p>The author can instead provide a manifest of the three files, say "<code>clock.appcache</code>":</p>
+
+  <pre>CACHE MANIFEST
+clock2.html
+clock.css
+clock.js
+</pre>
+
+  <p>With a small change to the HTML file, the manifest (served as <code>text/cache-manifest</code>)
+  is linked to the application:</p>
+
+  <pre><code class='html'><c- c>&lt;!-- clock2.html --&gt;</c->
+<c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>manifest</c-><c- o>=</c-><c- s>&quot;clock.appcache&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>meta</c-> <c- e>charset</c-><c- o>=</c-><c- s>&quot;utf-8&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Clock<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>script</c-> <c- e>src</c-><c- o>=</c-><c- s>&quot;clock.js&quot;</c-><c- p>&gt;&lt;/</c-><c- f>script</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>link</c-> <c- e>rel</c-><c- o>=</c-><c- s>&quot;stylesheet&quot;</c-> <c- e>href</c-><c- o>=</c-><c- s>&quot;clock.css&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->The time is: <c- p>&lt;</c-><c- f>output</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;clock&quot;</c-><c- p>&gt;&lt;/</c-><c- f>output</c-><c- p>&gt;&lt;/</c-><c- f>p</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c->
+</code></pre>
+
+  <p>Now, if the user goes to the page, the browser will cache the files and make them available
+  even when the user is offline.</p>
+
+  <p class=note>Authors are encouraged to include the main page in the manifest also, but in
+  practice the page that referenced the manifest is automatically cached even if it isn't explicitly
+  mentioned.</p>
+
+  <p class=note>With the exception of "no-store" directive, HTTP cache headers and restrictions on
+  caching pages served over TLS (encrypted, using <code id=introduction-9:https-protocol><a data-x-internal=https-protocol href=https://tools.ietf.org/html/rfc7230#section-2.7.2>https:</a></code>) are
+  overridden by manifests. Thus, pages will not expire from an application cache before the user
+  agent has updated it, and even applications served over TLS can be made to work offline.</p>
+
+  <p><a href=/demos/offline/clock/clock2.html>View this example online</a>.</p>
+
+
+
+  <h5 id=supporting-offline-caching-for-legacy-applications><span class=secno>7.7.1.1</span> Supporting offline caching for legacy applications<a href=#supporting-offline-caching-for-legacy-applications class=self-link></a></h5>
+
+  
+
+  <p>The application cache feature works best if the application logic is separate from the
+  application and user data, with the logic (markup, scripts, style sheets, images, etc) listed in
+  the manifest and stored in the application cache, with a finite number of static HTML pages for
+  the application, and with the application and user data stored in Web Storage or a client-side
+  Indexed Database, updated dynamically using Web Sockets, <code id=supporting-offline-caching-for-legacy-applications:xmlhttprequest><a data-x-internal=xmlhttprequest href=https://xhr.spec.whatwg.org/#xmlhttprequest>XMLHttpRequest</a></code>, server-sent
+  events, or some other similar mechanism.</p>
+
+  <p>This model results in a fast experience for the user: the application immediately loads, and
+  fresh data is obtained as fast as the network will allow it (possibly while stale data shows).</p>
+
+  <p>Legacy applications, however, tend to be designed so that the user data and the logic are mixed
+  together in the HTML, with each operation resulting in a new HTML page from the server.</p>
+
+  <div class=example>
+
+   <p>For example, consider a news application. The typical architecture of such an application,
+   when not using the application cache feature, is that the user fetches the main page, and the
+   server returns a dynamically-generated page with the current headlines and the user interface
+   logic mixed together.</p>
+
+   <p>A news application designed for the application cache feature, however, would instead have the
+   main page just consist of the logic, and would then have the main page fetch the data separately
+   from the server, e.g. using <code id=supporting-offline-caching-for-legacy-applications:xmlhttprequest-2><a data-x-internal=xmlhttprequest href=https://xhr.spec.whatwg.org/#xmlhttprequest>XMLHttpRequest</a></code>.</p>
+
+  </div>
+
+  <p>The mixed-content model does not work well with the application cache feature: since the
+  content is cached, it would result in the user always seeing the stale data from the previous time
+  the cache was updated.</p>
+
+  <p>While there is no way to make the legacy model work as fast as the separated model, it
+  <em>can</em> at least be retrofitted for offline use using the <span>prefer-online</span> <span>application cache mode</span>. To do so, list all the static
+  resources used by the HTML page you want to have work offline in an <span>application cache manifest</span>, use the <code id=supporting-offline-caching-for-legacy-applications:attr-html-manifest><a href=semantics.html#attr-html-manifest>manifest</a></code> attribute to select that manifest from the HTML file,
+  and then add the following line at the bottom of the manifest:</p>
+
+  <pre>SETTINGS:
+prefer-online
+NETWORK:
+*</pre>
+
+  <p>This causes the <span>application cache</span> to only be used for <span>master entries</span> when the user is offline, and causes the
+  application cache to be used as an atomic HTTP cache (essentially pinning resources listed in the
+  manifest), while allowing all resources not listed in the manifest to be accessed normally when
+  the user is online.</p>
+
+
+
+  <h5 id=appcacheevents><span class=secno>7.7.1.2</span> Events summary<a href=#appcacheevents class=self-link></a></h5>
+
+  
+
+  <p>When the user visits a page that declares a manifest, the browser will try to update the cache.
+  It does this by fetching a copy of the manifest and, if the manifest has changed since the user
+  agent last saw it, redownloading all the resources it mentions and caching them anew.</p>
+
+  <p>As this is going on, a number of events get fired on the <code>ApplicationCache</code> object
+  to keep the script updated as to the state of the cache update, so that the user can be notified
+  appropriately. The events are as follows:</p>
+
+  <table><thead><tr><th> Event name
+     <th> Interface
+     <th> Fired when...
+     <th> Next events
+   <tbody><tr><td> <dfn id=event-appcache-checking><code>checking</code></dfn>
+     <td> <code id=appcacheevents:event><a data-x-internal=event href=https://dom.spec.whatwg.org/#interface-event>Event</a></code>
+     <td> The user agent is checking for an update, or attempting to download the manifest for the
+          first time. <strong>This is always the first event in the sequence.</strong>
+     <td> <code id=appcacheevents:event-appcache-noupdate><a href=#event-appcache-noupdate>noupdate</a></code>, <code id=appcacheevents:event-appcache-downloading><a href=#event-appcache-downloading>downloading</a></code>, <code id=appcacheevents:event-appcache-obsolete><a href=#event-appcache-obsolete>obsolete</a></code>, <code id=appcacheevents:event-appcache-error><a href=#event-appcache-error>error</a></code>
+
+    <tr><td> <dfn id=event-appcache-noupdate><code>noupdate</code></dfn>
+     <td> <code id=appcacheevents:event-2><a data-x-internal=event href=https://dom.spec.whatwg.org/#interface-event>Event</a></code>
+     <td> The manifest hadn't changed.
+     <td> Last event in sequence.
+
+    <tr><td> <dfn id=event-appcache-downloading><code>downloading</code></dfn>
+     <td> <code id=appcacheevents:event-3><a data-x-internal=event href=https://dom.spec.whatwg.org/#interface-event>Event</a></code>
+     <td> The user agent has found an update and is fetching it, or is downloading the resources
+          listed by the manifest for the first time.
+     <td> <code id=appcacheevents:event-appcache-progress><a href=#event-appcache-progress>progress</a></code>, <code id=appcacheevents:event-appcache-error-2><a href=#event-appcache-error>error</a></code>, <code id=appcacheevents:event-appcache-cached><a href=#event-appcache-cached>cached</a></code>, <code id=appcacheevents:event-appcache-updateready><a href=#event-appcache-updateready>updateready</a></code>
+
+    <tr><td> <dfn id=event-appcache-progress><code>progress</code></dfn>
+     <td> <code id=appcacheevents:progressevent><a data-x-internal=progressevent href=https://xhr.spec.whatwg.org/#interface-progressevent>ProgressEvent</a></code>
+     <td> The user agent is downloading resources listed by the manifest.
+          The event object's <code id=appcacheevents:dom-progressevent-total><a data-x-internal=dom-progressevent-total href=https://xhr.spec.whatwg.org/#dom-progressevent-total>total</a></code> attribute returns the total number of files to be downloaded.
+          The event object's <code id=appcacheevents:dom-progressevent-loaded><a data-x-internal=dom-progressevent-loaded href=https://xhr.spec.whatwg.org/#dom-progressevent-loaded>loaded</a></code> attribute returns the number of files processed so far.
+     <td> <code id=appcacheevents:event-appcache-progress-2><a href=#event-appcache-progress>progress</a></code>, <code id=appcacheevents:event-appcache-error-3><a href=#event-appcache-error>error</a></code>, <code id=appcacheevents:event-appcache-cached-2><a href=#event-appcache-cached>cached</a></code>, <code id=appcacheevents:event-appcache-updateready-2><a href=#event-appcache-updateready>updateready</a></code>
+
+    <tr><td> <dfn id=event-appcache-cached><code>cached</code></dfn>
+     <td> <code id=appcacheevents:event-4><a data-x-internal=event href=https://dom.spec.whatwg.org/#interface-event>Event</a></code>
+     <td> The resources listed in the manifest have been downloaded, and the application is now cached.
+     <td> Last event in sequence.
+
+    <tr><td> <dfn id=event-appcache-updateready><code>updateready</code></dfn>
+     <td> <code id=appcacheevents:event-5><a data-x-internal=event href=https://dom.spec.whatwg.org/#interface-event>Event</a></code>
+     <td> The resources listed in the manifest have been newly redownloaded, and the script can use
+          <code id=appcacheevents:dom-appcache-swapcache><a href=#dom-appcache-swapcache>swapCache()</a></code> to switch to the new cache.
+     <td> Last event in sequence.
+
+    <tr><td> <dfn id=event-appcache-obsolete><code>obsolete</code></dfn>
+     <td> <code id=appcacheevents:event-6><a data-x-internal=event href=https://dom.spec.whatwg.org/#interface-event>Event</a></code>
+     <td> The manifest was found to have become a 404 or 410 page, so the application cache is being deleted.
+     <td> Last event in sequence.
+
+    <tr><td rowspan=4> <dfn id=event-appcache-error><code>error</code></dfn>
+     <td rowspan=4> <code id=appcacheevents:event-7><a data-x-internal=event href=https://dom.spec.whatwg.org/#interface-event>Event</a></code>
+     <td> The manifest was a 404 or 410 page, so the attempt to cache the application has been aborted.
+     <td rowspan=3> Last event in sequence.
+
+    <tr><td> The manifest hadn't changed, but the page referencing the manifest failed to download properly.
+
+    <tr><td> A fatal error occurred while fetching the resources listed in the manifest.
+
+    <tr><td> The manifest changed while the update was being run.
+     <td> The user agent will try fetching the files again momentarily.
+
+  </table>
+
+  <p>These events are cancelable; their default action is for the user agent to show download
+  progress information. If the page shows its own update UI, canceling the events will prevent the
+  user agent from showing redundant progress information.</p>
+
+
+
+  
+
+
+
+  <h4 id=manifests><span class=secno>7.7.2</span> The cache manifest syntax<a href=#manifests class=self-link></a></h4>
+
+
+  <h5 id=some-sample-manifests><span class=secno>7.7.2.1</span> Some sample manifests<a href=#some-sample-manifests class=self-link></a></h5>
+
+  
+
+  <div class=example>
+
+   <p>This example manifest requires two images and a style sheet to be cached and safelists a CGI
+   script.</p>
+
+   <pre>CACHE MANIFEST
+# the above line is required
+
+# this is a comment
+# there can be as many of these anywhere in the file
+# they are all ignored
+  # comments can have spaces before them
+  # but must be alone on the line
+
+# blank lines are ignored too
+
+# these are files that need to be cached they can either be listed
+# first, or a "CACHE:" header could be put before them, as is done
+# lower down.
+images/sound-icon.png
+images/background.png
+# note that each file has to be put on its own line
+
+# here is a file for the online safelist -- it isn't cached, and
+# references to this file will bypass the cache, always hitting the
+# network (or trying to, if the user is offline).
+NETWORK:
+comm.cgi
+
+# here is another set of files to cache, this time just the CSS file.
+CACHE:
+style/default.css</pre>
+
+   <p>It could equally well be written as follows:</p>
+
+   <pre>CACHE MANIFEST
+NETWORK:
+comm.cgi
+CACHE:
+style/default.css
+images/sound-icon.png
+images/background.png</pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>Offline application cache manifests can use absolute paths or even absolute URLs:</p>
+
+   <pre>CACHE MANIFEST
+
+/main/home
+/main/app.js
+/settings/home
+/settings/app.js
+https://img.example.com/logo.png
+https://img.example.com/check.png
+https://img.example.com/cross.png</pre>
+
+  </div>
+
+  <div class=example>
+
+   <p>The following manifest defines a catch-all error page that is displayed for any page on the
+   site while the user is offline. It also specifies that the <span>online safelist wildcard flag</span> is <i>open</i>, meaning that accesses to resources on other sites will not be blocked.
+   (Resources on the same site are already not blocked because of the catch-all fallback
+   namespace.)</p>
+
+   <p>So long as all pages on the site reference this manifest, they will get cached locally as they
+   are fetched, so that subsequent hits to the same page will load the page immediately from the
+   cache. Until the manifest is changed, those pages will not be fetched from the server again. When
+   the manifest changes, then all the files will be redownloaded.</p>
+
+   <p>Subresources, such as style sheets, images, etc, would only be cached using the regular HTTP
+   caching semantics, however.</p>
+
+   <pre>CACHE MANIFEST
+FALLBACK:
+/ /offline.html
+NETWORK:
+*</pre>
+
+  </div>
+
+
+
+  <h5 id=writing-cache-manifests><span class=secno>7.7.2.2</span> Writing cache manifests<a href=#writing-cache-manifests class=self-link></a></h5>
+
+  <p>Manifests must be served using the <code>text/cache-manifest</code> <a id=writing-cache-manifests:mime-type href=https://mimesniff.spec.whatwg.org/#mime-type data-x-internal=mime-type>MIME type</a>. All
+  resources served using the <code>text/cache-manifest</code> <a id=writing-cache-manifests:mime-type-2 href=https://mimesniff.spec.whatwg.org/#mime-type data-x-internal=mime-type>MIME type</a> must follow the
+  syntax of application cache manifests, as described in this section.</p>
+
+  <p>An application cache manifest is a text file, whose text is encoded using UTF-8. Data in
+  application cache manifests is line-based. Newlines must be represented by U+000A LINE FEED (LF)
+  characters, U+000D CARRIAGE RETURN (CR) characters, or U+000D CARRIAGE RETURN (CR) U+000A LINE
+  FEED (LF) pairs. <a href=references.html#refsENCODING>[ENCODING]</a></p>
+
+  <p class=note>This is a <a id=writing-cache-manifests:willful-violation href=introduction.html#willful-violation>willful violation</a> of RFC 2046, which requires all <code>text/*</code> types to only allow CRLF line breaks. This requirement, however, is
+  outdated; the use of CR, LF, and CRLF line breaks is commonly supported and indeed sometimes CRLF
+  is <em>not</em> supported by text editors. <a href=references.html#refsRFC2046>[RFC2046]</a></p>
+
+  <p>The first line of an application cache manifest must consist of the string "CACHE", a single
+  U+0020 SPACE character, the string "MANIFEST", and either a U+0020 SPACE character, a U+0009
+  CHARACTER TABULATION (tab) character, a U+000A LINE FEED (LF) character, or a U+000D CARRIAGE
+  RETURN (CR) character. The first line may optionally be preceded by a U+FEFF BYTE ORDER MARK (BOM)
+  character. If any other text is found on the first line, it is ignored.</p>
+
+  <p>Subsequent lines, if any, must all be one of the following:</p>
+
+  <dl><dt>A blank line
+   <dd>
+    <p>Blank lines must consist of zero or more U+0020 SPACE and
+    U+0009 CHARACTER TABULATION (tab) characters only.</p>
+
+   <dt>A comment
+   <dd>
+    <p>Comment lines must consist of zero or more U+0020 SPACE and U+0009 CHARACTER TABULATION (tab)
+    characters, followed by a single U+0023 NUMBER SIGN character (#), followed by zero or more
+    characters other than U+000A LINE FEED (LF) and U+000D CARRIAGE RETURN (CR) characters.</p>
+
+    <p class=note>Comments need to be on a line on their own. If they were to be included on a
+    line with a URL, the "#" would be mistaken for part of a <a href=https://url.spec.whatwg.org/#concept-url-fragment id=writing-cache-manifests:concept-url-fragment data-x-internal=concept-url-fragment>fragment</a>.</p>
+
+   <dt>A section header
+   <dd>
+
+    <p>Section headers change the current section. There are four possible section headers:
+
+    <dl><dt><code>CACHE:</code>
+     <dd>Switches to the <dfn id=concept-appcache-manifest-explicit>explicit section</dfn>.
+
+     <dt><code>FALLBACK:</code>
+     <dd>Switches to the <dfn id=concept-appcache-manifest-fallback>fallback section</dfn>.
+
+     <dt><code>NETWORK:</code>
+     <dd>Switches to the <dfn id=concept-appcache-manifest-network>online safelist section</dfn>.
+
+     <dt><code>SETTINGS:</code>
+     <dd>Switches to the <dfn id=concept-appcache-manifest-settings>settings section</dfn>.
+
+    </dl>
+
+    <p>Section header lines must consist of zero or more U+0020 SPACE and U+0009 CHARACTER
+    TABULATION (tab) characters, followed by one of the names above (including the U+003A COLON
+    character (:)) followed by zero or more U+0020 SPACE and U+0009 CHARACTER TABULATION (tab)
+    characters.</p>
+
+    <p>Ironically, by default, the current section is the <a href=#concept-appcache-manifest-explicit id=writing-cache-manifests:concept-appcache-manifest-explicit>explicit section</a>.</p>
+
+   <dt>Data for the current section
+   <dd>
+
+    <p>The format that data lines must take depends on the current section.</p>
+
+    <p>When the current section is the <a href=#concept-appcache-manifest-explicit id=writing-cache-manifests:concept-appcache-manifest-explicit-2>explicit
+    section</a>, data lines must consist of zero or more U+0020 SPACE and U+0009 CHARACTER
+    TABULATION (tab) characters, a <a id=writing-cache-manifests:valid-url-string href=https://url.spec.whatwg.org/#valid-url-string data-x-internal=valid-url-string>valid URL string</a> identifying a resource other than
+    the manifest itself, and then zero or more U+0020 SPACE and U+0009 CHARACTER TABULATION (tab)
+    characters.</p>
+
+    <p>When the current section is the <a href=#concept-appcache-manifest-fallback id=writing-cache-manifests:concept-appcache-manifest-fallback>fallback
+    section</a>, data lines must consist of zero or more U+0020 SPACE and U+0009 CHARACTER
+    TABULATION (tab) characters, a <a id=writing-cache-manifests:valid-url-string-2 href=https://url.spec.whatwg.org/#valid-url-string data-x-internal=valid-url-string>valid URL string</a> identifying a resource other than
+    the manifest itself, one or more U+0020 SPACE and U+0009 CHARACTER TABULATION (tab) characters,
+    another <a id=writing-cache-manifests:valid-url-string-3 href=https://url.spec.whatwg.org/#valid-url-string data-x-internal=valid-url-string>valid URL string</a> identifying a resource other than the manifest itself, and
+    then zero or more U+0020 SPACE and U+0009 CHARACTER TABULATION (tab) characters.</p>
+
+    <p>When the current section is the <a href=#concept-appcache-manifest-network id=writing-cache-manifests:concept-appcache-manifest-network>online
+    safelist section</a>, data lines must consist of zero or more U+0020 SPACE and U+0009
+    CHARACTER TABULATION (tab) characters, either a single U+002A ASTERISK character (*)  or a <a id=writing-cache-manifests:valid-url-string-4 href=https://url.spec.whatwg.org/#valid-url-string data-x-internal=valid-url-string>valid URL string</a> identifying a
+    resource other than the manifest itself, and then zero or more U+0020 SPACE and U+0009 CHARACTER
+    TABULATION (tab) characters.</p>
+
+    <p>When the current section is the <a href=#concept-appcache-manifest-settings id=writing-cache-manifests:concept-appcache-manifest-settings>settings
+    section</a>, data lines must consist of zero or more U+0020 SPACE and U+0009 CHARACTER
+    TABULATION (tab) characters, a <a href=#concept-appcache-manifest-setting id=writing-cache-manifests:concept-appcache-manifest-setting>setting</a>,
+    and then zero or more U+0020 SPACE and U+0009 CHARACTER TABULATION (tab) characters.</p>
+
+    <p>Currently only one <dfn id=concept-appcache-manifest-setting>setting</dfn> is
+    defined:</p>
+
+    <dl><dt>The cache mode setting<dd>This consists of the string "<code>prefer-online</code>". It sets the <span>cache mode</span> to <span>prefer-online</span>. (The <span>cache mode</span> defaults to <span>fast</span>.)</dl>
+
+    <p>Within a <a href=#concept-appcache-manifest-settings id=writing-cache-manifests:concept-appcache-manifest-settings-2>settings section</a>, each <a href=#concept-appcache-manifest-setting id=writing-cache-manifests:concept-appcache-manifest-setting-2>setting</a> must occur no more than once.</p>
+
+
+
+  </dl>
+
+  <p>Manifests may contain sections more than once. Sections may be empty.</p>
+
+  <p>URLs that are to be fallback pages associated with <span>fallback namespaces</span>, and those namespaces themselves,
+  must be given in <a href=#concept-appcache-manifest-fallback id=writing-cache-manifests:concept-appcache-manifest-fallback-2>fallback sections</a>, with
+  the namespace being the first URL of the data line, and the corresponding fallback page being the
+  second URL. All the other pages to be cached must be listed in <a href=#concept-appcache-manifest-explicit id=writing-cache-manifests:concept-appcache-manifest-explicit-3>explicit sections</a>.</p>
+
+  <p><span>Fallback namespaces</span> and <span>fallback entries</span> must have the <span>same origin</span>
+  as the manifest itself. <span>Fallback namespaces</span>
+  must also be in the same path as the manifest's URL.</p>
+
+  <p>A <span>fallback namespace</span> must not be listed more
+  than once.</p>
+
+  <p>Namespaces that the user agent is to put into the <span>online safelist</span> must all be specified in <a href=#concept-appcache-manifest-network id=writing-cache-manifests:concept-appcache-manifest-network-2>online safelist sections</a>. (This is needed for
+  any URL that the page is intending to use to communicate back to the server.) To specify that all
+  URLs are automatically safelisted in this way, a U+002A ASTERISK character (*) may be specified
+  as one of the URLs. </p>
+
+  <p>Authors should not include namespaces in the <span>online safelist</span> for which another namespace in
+  the <span>online safelist</span> is a <a id=writing-cache-manifests:prefix-match href=infrastructure.html#prefix-match>prefix
+  match</a>.</p>
+
+  <p><a href=https://url.spec.whatwg.org/#syntax-url-relative id=writing-cache-manifests:relative-url data-x-internal=relative-url>Relative URLs</a> must be given relative to the manifest's own
+  URL. All URLs in the manifest must have the same <a href=https://url.spec.whatwg.org/#concept-url-scheme id=writing-cache-manifests:concept-url-scheme data-x-internal=concept-url-scheme>scheme</a> as
+  the manifest itself (either explicitly or implicitly, through the use of <a href=https://url.spec.whatwg.org/#syntax-url-relative id=writing-cache-manifests:relative-url-2 data-x-internal=relative-url>relative URLs</a>). <a href=references.html#refsURL>[URL]</a></p>
+
+  <p>URLs in manifests must not have <a href=https://url.spec.whatwg.org/#concept-url-fragment id=writing-cache-manifests:concept-url-fragment-2 data-x-internal=concept-url-fragment>fragments</a> (i.e. the
+  U+0023 NUMBER SIGN character isn't allowed in URLs in manifests).</p>
+
+  <p><span>Fallback namespaces</span> and namespaces in the
+  <span>online safelist</span> are matched by <a id=writing-cache-manifests:prefix-match-2 href=infrastructure.html#prefix-match>prefix
+  match</a>.</p>
+
+
+  
+
+
+  
+
+
+  
+
+
+
+  <h4 id=security-concerns-with-offline-applications-caches><span class=secno>7.7.3</span> Security concerns with offline applications caches<a href=#security-concerns-with-offline-applications-caches class=self-link></a></h4>
+
+  
+
+  <p>The main risk introduced by offline application caches is that an injection attack can be
+  elevated into persistent site-wide page replacement. This attack involves using an injection
+  vulnerability to upload two files to the victim site. The first file is an application cache
+  manifest consisting of just a fallback entry pointing to the second file, which is an HTML page
+  whose manifest is declared as that first file. Once the user has been directed to that second
+  file, all subsequent accesses to any file covered by the given fallback namespace while either the
+  user or the site is offline will instead show that second file. Targeted denial-of-service
+  attacks or cookie bombing attacks (where the client is made to send so many cookies that the
+  server refuses to process the request) can be used to ensure that the site appears offline.</p>
+
+  <p>To mitigate this, manifests can only specify fallbacks that are in the same path as the
+  manifest itself. This means that a content injection upload vulnerability in a particular
+  directory on a server can only be escalated to a take-over of that directory and its
+  subdirectories. If there is no way to inject a file into the root directory, the entire site
+  cannot be taken over.</p>
+
+  <p>If a site has been attacked in this way, simply removing the offending manifest might eventually
+  clear the problem, since the next time the manifest is updated, a 404 error will be seen, and the
+  user agent will clear the cache. "Eventually" is the key word here, however; while the attack on
+  the user or server is ongoing, such that connections from an affected user to the affected site
+  are blocked, the user agent will simply assume that the user is offline and will continue to use
+  the hostile manifest. Unfortunately, if a cookie bombing attack has also been used, merely
+  removing the manifest is insufficient; in addition, the server has to be configured to return a
+  404 or 410 response instead of the 413 "Request Entity Too Large" response.</p>
+
+  <p>TLS does not inherently protect a site from this attack, since the attack relies on content
+  being served from the server itself. Not using application caches also does not prevent this
+  attack, since the attack relies on an attacker-provided manifest.</p>
+
+
+
+  <h4 id=application-cache-api><span class=secno>7.7.4</span> Application cache API<a href=#application-cache-api class=self-link></a></h4>
+
+  
+
+  <dl class=domintro><dt><var>cache</var> = <var>window</var> . <code id=dom-applicationcache>applicationCache</code><dd>
+
+    <p>Returns the <code>ApplicationCache</code> object that applies to the <a id=application-cache-api:active-document href=browsers.html#active-document>active
+    document</a> of that <code>Window</code>.</p>
+
+   <dt><var>cache</var> . <code id=dom-appcache-status>status</code><dd>
+
+    <p>Returns the current status of the application cache, as given by the constants defined
+    below.</p>
+
+   <dt><var>cache</var> . <code id=dom-appcache-update>update</code>()<dd>
+
+    <p>Invokes the <span>application cache download process</span>.</p>
+
+    <p>Throws an <a id=application-cache-api:invalidstateerror href=https://heycam.github.io/webidl/#invalidstateerror data-x-internal=invalidstateerror>"<code>InvalidStateError</code>"</a> <code id=application-cache-api:domexception><a data-x-internal=domexception href=https://heycam.github.io/webidl/#dfn-DOMException>DOMException</a></code> if there is
+    no application cache to update.</p>
+
+    <p>Calling this method is not usually necessary, as user agents will generally take care of
+    updating <span>application caches</span> automatically.</p>
+
+    <p>The method can be useful in situations such as long-lived applications. For example, a Web
+    mail application might stay open in a browser tab for weeks at a time. Such an application could
+    want to test for updates each day.</p>
+
+   <dt><var>cache</var> . <code id=dom-appcache-abort>abort</code>()<dd>
+
+    <p>Cancels the <span>application cache download process</span>.</p>
+
+    <p>This method is intended to be used by Web application showing their own caching progress UI,
+    in case the user wants to stop the update (e.g. because bandwidth is limited).</p>
+
+   <dt><var>cache</var> . <code id=dom-appcache-swapcache>swapCache</code>()<dd>
+
+    <p>Switches to the most recent application cache, if there is a newer one. If there isn't,
+    throws an <a id=application-cache-api:invalidstateerror-2 href=https://heycam.github.io/webidl/#invalidstateerror data-x-internal=invalidstateerror>"<code>InvalidStateError</code>"</a> <code id=application-cache-api:domexception-2><a data-x-internal=domexception href=https://heycam.github.io/webidl/#dfn-DOMException>DOMException</a></code>.</p>
+
+    <p>This does not cause previously-loaded resources to be reloaded; for example, images do not
+    suddenly get reloaded and style sheets and scripts do not get reparsed or reevaluated. The only
+    change is that subsequent requests for cached resources will obtain the newer copies.</p>
+
+    <p>The <code id=application-cache-api:event-appcache-updateready><a href=#event-appcache-updateready>updateready</a></code> event will fire before this
+    method can be called. Once it fires, the Web application can, at its leisure, call this method
+    to switch the underlying cache to the one with the more recent updates. To make proper use of
+    this, applications have to be able to bring the new features into play; for example, reloading
+    scripts to enable new features.</p>
+
+    <p>An easier alternative to <code id=application-cache-api:dom-appcache-swapcache><a href=#dom-appcache-swapcache>swapCache()</a></code> is just to
+    reload the entire page at a time suitable for the user, using <code id=application-cache-api:dom-location-reload><a href=history.html#dom-location-reload>location.reload()</a></code>.</p>
+
+   </dl>
+
+  
+
+  <dl><dt><dfn id=dom-appcache-uncached><code>UNCACHED</code></dfn> (numeric value 0)<dd><p>The <code>ApplicationCache</code> object's <span>cache host</span> is not associated with
+   an <span>application cache</span> at this time.<dt><dfn id=dom-appcache-idle><code>IDLE</code></dfn> (numeric value 1)<dd><p>The <code>ApplicationCache</code> object's <span>cache host</span> is associated with an
+   <span>application cache</span> whose <span>application cache group</span>'s <span>update status</span> is <i>idle</i>, and that <span>application
+   cache</span> is the <span>newest</span> cache in its
+   <span>application cache group</span>, and the <span>application cache group</span> is not marked
+   as <span>obsolete</span>.<dt><dfn id=dom-appcache-checking><code>CHECKING</code></dfn> (numeric value 2)<dd><p>The <code>ApplicationCache</code> object's <span>cache host</span> is associated with an
+   <span>application cache</span> whose <span>application cache group</span>'s <span>update status</span> is <i>checking</i>.<dt><dfn id=dom-appcache-downloading><code>DOWNLOADING</code></dfn> (numeric value 3)<dd><p>The <code>ApplicationCache</code> object's <span>cache host</span> is associated with an
+   <span>application cache</span> whose <span>application cache group</span>'s <span>update status</span> is <i>downloading</i>.<dt><dfn id=dom-appcache-updateready><code>UPDATEREADY</code></dfn> (numeric value 4)<dd><p>The <code>ApplicationCache</code> object's <span>cache host</span> is associated with an
+   <span>application cache</span> whose <span>application cache group</span>'s <span>update status</span> is <i>idle</i>, and whose <span>application
+   cache group</span> is not marked as <span>obsolete</span>, but
+   that <span>application cache</span> is <em>not</em> the <span>newest</span> cache in its group.<dt><dfn id=dom-appcache-obsolete><code>OBSOLETE</code></dfn> (numeric value 5)<dd><p>The <code>ApplicationCache</code> object's <span>cache host</span> is associated with an
+   <span>application cache</span> whose <span>application cache group</span> is marked as <span>obsolete</span>.</dl>
+
+  
+
+
+  <h4 id=navigator.online><span class=secno>7.7.5</span> <span id=browser-state>Browser state</span><a href=#navigator.online class=self-link></a></h4><div class=status><input onclick=toggleStatus(this) value=⋰ type=button><p class=support><strong>Support:</strong> online-status<span class="and_chr yes"><span>Chrome for Android</span> <span>69+</span></span><span class="chrome yes"><span>Chrome</span> <span>14+</span></span><span class="ios_saf yes"><span>iOS Safari</span> <span>4.2+</span></span><span class="and_uc yes"><span>UC Browser for Android</span> <span>11.8+</span></span><span class="firefox yes"><span>Firefox</span> <span>41+</span></span><span class="ie yes"><span>IE</span> <span>9+</span></span><span class="op_mini no"><span>Opera Mini</span> <span>None</span></span><span class="safari yes"><span>Safari</span> <span>5+</span></span><span class="edge yes"><span>Edge</span> <span>12+</span></span><span class="opera yes"><span>Opera</span> <span>15+</span></span><span class="samsung yes"><span>Samsung Internet</span> <span>4+</span></span><span class="android yes"><span>Android Browser</span> <span>2.3+</span></span><p class=caniuse>Source: <a href="https://caniuse.com/#feat=online-status">caniuse.com</a></div>
+
+  
+
+  <aside class="mdn before"><input onclick=toggleStatus(this) value=⋰ type=button><div><b>MDN</b> <details><summary><a href=https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine title="Returns the online status of the browser. The property returns a boolean value, with true meaning online and false meaning offline. The property sends updates whenever the browser's ability to connect to the network changes. The update occurs when the user follows links or when a script requests a remote page. For example, the property should return false when users click links soon after they lose internet connection.">NavigatorOnLine/onLine</a></summary><p class=mdnsupport><span class="chrome yes"><span>Chrome</span><span>Yes</span></span><span class="chrome_android yes"><span>Chrome Android</span><span>Yes</span></span><span class="edge yes"><span>Edge</span><span>Yes</span></span><span class="edge_mobile yes"><span>Edge Mobile</span><span>Yes</span></span><span class="firefox yes"><span>Firefox</span><span>3.5+</span></span><span class="firefox yes"><span>Firefox</span><span>4+</span></span><span class="firefox_android yes"><span>Firefox Android</span><span>4+</span></span><span class="ie yes"><span>Internet Explorer</span><span>8+</span></span><span class="opera no"><span>Opera</span><span>No</span></span><span class="opera_android unknown"><span>Opera Android</span><span>?</span></span><span class="safari yes"><span>Safari</span><span>5+</span></span><span class="safari_ios yes"><span>Safari iOS</span><span>Yes</span></span><span class="samsunginternet_android unknown"><span>Samsung Internet</span><span>?</span></span><span class="webview_android yes"><span>WebView Android</span><span>Yes</span></span></details></div></aside><dl class=domintro><dt><var>self</var> . <code>navigator</code> . <code id=dom-navigator-online>onLine</code><dd>
+    <p>Returns false if the user agent is definitely offline (disconnected from the network).
+    Returns true if the user agent might be online.</p>
+
+    <p>The events <code id=navigator.online:event-online><a href=indices.html#event-online>online</a></code> and <code id=navigator.online:event-offline><a href=indices.html#event-offline>offline</a></code> are fired when the value of this attribute changes.</p>
+   </dl>
+
+  
+
+  <p class=note>This attribute is inherently unreliable. A computer can be connected to a network
+  without having Internet access.</p>
+
+  <div class=example>
+
+   <p>In this example, an indicator is updated as the browser goes online and offline.</p>
+
+   <pre><code class='html'><c- cp>&lt;!DOCTYPE HTML&gt;</c->
+<c- p>&lt;</c-><c- f>html</c-> <c- e>lang</c-><c- o>=</c-><c- s>&quot;en&quot;</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>head</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>title</c-><c- p>&gt;</c->Online status<c- p>&lt;/</c-><c- f>title</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>script</c-><c- p>&gt;</c->
+   <c- a>function</c-> updateIndicator<c- p>()</c-> <c- p>{</c->
+     document<c- p>.</c->getElementById<c- p>(</c-><c- t>&apos;indicator&apos;</c-><c- p>).</c->textContent <c- o>=</c-> navigator<c- p>.</c->onLine <c- o>?</c-> <c- t>&apos;online&apos;</c-> <c- o>:</c-> <c- t>&apos;offline&apos;</c-><c- p>;</c->
+   <c- p>}</c->
+  <c- p>&lt;/</c-><c- f>script</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>head</c-><c- p>&gt;</c->
+ <c- p>&lt;</c-><c- f>body</c-> <c- e>onload</c-><c- o>=</c-><c- s>&quot;updateIndicator()&quot;</c-> <c- e>ononline</c-><c- o>=</c-><c- s>&quot;updateIndicator()&quot;</c-> <c- e>onoffline</c-><c- o>=</c-><c- s>&quot;updateIndicator()&quot;</c-><c- p>&gt;</c->
+  <c- p>&lt;</c-><c- f>p</c-><c- p>&gt;</c->The network is: <c- p>&lt;</c-><c- f>span</c-> <c- e>id</c-><c- o>=</c-><c- s>&quot;indicator&quot;</c-><c- p>&gt;</c->(state unknown)<c- p>&lt;/</c-><c- f>span</c-><c- p>&gt;</c->
+ <c- p>&lt;/</c-><c- f>body</c-><c- p>&gt;</c->
+<c- p>&lt;/</c-><c- f>html</c-><c- p>&gt;</c-></code></pre>
+
+  </div>
+
+
+
+
+  <nav><a href=browsing-the-web.html>← 7.6 Browsing the Web</a> — <a href=./>Table of Contents</a> — <a href=webappapis.html>8 Web application APIs →</a></nav>
